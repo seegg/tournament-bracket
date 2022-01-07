@@ -9,7 +9,6 @@ module.exports = {
     path: path.join(__dirname, 'scripts'),
     filename: 'bundle.js'
   },
-  watch: true,
   mode: 'development',
   module: {
     rules: [
