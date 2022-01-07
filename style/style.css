@@ -1,0 +1,15 @@
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.cell{
+  height: 3rem;
+  width: 15rem;
+  min-width: 10rem;
+  border-radius: 0.5rem;
+  border-style: solid;
+  border-width: 3px;
+}

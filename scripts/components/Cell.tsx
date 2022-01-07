@@ -1,8 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 const Cell = () => {
-  let style = {
-    height: '3rem',
-    width: '15rem',
-  }
-}
+  return <div className='cell'></div>;
+};
+
+export default Cell;

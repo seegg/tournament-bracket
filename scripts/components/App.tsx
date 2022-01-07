@@ -1,8 +1,13 @@
 import React from 'react';
+import Cell from './Cell'
 
 
 const App = () => {
-  return <div>Hello world!</div>;
+  return (
+    <>
+      <Cell />
+    </>
+  )
 };
 
 export default App;
