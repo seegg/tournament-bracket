@@ -1,9 +1,12 @@
 const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
+
 
 module.exports = {
   entry: ['./scripts/index.tsx'],
   output: {
-    path: path.join(__dirname, 'script'),
+    path: path.join(__dirname, 'scripts'),
     filename: 'bundle.js'
   },
   watch: true,
@@ -21,6 +24,12 @@ module.exports = {
       }
     ]
   },
-  resolves: ['.js', '.jsx', '.tx', '.tsx', '.json'],
+  optimization: {
+    minimize: true,
+    minimizer: [new TerserPlugin()],
+  },
+  resolve: {
+    extensions: ['.js', '.jsx', '.tx', '.tsx', '.json'],
+  },
   devtool: 'source-map',
 }

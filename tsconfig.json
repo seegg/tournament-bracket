@@ -1,0 +1,15 @@
+{
+  "include": [
+    "./scripts/*"
+  ],
+  "compilerOptions": {
+    "strict": true,
+    "jsx": "preserve",
+    "allowSyntheticDefaultImports": true,
+    "removeComments": true,
+    "lib": [
+      "DOM",
+      "ES2020"
+    ],
+  }
+}
