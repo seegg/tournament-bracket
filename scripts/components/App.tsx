@@ -12,8 +12,9 @@ const App = () => {
     return normalMatchups + bi;
   }
 
-  const handleParticipants = (participantNo: number) => {
-    setMatchups(participantNo);
+  const inputCallback = (participantNo: number) => {
+    const matchups = getNumberOfMathcups(participantNo);
+    setMatchups(matchups);
   }
 
   /**
@@ -25,7 +26,7 @@ const App = () => {
 
   return (
     <div>
-      <BracketInput />
+      <BracketInput callback={inputCallback} />
       <Round numberOfMatchups={matchups} />
     </div>
   );
