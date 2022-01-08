@@ -10,6 +10,8 @@ object-assign
 
 /*! ./Matchup */
 
+/*! ./Round */
+
 /*! ./cjs/react-dom.development.js */
 
 /*! ./cjs/react.development.js */
@@ -45,6 +47,10 @@ object-assign
 /*!*************************************!*\
   !*** ./scripts/components/Cell.tsx ***!
   \*************************************/
+
+/*!**************************************!*\
+  !*** ./scripts/components/Round.tsx ***!
+  \**************************************/
 
 /*!****************************************!*\
   !*** ./scripts/components/Matchup.tsx ***!
