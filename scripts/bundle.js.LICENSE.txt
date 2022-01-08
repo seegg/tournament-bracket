@@ -4,6 +4,8 @@ object-assign
 @license MIT
 */
 
+/*! ./Bracket-Input */
+
 /*! ./Cell */
 
 /*! ./cjs/react-dom.development.js */
@@ -57,6 +59,10 @@ object-assign
 /*!*********************************************!*\
   !*** ./node_modules/object-assign/index.js ***!
   \*********************************************/
+
+/*!**********************************************!*\
+  !*** ./scripts/components/Bracket-Input.tsx ***!
+  \**********************************************/
 
 /*!*****************************************************!*\
   !*** ./node_modules/react/cjs/react.development.js ***!
