@@ -3,8 +3,7 @@ import React from 'react';
 const BracketInput = () => {
   return (
     <div>
-      <label htmlFor="input">Number of participants:</label>
-      <input type="text" name="input" id="" />
+      <input type="text" placeholder='Number of participants' name="input" id="" />
       <button>Go</button>
     </div>
   )

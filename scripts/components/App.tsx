@@ -4,10 +4,10 @@ import BracketInput from './Bracket-Input'
 
 const App = () => {
   return (
-    <>
+    <div>
       <BracketInput />
-      <Cell />
-    </>
+      <Cell position='end' />
+    </div>
   )
 };
 
