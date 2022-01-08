@@ -1,12 +1,12 @@
 import React from 'react';
 
-interface appProps {
+interface CellProps {
   position: string,
   win?: boolean,
   winner?: boolean
 }
 
-const Cell = ({ position }: appProps) => {
+const Cell = ({ position }: CellProps) => {
 
   const justifyStartEnd = {
     justifyContent: position,

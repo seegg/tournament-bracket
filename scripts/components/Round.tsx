@@ -1,11 +1,11 @@
 import React from 'react';
 import Matchup from './Matchup';
 
-interface AppProps {
+interface RoundProps {
   numberOfMatchups?: number
 };
 
-const Round = ({ numberOfMatchups = 4 }: AppProps) => {
+const Round = ({ numberOfMatchups = 4 }: RoundProps) => {
 
   let matchups = new Array(numberOfMatchups).fill(<Matchup />);
 

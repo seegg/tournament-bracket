@@ -1,10 +1,10 @@
 import React, { useState, ChangeEvent } from 'react';
 
-interface AppProps {
+interface InputProps {
   callback: (participantNo: number) => void;
 }
 
-const BracketInput = ({ callback }: AppProps) => {
+const BracketInput = ({ callback }: InputProps) => {
 
   const [participantNo, setParticipantNo] = useState<null | number>(null);
 
