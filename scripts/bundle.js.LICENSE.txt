@@ -8,6 +8,8 @@ object-assign
 
 /*! ./Cell */
 
+/*! ./Matchup */
+
 /*! ./cjs/react-dom.development.js */
 
 /*! ./cjs/react.development.js */
@@ -43,6 +45,10 @@ object-assign
 /*!*************************************!*\
   !*** ./scripts/components/Cell.tsx ***!
   \*************************************/
+
+/*!****************************************!*\
+  !*** ./scripts/components/Matchup.tsx ***!
+  \****************************************/
 
 /*!*****************************************!*\
   !*** ./node_modules/react-dom/index.js ***!

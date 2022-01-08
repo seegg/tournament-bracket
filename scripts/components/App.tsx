@@ -1,14 +1,14 @@
 import React from 'react';
-import Cell from './Cell'
-import BracketInput from './Bracket-Input'
+import Matchup from './Matchup';
+import BracketInput from './Bracket-Input';
 
 const App = () => {
   return (
     <div>
       <BracketInput />
-      <Cell position='end' />
+      <Matchup />
     </div>
-  )
+  );
 };
 
 export default App;

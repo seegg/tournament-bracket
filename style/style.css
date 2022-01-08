@@ -20,6 +20,12 @@ html {
   border-width: 3px;
 }
 
+.middle-divide{
+  height: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
 .bracket-input{
   background-color: aquamarine;
 }
