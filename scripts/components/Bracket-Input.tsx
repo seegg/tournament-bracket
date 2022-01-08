@@ -8,6 +8,7 @@ const BracketInput = ({ callback }: AppProps) => {
 
   const [participantNo, setParticipantNo] = useState<null | number>(null);
 
+  //matches either a whole number or an empty string.
   const wholeNumberRegex = new RegExp(/(^\d+$)|(^$)/);
 
   const stuff = () => {
