@@ -6,7 +6,7 @@ html {
 }
 
 .cell-container{
-  min-height: 3.5rem;
+  min-height: 5rem;
   display: flex;
   flex-direction: column;
 }
@@ -24,6 +24,21 @@ html {
   height: 1rem;
   display: flex;
   flex-direction: column;
+}
+
+.middle-filler-top{
+  flex: 1 1 auto;
+}
+
+.middle-filler-bottom{
+  flex: 1 1 auto;
+  border-top: solid blanchedalmond 2px;
+}
+
+.matchup{
+  display: flex;
+  flex-direction: column;
+  width: min-content;
 }
 
 .bracket-input{

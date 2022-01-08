@@ -3,16 +3,12 @@ import Cell from './Cell';
 
 const Matchup = () => {
 
-  const style = {
-    height: '5rem',
-  };
-
   return (
-    <div>
+    <div className='matchup'>
       <Cell position='end' />
       <div className='middle-divide'>
-        <div></div>
-        <div></div>
+        <div className='middle-filler-top'></div>
+        <div className='middle-filler-bottom'></div>
       </div>
       <Cell position='start' />
     </div>
