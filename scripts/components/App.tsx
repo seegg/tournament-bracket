@@ -7,9 +7,10 @@ const App = () => {
   const [matchups, setMatchups] = useState(0);
 
   const getNumberOfMathcups = (participantNo: number): number => {
-    const normalMatchups = logBase(participantNo);
-    const bi = participantNo - Math.pow(normalMatchups, 2);
-    return normalMatchups + bi;
+    if (participantNo < 1) return 0;
+    if (participantNo <= 2) return 1;
+    const matchups = Math.pow(2, Math.ceil(logBase(participantNo)) - 1);
+    return matchups;
   }
 
   const inputCallback = (participantNo: number) => {
@@ -26,10 +27,11 @@ const App = () => {
 
   return (
     <div>
+      <div>Matchup: {matchups}</div>
       <BracketInput callback={inputCallback} />
       <Round numberOfMatchups={matchups} />
     </div>
   );
-};
+}
 
 export default App;
