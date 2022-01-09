@@ -9,20 +9,26 @@ const App = () => {
   const getNumberOfMathcupsInRound = (participantNo: number): number => {
     if (participantNo < 1) return 0;
     if (participantNo <= 2) return 1;
-    const matchups = Math.pow(2, Math.ceil(logBase(participantNo)) - 1);
-    return matchups;
+    return Math.pow(2, Math.ceil(logBase(participantNo)) - 1);
   }
 
   const makeBracket = (initialNumber: number): number[] => {
     let rounds: number[] = [];
     let remaining = initialNumber;
+    let matups = getNumberOfMathcupsInRound(20);
     while (remaining > 2) {
-      let matchups = getNumberOfMathcupsInRound(remaining);
-      rounds.push(matchups);
-
+      // console.log('matchups', matchups);
+      // rounds.push(matchups);
+      // remaining = matchups;
+      // let matchups = remaining;
+      console.log(matups);
+      remaining /= 2;
     }
     return rounds;
   }
+
+  const test = makeBracket(20);
+  // console.log(test);
 
   const inputCallback = (participantNo: number) => {
     setMatchups(getNumberOfMathcupsInRound(participantNo));
