@@ -6,16 +6,21 @@ import { getNumberOfMathcupsInRound, makeBracket } from './BracketHelper'
 
 const App = () => {
 
-  const [matchups, setMatchups] = useState(0);
-  const [rounds, setRounds] = useState<number[]>([4, 2, 1]);
+  const [participants, setParticipants] = useState(0);
+  const [rounds, setRounds] = useState<number[]>([]);
+
+  useEffect(() => {
+    if (participants > 0) {
+      setRounds(makeBracket(participants))
+    }
+  }, [participants])
 
   const inputCallback = (participantNo: number) => {
-    setMatchups(getNumberOfMathcupsInRound(participantNo));
+    setParticipants(participantNo);
   }
 
   return (
     <div>
-      <div>Matchup: {matchups}</div>
       <BracketInput callback={inputCallback} />
       <Bracket rounds={rounds} />
     </div>

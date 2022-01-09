@@ -7,7 +7,7 @@ const getNumberOfMathcupsInRound = (participantNo: number): number => {
 const makeBracket = (initialNumber: number): number[] => {
   let rounds: number[] = [];
   let remaining = initialNumber;
-  while (remaining >= 2) {
+  while (remaining > 1) {
     remaining = getNumberOfMathcupsInRound(remaining);
     rounds.push(remaining);
   }
