@@ -27,7 +27,7 @@ const App = () => {
     return rounds;
   }
 
-  const test = makeBracket(20);
+  // const test = makeBracket(20);
   // console.log(test);
 
   const inputCallback = (participantNo: number) => {
