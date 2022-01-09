@@ -40,9 +40,19 @@ html {
   display: flex;
   flex-direction: column;
   width: min-content;
+  flex: 1 1 auto;
 }
 
 .bracket-input{
   background-color: aquamarine;
+}
+
+.bracket{
+  display: flex;
+}
+
+.round{
+  display: flex;
+  flex-direction: column;
 }
 

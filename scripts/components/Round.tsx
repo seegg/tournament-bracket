@@ -15,7 +15,7 @@ const Round = ({ numberOfMatchups = 0 }: RoundProps) => {
   }
 
   return (
-    <div>
+    <div className='round'>
       {matchups}
     </div>
   );

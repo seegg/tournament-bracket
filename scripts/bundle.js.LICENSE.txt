@@ -4,6 +4,8 @@ object-assign
 @license MIT
 */
 
+/*! ./Bracket */
+
 /*! ./Bracket-Input */
 
 /*! ./BracketHelper */
@@ -53,6 +55,10 @@ object-assign
 /*!**************************************!*\
   !*** ./scripts/components/Round.tsx ***!
   \**************************************/
+
+/*!****************************************!*\
+  !*** ./scripts/components/Bracket.tsx ***!
+  \****************************************/
 
 /*!****************************************!*\
   !*** ./scripts/components/Matchup.tsx ***!
