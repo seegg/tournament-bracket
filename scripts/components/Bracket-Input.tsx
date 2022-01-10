@@ -22,10 +22,22 @@ const BracketInput = ({ callback }: InputProps) => {
     callback(participantNo || 0);
   }
 
+  const style = {
+    button: {
+      marginLeft: '0.5rem',
+    },
+    input: {
+      marginLeft: '0.5rem',
+    },
+    container: {
+      padding: '3px'
+    }
+  };
+
   return (
-    <div className='bracket-input'>
-      <input type="text" placeholder='Number of participants' name="input" id="pariticipant-input" value={participantNo || ''} onChange={handleChange} />
-      <button onClick={handleClick}>Go</button>
+    <div style={style.container} className='bracket-input'>
+      <input style={style.input} type="text" placeholder='Number of participants' name="input" id="pariticipant-input" value={participantNo || ''} onChange={handleChange} />
+      <button style={style.button} onClick={handleClick}>Go</button>
     </div>
   )
 
