@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Arrow from './Arrow';
+import { RoundContext } from './Round';
 
 interface CellProps {
   position: 'end' | 'start',
@@ -10,6 +11,8 @@ interface CellProps {
 }
 
 const Cell = ({ position }: CellProps) => {
+
+  const round = useContext(RoundContext);
 
   const style = {
     cellContainer: {
@@ -23,7 +26,7 @@ const Cell = ({ position }: CellProps) => {
 
   return (
     <div className='cell-container' style={style.cellContainer}>
-      <Arrow position={position} />
+      {round != 1 && <Arrow position={position} />}
       <div className='cell' style={style.cell}></div>
     </div>
   );
