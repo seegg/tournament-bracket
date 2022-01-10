@@ -1,16 +1,12 @@
 import React, { useContext } from 'react';
 import Cell from './Cell';
 import MiddleDivider from './MiddleDivider';
-import { RoundContext } from './Round';
 
 interface matchupProps {
   round: number,
 };
 
-const Matchup = ({ round }: matchupProps) => {
-  const { round: rctx, setRound } = useContext(RoundContext);
-  setRound(4);
-  console.log('context', rctx);
+const Matchup = () => {
   const style = {
     container: {
       display: 'flex',
@@ -22,9 +18,9 @@ const Matchup = ({ round }: matchupProps) => {
   return (
     <div className='matchup'>
       <div style={style.container}>
-        <Cell position='end' round={round} />
+        <Cell position='end' />
         <MiddleDivider />
-        <Cell position='start' round={round} />
+        <Cell position='start' />
       </div>
     </div >
   );

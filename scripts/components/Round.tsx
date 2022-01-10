@@ -6,29 +6,24 @@ interface RoundProps {
   numberOfMatchups?: number
 };
 
-const RoundContext = createContext({
-  round: 5,
-  setRound: (r: number) => { }
-});
+export const RoundContext = createContext(1);
 
 const Round = ({ round, numberOfMatchups = 0 }: RoundProps) => {
-
-  const { setRound } = useContext(RoundContext);
-  setRound(round);
 
   let key = 1;
   let matchups: JSX.Element[] = [];
 
   for (let i = 0; i < numberOfMatchups; i++) {
-    matchups.push(<Matchup round={i + 1} key={'round of ' + i} />)
+    matchups.push(<Matchup key={'round of ' + i} />)
   }
 
   return (
-    <div className='round'>
-      {matchups}
-    </div>
+    <RoundContext.Provider value={round}>
+      <div className='round'>
+        {matchups}
+      </div>
+    </RoundContext.Provider>
   );
 }
 
 export default Round;
-export { RoundContext };

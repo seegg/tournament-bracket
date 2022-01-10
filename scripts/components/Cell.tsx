@@ -9,7 +9,7 @@ interface CellProps {
   winner?: boolean
 }
 
-const Cell = ({ position, round }: CellProps) => {
+const Cell = ({ position }: CellProps) => {
 
   const arrowBorder = 'solid rgb(240, 160, 40) 2px';
 
@@ -33,7 +33,6 @@ const Cell = ({ position, round }: CellProps) => {
 
   return (
     <div className='cell-container' style={justifyStartEnd}>
-      round: {round}
       <Arrow position={position} />
       <div className='cell' style={alignSelf}></div>
     </div>
