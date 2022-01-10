@@ -21,11 +21,20 @@ const Cell = ({ position }: CellProps) => {
     alignSelf: position
   };
 
+  const style = {
+    cellContainer: {
+      justifyContent: position,
+    },
+    cell: {
+      alignSelf: position,
+    }
+  };
+
 
   return (
-    <div className='cell-container' style={justifyStartEnd}>
+    <div className='cell-container' style={style.cellContainer}>
       <Arrow position={position} />
-      <div className='cell' style={alignSelf}></div>
+      <div className='cell' style={style.cell}></div>
     </div>
   );
 };
