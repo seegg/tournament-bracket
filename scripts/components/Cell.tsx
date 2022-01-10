@@ -33,7 +33,8 @@ const Cell = ({ position, round }: CellProps) => {
 
   return (
     <div className='cell-container' style={justifyStartEnd}>
-      {round != 1 && <Arrow position={position} />}
+      round: {round}
+      <Arrow position={position} />
       <div className='cell' style={alignSelf}></div>
     </div>
   );

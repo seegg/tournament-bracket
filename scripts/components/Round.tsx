@@ -1,11 +1,21 @@
-import React from 'react';
+import React, { createContext, useContext } from 'react';
 import Matchup from './Matchup';
 
 interface RoundProps {
+  round: number,
   numberOfMatchups?: number
 };
 
-const Round = ({ numberOfMatchups = 0 }: RoundProps) => {
+const RoundContext = createContext({
+  round: 5,
+  setRound: (r: number) => { }
+});
+
+const Round = ({ round, numberOfMatchups = 0 }: RoundProps) => {
+
+  const { setRound } = useContext(RoundContext);
+  setRound(round);
+
   let key = 1;
   let matchups: JSX.Element[] = [];
 
@@ -21,3 +31,4 @@ const Round = ({ numberOfMatchups = 0 }: RoundProps) => {
 }
 
 export default Round;
+export { RoundContext };

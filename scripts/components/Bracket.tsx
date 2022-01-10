@@ -9,7 +9,7 @@ const Bracket = ({ rounds }: BracketProps) => {
   return (
     <div className='bracket'>
       {rounds.map((matchups, idx) => {
-        return <Round numberOfMatchups={matchups} key={Math.random()} />
+        return <Round round={idx + 1} numberOfMatchups={matchups} key={Math.random()} />
       })}
     </div>
   );
