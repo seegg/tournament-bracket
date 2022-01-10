@@ -5,6 +5,7 @@
 
 html {
   box-sizing: border-box;
+  background-color: rgb(110, 148, 148);
 }
 *, *:before, *:after {
   box-sizing: inherit;
@@ -60,11 +61,17 @@ html {
 
 .bracket-input{
   background-color: aquamarine;
+  padding: 3px;
+  border-top-left-radius: 0.2rem;
+  border-top-right-radius: 0.2rem;
 }
 
 .bracket{
   display: flex;
   background-color: darkslategrey;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+
 }
 
 .round{
