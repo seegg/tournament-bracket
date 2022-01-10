@@ -6,7 +6,6 @@ interface RoundProps {
 };
 
 const Round = ({ numberOfMatchups = 0 }: RoundProps) => {
-  console.log('matchups', numberOfMatchups);
   let key = 1;
   let matchups: JSX.Element[] = [];
 

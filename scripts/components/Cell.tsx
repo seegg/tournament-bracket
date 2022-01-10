@@ -2,6 +2,7 @@ import React from 'react';
 
 interface CellProps {
   position: 'end' | 'start',
+  top?: boolean,
   win?: boolean,
   winner?: boolean
 }

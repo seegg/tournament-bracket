@@ -1,12 +1,13 @@
 const getNumberOfMathcupsInRound = (participantNo: number): number => {
   if (participantNo < 1) return 0;
-  if (participantNo <= 2) return 1;
+  if (participantNo === 1) return 1;
   return Math.pow(2, Math.ceil(logBase(participantNo)) - 1);
 }
 
 const makeBracket = (initialNumber: number): number[] => {
   let rounds: number[] = [];
   let remaining = initialNumber;
+  if (remaining === 1) rounds.push(1);
   while (remaining > 1) {
     remaining = getNumberOfMathcupsInRound(remaining);
     rounds.push(remaining);

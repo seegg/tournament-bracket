@@ -1,3 +1,8 @@
+:root{
+  --arrow-width: 0.1rem;
+  --arrow-border: solid rgb(240, 160, 40) 0.2rem;
+}
+
 html {
   box-sizing: border-box;
 }
@@ -29,7 +34,7 @@ html {
 .arrow-divide{
   width: 1rem;
   flex: 1;
-  border-top: solid rgb(240, 160, 40) 2px;
+  border-top: var(--arrow-border);
 }
 
 .middle-divide{
@@ -39,12 +44,12 @@ html {
 
 .middle-filler-top{
   flex: 1 1 auto;
-  border-bottom: solid rgb(240, 160, 40) 2px;
+  border-bottom: var(--arrow-border);
 }
 
 .middle-filler-bottom{
   flex: 1 1 auto;
-  border-top: solid rgb(240, 160, 40) 2px;
+  border-top: var(--arrow-border);
 }
 
 .matchup{
