@@ -34,7 +34,7 @@ html {
 .arrow-divide{
   width: 1rem;
   flex: 1;
-  border-top: var(--arrow-border);
+  /* border-top: var(--arrow-border); */
 }
 
 .middle-divide{
