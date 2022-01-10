@@ -1,3 +1,3 @@
 # tournament-bracket
-Generate a tournament style bracket given an input.
-Use flex-box to automatically align most of the match-ups.
+Generate a bracket layout given a number of particiants.
+Use minimal javascript to position the boxes, relying mostly on flex-box and its properties.
