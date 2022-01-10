@@ -19,11 +19,23 @@ const BracketInput = ({ callback }: InputProps) => {
   }
 
   const handleClick = (): void => {
+    if (participantNo! > 1024) {
+      if (confirm(`Are you sure? Number of participants:${participantNo}`)) {
+      } else {
+        return;
+      }
+    }
     callback(participantNo || 0);
   }
 
   const handleKeyPress = (evt: KeyboardEvent) => {
     if (evt.key === 'Enter') {
+      if (participantNo! > 1024) {
+        if (confirm(`Are you sure? Number of participants:${participantNo}`)) {
+        } else {
+          return;
+        }
+      }
       callback(participantNo || 0);
     }
   }
