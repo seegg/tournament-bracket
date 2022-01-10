@@ -2,7 +2,18 @@ import React from 'react';
 import Cell from './Cell';
 import MiddleDivider from './MiddleDivider';
 
-const Matchup = () => {
+interface matchupProps {
+  round: number,
+};
+
+const Matchup = ({ round }: matchupProps) => {
+
+  const style = {
+    container: {
+      display: 'flex',
+      width: 'min-content'
+    }
+  };
 
   return (
     <div className='matchup'>

@@ -10,7 +10,7 @@ const Round = ({ numberOfMatchups = 0 }: RoundProps) => {
   let matchups: JSX.Element[] = [];
 
   for (let i = 0; i < numberOfMatchups; i++) {
-    matchups.push(<Matchup key={'round of ' + i} />)
+    matchups.push(<Matchup round={i + 1} key={'round of ' + i} />)
   }
 
   return (

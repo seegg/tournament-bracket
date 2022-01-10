@@ -56,8 +56,9 @@ html {
 .matchup{
   display: flex;
   flex-direction: column;
-  width: min-content;
-  flex: 1 1 auto;
+  /* width: min-content; */
+  /* flex: 1 1 auto; */
+  flex: 1;
 }
 
 .bracket-input{
