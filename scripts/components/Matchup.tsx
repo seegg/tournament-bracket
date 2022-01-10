@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import Cell from './Cell';
 import MiddleDivider from './MiddleDivider';
 
