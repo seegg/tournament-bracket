@@ -23,6 +23,7 @@ html {
   border-radius: 0.5rem;
   border-style: solid;
   border-width: 3px;
+  background-color: beige;
 }
 
 .arrows-container{

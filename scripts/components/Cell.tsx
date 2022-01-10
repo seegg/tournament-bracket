@@ -31,12 +31,12 @@ const Cell = ({ position, top }: CellProps) => {
 
   return (
     <div className='cell-container' style={justifyStartEnd}>
-      {<div className='arrows-container'>
+      <div className='arrows-container'>
         {position === 'end' && gapFiller}
         <div className='arrow-divide' style={position === 'start' ? border : {}}></div>
         <div className='arrow-divide' style={position === 'start' ? {} : border}></div>
         {position === 'start' && gapFiller}
-      </div>}
+      </div>
       <div className='cell' style={alignSelf}></div>
     </div>
   );
