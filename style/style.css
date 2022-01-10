@@ -27,6 +27,11 @@ html {
   background-color: beige;
 }
 
+.cell:hover{
+  box-shadow: 3px 1px 5px black;
+}
+
+
 .arrows-container{
   display: flex;
   flex-direction: column;
