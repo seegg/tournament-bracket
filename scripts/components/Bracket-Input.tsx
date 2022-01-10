@@ -6,7 +6,7 @@ interface InputProps {
 
 const BracketInput = ({ callback }: InputProps) => {
 
-  const [participantNo, setParticipantNo] = useState<null | number>(null);
+  const [participantNo, setParticipantNo] = useState('');
 
   //matches either a whole number or an empty string.
   const wholeNumberRegex = new RegExp(/(^\d+$)|(^$)/);
@@ -14,29 +14,29 @@ const BracketInput = ({ callback }: InputProps) => {
   const handleChange = (e: ChangeEvent) => {
     const value = (e.target as HTMLInputElement).value;
     if (wholeNumberRegex.test(value)) {
-      setParticipantNo(Number(value));
+      setParticipantNo(value);
     };
   }
 
   const handleClick = (): void => {
-    if (participantNo! > 1024) {
+    if (Number(participantNo) > 1024) {
       if (confirm(`Are you sure? Number of participants:${participantNo}`)) {
       } else {
         return;
       }
     }
-    callback(participantNo || 0);
+    callback(Number(participantNo) || 0);
   }
 
   const handleKeyPress = (evt: KeyboardEvent) => {
     if (evt.key === 'Enter') {
-      if (participantNo! > 1024) {
+      if (Number(participantNo) > 1024) {
         if (confirm(`Are you sure? Number of participants:${participantNo}`)) {
         } else {
           return;
         }
       }
-      callback(participantNo || 0);
+      callback(Number(participantNo) || 0);
     }
   }
 
@@ -51,7 +51,7 @@ const BracketInput = ({ callback }: InputProps) => {
 
   return (
     <div className='bracket-input'>
-      <input style={style.input} type="text" placeholder='Number of participants' name="input" id="pariticipant-input" value={participantNo || ''} onChange={handleChange} onKeyPress={handleKeyPress} />
+      <input style={style.input} type="text" placeholder='Number of participants' name="input" id="pariticipant-input" value={participantNo} onChange={handleChange} onKeyPress={handleKeyPress} />
       <button style={style.button} onClick={handleClick}>Go</button>
     </div>
   )
