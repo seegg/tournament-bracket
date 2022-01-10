@@ -2,10 +2,6 @@ import React, { useContext } from 'react';
 import Cell from './Cell';
 import MiddleDivider from './MiddleDivider';
 
-interface matchupProps {
-  round: number,
-};
-
 const Matchup = () => {
   const style = {
     container: {
