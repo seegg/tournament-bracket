@@ -7,13 +7,16 @@ const Matchup = () => {
     <div className='matchup'>
       <Cell position='end' />
       <div className='middle-divide'>
-        <div className='middle-filler-top'></div>
-        <div className='middle-filler-bottom'></div>
+        <div className='arrow-filler'></div>
+        <div>
+          <div className='middle-filler-top'></div>
+          <div className='middle-filler-bottom'></div>
+        </div>
       </div>
       <Cell position='start' />
     </div>
   );
 
-};
+}
 
 export default Matchup;

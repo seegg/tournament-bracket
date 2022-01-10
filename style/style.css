@@ -27,7 +27,9 @@ html {
 }
 
 .arrow-divide{
+  width: 1rem;
   flex: 1;
+  border-top: solid rgb(240, 160, 40) 2px;
 }
 
 .middle-divide{
@@ -38,12 +40,12 @@ html {
 
 .middle-filler-top{
   flex: 1 1 auto;
+  border-bottom: solid rgb(240, 160, 40) 2px;
 }
 
 .middle-filler-bottom{
   flex: 1 1 auto;
   border-top: solid rgb(240, 160, 40) 2px;
-  border-top-right-radius: 5rem;
 }
 
 .matchup{
