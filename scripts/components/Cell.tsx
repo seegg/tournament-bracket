@@ -21,15 +21,6 @@ const Cell = ({ position }: CellProps) => {
     alignSelf: position
   };
 
-  const border = {
-    borderRight: arrowBorder,
-    borderTop: position === 'end' ? arrowBorder : '',
-    borderBottom: position === 'end' ? '' : arrowBorder
-  };
-
-  const gapFiller = <div style={{ height: '0.5rem' }}></div>;
-
-
 
   return (
     <div className='cell-container' style={justifyStartEnd}>
