@@ -64,10 +64,17 @@ html {
 
 .bracket{
   display: flex;
+  background-color: darkslategrey;
 }
 
 .round{
   display: flex;
   flex-direction: column;
+}
+
+.appContainer{
+  padding: 0.5rem;
+  min-width: 100%;
+  width: fit-content;
 }
 

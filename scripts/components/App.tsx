@@ -13,17 +13,18 @@ const App = () => {
     if (participants > 0) {
       setRounds(makeBracket(participants))
     }
-  }, [participants])
+  }, [participants]);
 
   const inputCallback = (participantNo: number) => {
     setParticipants(participantNo);
   }
 
+
   return (
-    <div>
+    <div className='appContainer'>
       <BracketInput callback={inputCallback} />
       <Bracket rounds={rounds} />
-    </div>
+    </div >
   );
 }
 
