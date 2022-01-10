@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent } from 'react';
+import React, { useState, ChangeEvent, KeyboardEvent } from 'react';
 
 interface InputProps {
   callback: (participantNo: number) => void;
@@ -22,6 +22,12 @@ const BracketInput = ({ callback }: InputProps) => {
     callback(participantNo || 0);
   }
 
+  const handleKeyPress = (evt: KeyboardEvent) => {
+    if (evt.key === 'Enter') {
+      callback(participantNo || 0);
+    }
+  }
+
   const style = {
     button: {
       marginLeft: '0.5rem',
@@ -33,7 +39,7 @@ const BracketInput = ({ callback }: InputProps) => {
 
   return (
     <div className='bracket-input'>
-      <input style={style.input} type="text" placeholder='Number of participants' name="input" id="pariticipant-input" value={participantNo || ''} onChange={handleChange} />
+      <input style={style.input} type="text" placeholder='Number of participants' name="input" id="pariticipant-input" value={participantNo || ''} onChange={handleChange} onKeyPress={handleKeyPress} />
       <button style={style.button} onClick={handleClick}>Go</button>
     </div>
   )
