@@ -1,7 +1,6 @@
 import React from 'react';
 import Cell from './Cell';
 import MiddleDivider from './MiddleDivider';
-import Arrow from './Arrow';
 
 interface matchupProps {
   round: number,
@@ -19,11 +18,10 @@ const Matchup = ({ round }: matchupProps) => {
 
   return (
     <div className='matchup'>
-      {/* <Arrow position='end' /> */}
       <div style={style.container}>
-        <Cell position='end' />
+        <Cell position='end' round={round} />
         <MiddleDivider />
-        <Cell position='start' />
+        <Cell position='start' round={round} />
       </div>
     </div >
   );

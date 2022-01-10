@@ -8,7 +8,7 @@ const Arrow = ({ position }: ArrowProps) => {
 
   const arrowBorder = 'solid rgb(240, 160, 40) 2px';
   const borderRadius = '0.5rem';
-  const gapFiller = <div style={{ height: '0.5rem' }}></div>;
+  const gapFiller = <div className='gap-filler' style={{ height: '0.5rem' }}></div>;
 
   const style = {
     border: {
