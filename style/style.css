@@ -35,7 +35,6 @@ html {
 .middle-divide{
   height: 1rem;
   display: flex;
-  flex-direction: column;
 }
 
 .middle-filler-top{
