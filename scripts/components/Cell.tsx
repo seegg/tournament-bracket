@@ -11,16 +11,6 @@ interface CellProps {
 
 const Cell = ({ position }: CellProps) => {
 
-  const arrowBorder = 'solid rgb(240, 160, 40) 2px';
-
-  const justifyStartEnd = {
-    justifyContent: position,
-  };
-
-  const alignSelf = {
-    alignSelf: position
-  };
-
   const style = {
     cellContainer: {
       justifyContent: position,
