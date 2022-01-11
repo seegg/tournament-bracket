@@ -23,7 +23,8 @@ html {
   min-width: 10rem;
   border-radius: 0.5rem;
   border-style: solid;
-  border-width: 3px;
+  border-width: 2px;
+  border-color: rgb(21, 21, 49);
   background-color: beige;
 }
 
