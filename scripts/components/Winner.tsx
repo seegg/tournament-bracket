@@ -38,7 +38,7 @@ const Node = ({ position, hidden }: NodeProps) => {
     },
     cell: {
       alignSelf: position,
-      borderColor: 'rgb(240, 160, 40)',
+      borderWidth: '4px'
     }
   };
 
