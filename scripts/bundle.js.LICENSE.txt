@@ -20,6 +20,8 @@ object-assign
 
 /*! ./Round */
 
+/*! ./Winner */
+
 /*! ./cjs/react-dom.development.js */
 
 /*! ./cjs/react.development.js */
@@ -63,6 +65,10 @@ object-assign
 /*!**************************************!*\
   !*** ./scripts/components/Round.tsx ***!
   \**************************************/
+
+/*!***************************************!*\
+  !*** ./scripts/components/Winner.tsx ***!
+  \***************************************/
 
 /*!****************************************!*\
   !*** ./scripts/components/Bracket.tsx ***!

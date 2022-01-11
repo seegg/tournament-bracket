@@ -12,7 +12,7 @@ const Bracket = ({ rounds }: BracketProps) => {
     return <Round round={idx + 1} numberOfMatchups={matchups} key={Math.random()} />
   });
 
-
+  if (roundMatchups.length > 0) roundMatchups.push(<Winner />);
   return (
     <div className='bracket'>
       {roundMatchups}
