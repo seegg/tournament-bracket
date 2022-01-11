@@ -10,9 +10,7 @@ const App = () => {
   const [rounds, setRounds] = useState<number[]>([]);
 
   useEffect(() => {
-    console.log('part', participants);
     if (!isNaN(participants!)) {
-      console.log('inner', participants);
       setRounds(makeBracket(participants!))
     }
   }, [participants]);
