@@ -4,13 +4,13 @@ import Bracket from './Bracket';
 import { makeBracket } from './BracketHelper'
 import { MatchupTree } from '../matchupTree';
 
-export const BracketContext = createContext({});
+export const BracketContext = createContext<MatchupTree | null>(null);
 
 const App = () => {
 
   const [participants, setParticipants] = useState<number | null>(null);
   const [rounds, setRounds] = useState<number[]>([]);
-  const [bracket, setBracket] = useState(new MatchupTree(participants!, rounds));
+  const [bracket, setBracket] = useState<MatchupTree | null>(null);
 
   console.log(bracket);
 
