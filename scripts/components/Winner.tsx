@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import MiddleDivider from './MiddleDivider';
+import { BracketContext } from './App'
 
 const Winner = () => {
+
+  const bracket = useContext(BracketContext);
+  console.log('winner', bracket);
+
   const style = {
     container: {
       display: 'flex',

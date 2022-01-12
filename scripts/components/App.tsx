@@ -1,23 +1,29 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, createContext } from 'react';
 import BracketInput from './Bracket-Input';
-import Round from './Round';
 import Bracket from './Bracket';
-import { getNumberOfMathcupsInRound, makeBracket } from './BracketHelper'
+import { makeBracket } from './BracketHelper'
 import { MatchupTree } from '../matchupTree';
+
+export const BracketContext = createContext({});
 
 const App = () => {
 
   const [participants, setParticipants] = useState<number | null>(null);
   const [rounds, setRounds] = useState<number[]>([]);
+  const [bracket, setBracket] = useState(new MatchupTree(participants!, rounds));
 
-  const bracketTree = new MatchupTree(participants!, rounds);
-  console.log(bracketTree);
+  console.log(bracket);
 
   useEffect(() => {
     if (!isNaN(participants!)) {
       setRounds(makeBracket(participants!))
     }
   }, [participants]);
+
+  useEffect(() => {
+    console.log('stuff', participants, rounds);
+    setBracket(new MatchupTree(participants!, rounds));
+  }, [rounds]);
 
   const inputCallback = (participantNo: number) => {
     setParticipants(participantNo);
@@ -27,7 +33,9 @@ const App = () => {
   return (
     <div className='appContainer'>
       <BracketInput callback={inputCallback} />
-      <Bracket rounds={rounds} />
+      <BracketContext.Provider value={bracket}>
+        <Bracket rounds={rounds} />
+      </BracketContext.Provider>
     </div >
   );
 }
