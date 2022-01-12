@@ -9,10 +9,10 @@ interface BracketProps {
 const Bracket = ({ rounds }: BracketProps) => {
 
   const roundMatchups = rounds.map((matchups, idx) => {
-    return <Round round={idx + 1} numberOfMatchups={matchups} key={Math.random()} />
+    return <Round round={idx + 1} numberOfMatchups={matchups} key={'bracket ' + idx + ': ' + Math.random()} />
   });
 
-  if (roundMatchups.length > 0) roundMatchups.push(<Winner />);
+  if (roundMatchups.length > 0) roundMatchups.push(<Winner key={'winner'} />);
   return (
     <div className='bracket'>
       {roundMatchups}

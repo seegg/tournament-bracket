@@ -3,11 +3,16 @@ import BracketInput from './Bracket-Input';
 import Round from './Round';
 import Bracket from './Bracket';
 import { getNumberOfMathcupsInRound, makeBracket } from './BracketHelper'
+import { MatchupTree } from '../matchupTree';
 
 const App = () => {
 
   const [participants, setParticipants] = useState<number | null>(null);
   const [rounds, setRounds] = useState<number[]>([]);
+
+  // const matchups = new MatchupTree(participants!, rounds);
+  // console.log('matchups', matchups, rounds);
+  console.log('whattt');
 
   useEffect(() => {
     if (!isNaN(participants!)) {
