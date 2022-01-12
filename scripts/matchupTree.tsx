@@ -11,7 +11,7 @@ interface Node {
   rightIndex: number | null;
 }
 
-//Binary tree store as an array in reverse order.
+//binary tree for the matchup results, store as an array in reverse order.
 export class MatchupTree {
   tree: Node[] = [];
   root: Node | null = null;
@@ -52,8 +52,9 @@ export class MatchupTree {
   }
 
   getChildrenIndex(idx: number, totalNodes: number): [number | null, number | null] {
-
-    return [null, null];
+    const left = totalNodes - ((totalNodes - 1 - idx) * 2) + 1;
+    const right = totalNodes - ((totalNodes - 1 - idx) * 2);
+    return [left >= 0 ? left : null, right >= 0 ? right : null];
   }
 
   getParentIndex(idx: number, totalNodes: number): number | null {
