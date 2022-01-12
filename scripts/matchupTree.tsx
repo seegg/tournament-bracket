@@ -12,11 +12,12 @@ interface Node {
 }
 
 //binary tree for the matchup results, store as an array in reverse order.
+//The tree is filled bottom up.
 export class MatchupTree {
   tree: Node[] = [];
   root: Node | null = null;
   constructor(participantNo: number, matchups: number[]) {
-    if (participantNo <= 0 || matchups.length <= 0) return;
+    if (!participantNo || matchups.length <= 0) return;
 
     const totalNodes = matchups.reduce((sum, value) => sum + value * 2, 1);
     //construct the complete tree with empty nodes.
@@ -32,13 +33,13 @@ export class MatchupTree {
     //set the initial round one matchups.
     let byes = matchups[0] * 2 - participantNo;
     let tempID = 1;
-    for (let i = 0; i < matchups[0] * 2 - byes; i++) {
+    for (let i = 0; i < (matchups[0] - byes) * 2 - byes; i++) {
       let nodeValue: Participant = { name: 'Participant: ' + tempID, id: tempID, skip: false };
       this.tree[i] = { value: nodeValue, parentIndex: this.getParentIndex(i, totalNodes), leftIndex: null, rightIndex: null }
       tempID++;
     }
 
-    for (let j = matchups[0] * 2 - byes; j < matchups[0] * 2; j += 2) {
+    for (let j = (matchups[0] - byes) * 2; j < matchups[0] * 2; j += 2) {
       let nodeValue: Participant = { name: 'Participant: ' + tempID, id: tempID, skip: false };
       let byeValue: Participant = { name: '', skip: true };
       this.tree[j] = { value: nodeValue, parentIndex: this.getParentIndex(j, totalNodes), leftIndex: null, rightIndex: null };
@@ -58,6 +59,7 @@ export class MatchupTree {
   }
 
   getParentIndex(idx: number, totalNodes: number): number | null {
-    return totalNodes - Math.floor((totalNodes - idx) / 2);
+    const parentIdx = totalNodes - Math.floor((totalNodes - idx) / 2)
+    return parentIdx < totalNodes ? parentIdx : null;
   }
 }

@@ -10,9 +10,8 @@ const App = () => {
   const [participants, setParticipants] = useState<number | null>(null);
   const [rounds, setRounds] = useState<number[]>([]);
 
-  // const matchups = new MatchupTree(participants!, rounds);
-  // console.log('matchups', matchups, rounds);
-  console.log('whattt');
+  const bracketTree = new MatchupTree(participants!, rounds);
+  console.log(bracketTree);
 
   useEffect(() => {
     if (!isNaN(participants!)) {
