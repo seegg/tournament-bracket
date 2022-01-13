@@ -32,7 +32,7 @@ const Cell = ({ position, name }: CellProps) => {
     <div className='cell-container' style={style.cellContainer}>
       {round != 1 && <Arrow position={position} />}
       <div className='cell' style={style.cell}>
-        <p style={style.participant}>{name || 'Hello!'}</p>
+        <p style={style.participant}>{name}</p>
       </div>
     </div>
   );

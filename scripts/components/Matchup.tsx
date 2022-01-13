@@ -16,7 +16,6 @@ const Matchup = ({ round, matchupNum }: MatchupProps) => {
   if (bracket?.tree[matchupNum * 2 + 1]) {
     name[0] = bracket.tree[matchupNum * 2].value?.name!;
     name[1] = bracket.tree[matchupNum * 2 + 1].value?.name!;
-    console.log('name', name);
   }
 
   const style = {

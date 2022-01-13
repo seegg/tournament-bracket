@@ -33,11 +33,8 @@ export class MatchupTree {
     //set the initial round one matchups.
     let byes = matchups[0] * 2 - participantNo;
 
-    console.log('matches', byes, matchups[0]);
-
     let tempID = 1;
     for (let i = 0; i < (matchups[0] - byes) * 2; i++) {
-      console.log('i', i);
       let nodeValue: Participant = { name: 'Participant ' + tempID, id: tempID, skip: false };
       this.tree[i] = { value: nodeValue, parentIndex: this.getParentIndex(i, totalNodes), leftIndex: null, rightIndex: null }
       tempID++;
@@ -50,6 +47,8 @@ export class MatchupTree {
       let byeValue: Participant = { name: '', skip: true };
       this.tree[j] = { value: nodeValue, parentIndex: this.getParentIndex(j, totalNodes), leftIndex: null, rightIndex: null };
       this.tree[j + 1] = { value: byeValue, leftIndex: null, rightIndex: null, parentIndex: this.getParentIndex(j + 1, totalNodes) };
+
+      this.tree[this.getParentIndex(j, totalNodes)!].value = nodeValue;
       tempID++;
     }
 
