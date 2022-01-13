@@ -2,8 +2,11 @@ const fs = require('fs')
 const readline = require('readline');
 
 
-async function fmt () {
-  const stream = fs.createReadStream(__dirname + '/things.txt');
+const cmdArg = process.argv[2];
+console.log(cmdArg);
+
+async function fmt (filePath) {
+  const stream = fs.createReadStream(filePath);
 
   const lines = readline.createInterface({
     input: stream,
@@ -23,4 +26,7 @@ async function fmt () {
   })
 }
 
-fmt();
+fmt(cmdArg)
+  .catch(err => {
+    console.log(err);
+  });
