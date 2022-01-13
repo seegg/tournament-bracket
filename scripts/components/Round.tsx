@@ -14,13 +14,12 @@ const Round = ({ round, numberOfMatchups = 0 }: RoundProps) => {
 
   let matchupNum = 0;
   let tempRound = round;
-  let counter = numberOfMatchups;
+  let matchupSum = numberOfMatchups;
   while (tempRound > 1) {
-    counter *= 2;
-    matchupNum += counter;
+    matchupSum *= 2;
+    matchupNum += matchupSum;
     tempRound--;
   }
-  console.log('round', round, matchupNum, numberOfMatchups);
 
   for (let i = 0; i < numberOfMatchups; i++) {
     matchups.push(<Matchup key={`round of ${round}:` + i} round={round} matchupNum={matchupNum + i} />)
