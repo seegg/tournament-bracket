@@ -6,6 +6,8 @@ object-assign
 
 /*! ../matchupTree */
 
+/*! ../things.json */
+
 /*! ./App */
 
 /*! ./Arrow */
@@ -45,6 +47,10 @@ object-assign
 /*! scheduler */
 
 /*! scheduler/tracing */
+
+/*!*********************!*\
+  !*** ./things.json ***!
+  \*********************/
 
 /*!***************************!*\
   !*** ./scripts/index.tsx ***!
