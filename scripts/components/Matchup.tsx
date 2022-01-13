@@ -11,12 +11,13 @@ interface MatchupProps {
 const Matchup = ({ round, matchupNum }: MatchupProps) => {
 
   const bracket = useContext(BracketContext);
-  let name = '';
+  let name = ['', ''];
 
-  if (bracket?.tree[1]) {
-    name = bracket.tree[1].value?.name!;
-    console.log('name', name);
-  }
+  // if (bracket?.tree[0]) {
+  //   name[0] = bracket.tree[matchupNum * 2].value?.name!;
+  //   name[1] = bracket.tree[matchupNum * 2 + 1].value?.name!;
+  //   console.log('name', name);
+  // }
 
   const style = {
     container: {
@@ -29,9 +30,9 @@ const Matchup = ({ round, matchupNum }: MatchupProps) => {
   return (
     <div className='matchup'>
       <div style={style.container}>
-        <Cell position='end' name={name} />
+        <Cell position='end' name={matchupNum + ''} />
         <MiddleDivider />
-        <Cell position='start' />
+        <Cell position='start' name={name[1]} />
       </div>
     </div >
   );

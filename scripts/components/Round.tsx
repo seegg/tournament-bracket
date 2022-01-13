@@ -12,11 +12,15 @@ const Round = ({ round, numberOfMatchups = 0 }: RoundProps) => {
 
   let matchups: JSX.Element[] = [];
 
-  let matchupNum = numberOfMatchups;
-  while (round > 1) {
-    matchupNum *= 2;
+  let matchupNum = 0;
+  let tempRound = round;
+  let counter = numberOfMatchups;
+  while (tempRound > 1) {
+    counter *= 2;
+    matchupNum += counter;
+    tempRound--;
   }
-  matchupNum -= numberOfMatchups;
+  console.log('round', round, matchupNum, numberOfMatchups);
 
   for (let i = 0; i < numberOfMatchups; i++) {
     matchups.push(<Matchup key={`round of ${round}:` + i} round={round} matchupNum={matchupNum + i} />)
