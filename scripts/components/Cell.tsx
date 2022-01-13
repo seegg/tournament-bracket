@@ -4,13 +4,12 @@ import { RoundContext } from './Round';
 
 interface CellProps {
   position: 'end' | 'start',
-  round?: number,
-  top?: boolean,
   win?: boolean,
-  winner?: boolean
+  name?: string,
+  id?: number
 }
 
-const Cell = ({ position }: CellProps) => {
+const Cell = ({ position, name }: CellProps) => {
 
   const round = useContext(RoundContext);
 
@@ -20,6 +19,11 @@ const Cell = ({ position }: CellProps) => {
     },
     cell: {
       alignSelf: position,
+      display: 'flex',
+      justifyContent: 'center'
+    },
+    participant: {
+      alignSelf: 'center'
     }
   };
 
@@ -27,7 +31,9 @@ const Cell = ({ position }: CellProps) => {
   return (
     <div className='cell-container' style={style.cellContainer}>
       {round != 1 && <Arrow position={position} />}
-      <div className='cell' style={style.cell}></div>
+      <div className='cell' style={style.cell}>
+        <p style={style.participant}>{name || 'Hello!'}</p>
+      </div>
     </div>
   );
 };

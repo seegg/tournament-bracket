@@ -11,6 +11,12 @@ interface MatchupProps {
 const Matchup = ({ round, matchupNum }: MatchupProps) => {
 
   const bracket = useContext(BracketContext);
+  let name = '';
+
+  if (bracket?.tree[1]) {
+    name = bracket.tree[1].value?.name!;
+    console.log('name', name);
+  }
 
   const style = {
     container: {
@@ -23,7 +29,7 @@ const Matchup = ({ round, matchupNum }: MatchupProps) => {
   return (
     <div className='matchup'>
       <div style={style.container}>
-        <Cell position='end' />
+        <Cell position='end' name={name} />
         <MiddleDivider />
         <Cell position='start' />
       </div>

@@ -34,13 +34,13 @@ export class MatchupTree {
     let byes = matchups[0] * 2 - participantNo;
     let tempID = 1;
     for (let i = 0; i < (matchups[0] - byes) * 2 - byes; i++) {
-      let nodeValue: Participant = { name: 'Participant: ' + tempID, id: tempID, skip: false };
+      let nodeValue: Participant = { name: 'Participant ' + tempID, id: tempID, skip: false };
       this.tree[i] = { value: nodeValue, parentIndex: this.getParentIndex(i, totalNodes), leftIndex: null, rightIndex: null }
       tempID++;
     }
 
     for (let j = (matchups[0] - byes) * 2; j < matchups[0] * 2; j += 2) {
-      let nodeValue: Participant = { name: 'Participant: ' + tempID, id: tempID, skip: false };
+      let nodeValue: Participant = { name: 'Participant ' + tempID, id: tempID, skip: false };
       let byeValue: Participant = { name: '', skip: true };
       this.tree[j] = { value: nodeValue, parentIndex: this.getParentIndex(j, totalNodes), leftIndex: null, rightIndex: null };
       this.tree[j + 1] = { value: byeValue, leftIndex: null, rightIndex: null, parentIndex: this.getParentIndex(j + 1, totalNodes) };
