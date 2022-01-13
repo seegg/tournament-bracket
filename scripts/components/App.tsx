@@ -12,8 +12,6 @@ const App = () => {
   const [rounds, setRounds] = useState<number[]>([]);
   const [bracket, setBracket] = useState<MatchupTree | null>(null);
 
-  console.log(bracket);
-
   useEffect(() => {
     if (!isNaN(participants!)) {
       setRounds(makeBracket(participants!))
@@ -21,7 +19,6 @@ const App = () => {
   }, [participants]);
 
   useEffect(() => {
-    console.log('stuff', participants, rounds);
     setBracket(new MatchupTree(participants!, rounds));
   }, [rounds]);
 

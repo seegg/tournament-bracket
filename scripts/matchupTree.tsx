@@ -20,7 +20,7 @@ export class MatchupTree {
     if (!participantNo || matchups.length <= 0) return;
 
     const totalNodes = matchups.reduce((sum, value) => sum + value * 2, 1);
-    //construct the complete tree with empty nodes.
+    // construct the complete tree with empty nodes.
     for (let i = 0; i < totalNodes; i++) {
       let childrenIdx = this.getChildrenIndex(i, totalNodes);
       this.tree[i] = { value: null, parentIndex: this.getParentIndex(i, totalNodes), leftIndex: childrenIdx[0], rightIndex: childrenIdx[1] };
@@ -32,18 +32,25 @@ export class MatchupTree {
 
     //set the initial round one matchups.
     let byes = matchups[0] * 2 - participantNo;
+
+    console.log('matches', byes, matchups[0]);
+
     let tempID = 1;
-    for (let i = 0; i < (matchups[0] - byes) * 2 - byes; i++) {
+    for (let i = 0; i < (matchups[0] - byes) * 2; i++) {
+      console.log('i', i);
       let nodeValue: Participant = { name: 'Participant ' + tempID, id: tempID, skip: false };
       this.tree[i] = { value: nodeValue, parentIndex: this.getParentIndex(i, totalNodes), leftIndex: null, rightIndex: null }
       tempID++;
     }
+
+    // console.log('byes', byes, this.tree);
 
     for (let j = (matchups[0] - byes) * 2; j < matchups[0] * 2; j += 2) {
       let nodeValue: Participant = { name: 'Participant ' + tempID, id: tempID, skip: false };
       let byeValue: Participant = { name: '', skip: true };
       this.tree[j] = { value: nodeValue, parentIndex: this.getParentIndex(j, totalNodes), leftIndex: null, rightIndex: null };
       this.tree[j + 1] = { value: byeValue, leftIndex: null, rightIndex: null, parentIndex: this.getParentIndex(j + 1, totalNodes) };
+      tempID++;
     }
 
   }
