@@ -10,11 +10,16 @@ export const RoundContext = createContext(1);
 
 const Round = ({ round, numberOfMatchups = 0 }: RoundProps) => {
 
-  let key = 1;
   let matchups: JSX.Element[] = [];
 
+  let matchupNum = numberOfMatchups;
+  while (round > 1) {
+    matchupNum *= 2;
+  }
+  matchupNum -= numberOfMatchups;
+
   for (let i = 0; i < numberOfMatchups; i++) {
-    matchups.push(<Matchup key={`round of ${round}:` + i} round={round} matchupNum={i} />)
+    matchups.push(<Matchup key={`round of ${round}:` + i} round={round} matchupNum={matchupNum + i} />)
   }
 
   return (
