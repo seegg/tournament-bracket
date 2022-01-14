@@ -21,13 +21,8 @@ const Matchup = ({ matchupNum }: MatchupProps) => {
   callbacks[topCellIndex + 1] = setBtmCell;
 
   useEffect(() => {
-    if (bracket?.tree[topCellIndex]) {
-      setTopCell(bracket.tree[topCellIndex].value);
-    }
-  }, []);
-
-  useEffect(() => {
     if (bracket?.tree[topCellIndex + 1]) {
+      setTopCell(bracket.tree[topCellIndex].value);
       setBtmCell(bracket.tree[topCellIndex + 1].value);
     }
   }, []);

@@ -1,21 +1,22 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import MiddleDivider from './MiddleDivider';
 import { BracketContext } from './App'
+import { Participant } from '../matchupTree';
 
 const Winner = () => {
 
-  const { bracket, setBracket, callbacks } = useContext(BracketContext);
+  const { bracket, callbacks } = useContext(BracketContext);
   const [bob, setBob] = useState('');
+  const [winner, setWinner] = useState<Participant | null>(null);
 
-  console.log(callbacks);
-  callbacks[2] = setBob;
+  if (bracket?.root) callbacks[bracket.root.index] = setWinner;
 
-  // const wname = bracket?.root?.value?.name;
-
-  const updateWinner = () => {
-    bracket!.root!.value = { name: 'bob', skip: false };
-    setBob(bracket!.root!.value!.name);
-  }
+  useEffect(() => {
+    if (bracket?.root) {
+      setWinner(bracket.root.value);
+      console.log(bracket.root.index);
+    }
+  }, []);
 
   const style = {
     container: {
@@ -26,14 +27,16 @@ const Winner = () => {
   };
 
   const handleClick = (): void => {
-    // callbacks[0]('sucks');
+    if (bracket?.root) {
+      console.log('roots');
+    }
   }
 
   return (
     <div className='round'>
       <div className='matchup'>
         <div style={style.container}>
-          <Node position='end' hidden='visible' callback={handleClick} name={bob} />
+          <Node position='end' hidden='visible' callback={handleClick} name={winner?.name || ''} />
           <MiddleDivider />
           <Node position='start' hidden='hidden' />
         </div>
