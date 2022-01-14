@@ -5,27 +5,20 @@ import MiddleDivider from './MiddleDivider';
 import { BracketContext } from './App';
 
 interface MatchupProps {
-  round: number,
   matchupNum: number
 }
 
-const Matchup = ({ round, matchupNum }: MatchupProps) => {
+const Matchup = ({ matchupNum }: MatchupProps) => {
 
   const [topCell, setTopCell] = useState<Participant | null>(null);
   const [btmCell, setBtmCell] = useState<Participant | null>(null);
 
   const { bracket, callbacks } = useContext(BracketContext);
-  let name = [matchupNum + '', ''];
 
   const topCellIndex = matchupNum * 2;
 
   callbacks[topCellIndex] = setTopCell;
   callbacks[topCellIndex + 1] = setBtmCell;
-
-  if (bracket?.tree[topCellIndex + 1]) {
-    name[0] = bracket.tree[topCellIndex].value?.name!;
-    name[1] = bracket.tree[topCellIndex + 1].value?.name!;
-  }
 
   useEffect(() => {
     if (bracket?.tree[topCellIndex]) {
@@ -47,12 +40,13 @@ const Matchup = ({ round, matchupNum }: MatchupProps) => {
     }
   };
 
-  const handleClick = () => {
+  const handleClick = (cell: 'top' | 'bottom') => {
     // callbacks[2]('knob');
+    console.log(cell);
   }
 
   return (
-    <div className='matchup' onClick={handleClick}>
+    <div className='matchup' >
       <div style={style.container}>
         <Cell position='end' name={topCell?.name || ''} />
         <MiddleDivider />

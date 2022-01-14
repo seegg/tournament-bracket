@@ -22,7 +22,7 @@ const Round = ({ round, numberOfMatchups = 0 }: RoundProps) => {
   }
 
   for (let i = 0; i < numberOfMatchups; i++) {
-    matchups.push(<Matchup key={`round of ${round}:` + i} round={round} matchupNum={matchupNum + i} />)
+    matchups.push(<Matchup key={`round of ${round}:` + i} matchupNum={matchupNum + i} />)
   }
 
   return (
