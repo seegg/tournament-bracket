@@ -1,6 +1,7 @@
 :root{
   --arrow-width: 0.1rem;
   --arrow-border: solid rgb(240, 160, 40) 0.2rem;
+  --cell-radius-sharp: 3px;
 }
 
 html {
@@ -23,13 +24,22 @@ html {
   height: 2rem;
   width: 12rem;
   min-width: 10rem;
-  border-radius: 0.5rem;
+  border-radius: 0.2rem;
   border-style: solid;
   border-width: 2px;
   border-color: rgb(21, 21, 49);
   background-color: beige;
 }
+/* 
+.cell-end{
+  border-bottom-left-radius: var(--cell-radius-sharp);
+  border-bottom-right-radius: var(--cell-radius-sharp);
+}
 
+.cell-start{
+  border-top-right-radius: var(--cell-radius-sharp);
+  border-top-left-radius: var(--cell-radius-sharp);
+} */
 .cell:hover{
   box-shadow: 3px 1px 5px black;
 }

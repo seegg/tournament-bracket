@@ -21,7 +21,8 @@ const Cell = ({ position, name, callback }: CellProps) => {
     cell: {
       alignSelf: position,
       display: 'flex',
-      justifyContent: 'center'
+      justifyContent: 'center',
+
     },
     participant: {
       alignSelf: 'center'
@@ -35,7 +36,7 @@ const Cell = ({ position, name, callback }: CellProps) => {
   return (
     <div className='cell-container' style={style.cellContainer}>
       {round != 1 && <Arrow position={position} />}
-      <div className='cell' style={style.cell} onClick={handleClick}>
+      <div className={`cell cell-${position}`} style={style.cell} onClick={handleClick}>
         <p style={style.participant}>{name}</p>
       </div>
     </div>
