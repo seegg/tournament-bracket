@@ -62,7 +62,13 @@ const Node = ({ position, hidden, callback, name }: NodeProps) => {
     },
     cell: {
       alignSelf: position,
-      borderWidth: '4px'
+      borderWidth: '4px',
+      display: 'flex',
+      justifyContent: 'center',
+
+    },
+    participant: {
+      alignSelf: 'center'
     }
   };
 
@@ -71,7 +77,7 @@ const Node = ({ position, hidden, callback, name }: NodeProps) => {
 
     <div className='cell-container' style={style.cellContainer}>
       <div className='cell' style={style.cell} onClick={callback}>
-        <p>{name || ''}</p>
+        <p style={style.participant}>{name || ''}</p>
       </div>
     </div>
   );
