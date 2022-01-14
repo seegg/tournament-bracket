@@ -1,11 +1,11 @@
 import thing from '../things.json';
-interface Participant {
+export interface Participant {
   name: string,
   id?: number,
   skip: boolean
 }
 
-interface Node {
+export interface Node {
   value: Participant | null;
   index: number,
   parentIndex: number | null;

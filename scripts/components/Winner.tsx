@@ -4,10 +4,11 @@ import { BracketContext } from './App'
 
 const Winner = () => {
 
-  const { bracket, setBracket } = useContext(BracketContext);
+  const { bracket, setBracket, callbacks } = useContext(BracketContext);
   const [bob, setBob] = useState('');
 
-  console.log('render winner comp');
+  console.log(callbacks);
+  callbacks[2] = setBob;
 
   // const wname = bracket?.root?.value?.name;
 
@@ -25,7 +26,7 @@ const Winner = () => {
   };
 
   const handleClick = (): void => {
-    updateWinner();
+    // callbacks[0]('sucks');
   }
 
   return (

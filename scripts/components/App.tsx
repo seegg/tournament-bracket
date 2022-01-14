@@ -7,7 +7,7 @@ import { MatchupTree } from '../matchupTree';
 interface BracketType {
   bracket: MatchupTree | null,
   setBracket: React.Dispatch<React.SetStateAction<MatchupTree | null>>,
-  callbacks: []
+  callbacks: any[]
 }
 
 export const BracketContext = createContext({

@@ -27,6 +27,9 @@ const Cell = ({ position, name }: CellProps) => {
     }
   };
 
+  const handleClick = () => {
+
+  }
 
   return (
     <div className='cell-container' style={style.cellContainer}>
