@@ -32,6 +32,7 @@ const App = () => {
   }, [participants]);
 
   useEffect(() => {
+    console.log('new tree');
     setBracket(new MatchupTree(participants!, rounds));
   }, [rounds]);
 

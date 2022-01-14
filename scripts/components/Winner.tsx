@@ -6,18 +6,9 @@ import { Participant } from '../matchupTree';
 const Winner = () => {
 
   const { bracket, callbacks } = useContext(BracketContext);
-  const [bob, setBob] = useState('');
   const [winner, setWinner] = useState<Participant | null>(null);
 
   if (bracket?.root) callbacks[bracket.root.index] = setWinner;
-
-  // useEffect(() => {
-  //   if (bracket?.root) {
-  //     setWinner(bracket.root.value);
-  //     console.log(bracket.root.index);
-  //   }
-  // }, []);
-
   const style = {
     container: {
       display: 'flex',
