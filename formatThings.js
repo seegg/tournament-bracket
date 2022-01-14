@@ -3,7 +3,6 @@ const readline = require('readline');
 
 
 const cmdArg = process.argv[2];
-console.log(cmdArg);
 
 async function fmt (filePath) {
   const stream = fs.createReadStream(filePath);

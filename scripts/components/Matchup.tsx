@@ -10,7 +10,7 @@ interface MatchupProps {
 
 const Matchup = ({ round, matchupNum }: MatchupProps) => {
 
-  const bracket = useContext(BracketContext);
+  const { bracket } = useContext(BracketContext);
   let name = [matchupNum + '', ''];
 
   if (bracket?.tree[matchupNum * 2 + 1]) {

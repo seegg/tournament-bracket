@@ -71,6 +71,14 @@ export class MatchupTree {
     return this.tree[idx];
   }
 
+  setNode(idx: number, value: Participant) {
+    this.tree[idx].value = value;
+  }
+
+  setRoot(value: Participant | null) {
+    this.root!.value = value;
+  }
+
   getChildrenIndex(idx: number, totalNodes: number): [number | null, number | null] {
     const left = totalNodes - ((totalNodes - 1 - idx) * 2) + 1;
     const right = totalNodes - ((totalNodes - 1 - idx) * 2);
