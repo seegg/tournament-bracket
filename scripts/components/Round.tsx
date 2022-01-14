@@ -12,6 +12,9 @@ const Round = ({ round, numberOfMatchups = 0 }: RoundProps) => {
 
   let matchups: JSX.Element[] = [];
 
+  //Get the total number of the previous matchups
+  //use this value in the Matchup component to retrive
+  //the right values from the bracket context.
   let matchupNum = 0;
   let tempRound = round;
   let matchupSum = numberOfMatchups;

@@ -17,9 +17,6 @@ const Matchup = ({ matchupNum }: MatchupProps) => {
 
   const topCellIndex = matchupNum * 2;
 
-  // callbacks[topCellIndex] = setTopCell;
-  // callbacks[topCellIndex + 1] = setBtmCell;
-
   useEffect(() => {
     if (bracket?.tree[topCellIndex + 1]) {
       setTopCell(bracket.tree[topCellIndex].value);
@@ -27,6 +24,10 @@ const Matchup = ({ matchupNum }: MatchupProps) => {
     }
   }, []);
 
+  /**
+   * returns a function that is stored in the callback array
+   * to set the result and state of the current node.
+   */
   const createSetResultFn = (dispatch: React.Dispatch<React.SetStateAction<Participant | null>>, index: number,
     bracketResult: MatchupTree | null = bracket, callbackFns: any[] = callbacks) => {
     const setResult = (result: Participant) => {
@@ -34,14 +35,24 @@ const Matchup = ({ matchupNum }: MatchupProps) => {
       let currentNode = bracketResult!.tree[index];
       currentNode.value = result;
       console.log('created function');
+
+      //don't do anything if the value of the parent node is
+      //either null or the same as the current node, otherwise 
+      //set it's value to null and propagate up the chain until
+      //this condition is meet.
       if (!bracket?.tree[currentNode.parentIndex!].value) return;
-      if (bracket.tree[currentNode.parentIndex!].value?.id === currentNode.value.id) return;
+      if (bracket.tree[currentNode.parentIndex!].value?.id === currentNode.value.id) {
+        console.log('same values');
+        return;
+      }
+      console.log(bracketResult!.tree[currentNode.parentIndex!]);
       callbackFns[currentNode.parentIndex!](null);
     }
 
     return setResult;
   }
 
+  //store the setResult functions to the callback array.
   callbacks[topCellIndex] = createSetResultFn(setTopCell, topCellIndex);
   callbacks[topCellIndex + 1] = createSetResultFn(setBtmCell, topCellIndex + 1);
 
@@ -56,10 +67,7 @@ const Matchup = ({ matchupNum }: MatchupProps) => {
   const handleClick = (cell: 'top' | 'bottom') => {
     const win = cell === 'top' ? topCell : btmCell;
     if (!win || win.skip) return;
-
-    const parentIndex = bracket?.tree[topCellIndex].parentIndex;
-    // bracket!.tree[parentIndex!].value = win;
-    callbacks[parentIndex!]({ ...win });
+    callbacks[bracket?.tree[topCellIndex].parentIndex!]({ ...win });
   }
 
   return (

@@ -23,7 +23,7 @@ const App = () => {
   const [bracket, setBracket] = useState<MatchupTree | null>(null);
   const [callbacks, setCallbacks] = useState<any>([]);
 
-  const value = { bracket, setBracket, callbacks };
+  const bracketContextProviderValue = { bracket, setBracket, callbacks };
 
   useEffect(() => {
     if (!isNaN(participants!)) {
@@ -32,7 +32,6 @@ const App = () => {
   }, [participants]);
 
   useEffect(() => {
-    console.log('new tree');
     setBracket(new MatchupTree(participants!, rounds));
   }, [rounds]);
 
@@ -44,7 +43,7 @@ const App = () => {
   return (
     <div className='appContainer'>
       <BracketInput callback={inputCallback} />
-      <BracketContext.Provider value={value}>
+      <BracketContext.Provider value={bracketContextProviderValue}>
         <Bracket rounds={rounds} />
       </BracketContext.Provider>
     </div >
