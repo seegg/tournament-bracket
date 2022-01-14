@@ -1,17 +1,19 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import MiddleDivider from './MiddleDivider';
 import { BracketContext } from './App'
 
 const Winner = () => {
 
   const { bracket, setBracket } = useContext(BracketContext);
+  const [bob, setBob] = useState('');
 
+  console.log('render winner comp');
+
+  // const wname = bracket?.root?.value?.name;
 
   const updateWinner = () => {
-    let newBracket = bracket?.clone();
-    console.log(newBracket === bracket);
-    console.log('new bracket', newBracket);
-    console.log('bracket', bracket);
+    bracket!.root!.value = { name: 'bob', skip: false };
+    setBob(bracket!.root!.value!.name);
   }
 
   const style = {
@@ -30,7 +32,7 @@ const Winner = () => {
     <div className='round'>
       <div className='matchup'>
         <div style={style.container}>
-          <Node position='end' hidden='visible' callback={handleClick} name={''} />
+          <Node position='end' hidden='visible' callback={handleClick} name={bob} />
           <MiddleDivider />
           <Node position='start' hidden='hidden' />
         </div>

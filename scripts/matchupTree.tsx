@@ -10,6 +10,7 @@ interface Node {
   parentIndex: number | null;
   leftIndex: number | null;
   rightIndex: number | null;
+  setValue?: () => {}
 }
 
 //binary tree for the matchup results, store as an array in reverse order.

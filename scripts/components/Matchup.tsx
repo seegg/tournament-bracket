@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useMemo } from 'react';
 import Cell from './Cell';
 import MiddleDivider from './MiddleDivider';
 import { BracketContext } from './App';
@@ -26,8 +26,12 @@ const Matchup = ({ round, matchupNum }: MatchupProps) => {
     }
   };
 
+  const handleClick = () => {
+    console.log(bracket?.root);
+  }
+
   return (
-    <div className='matchup'>
+    <div className='matchup' onClick={handleClick}>
       <div style={style.container}>
         <Cell position='end' name={name[0]} />
         <MiddleDivider />
@@ -38,4 +42,4 @@ const Matchup = ({ round, matchupNum }: MatchupProps) => {
 
 }
 
-export default Matchup;
+export default React.memo(Matchup);

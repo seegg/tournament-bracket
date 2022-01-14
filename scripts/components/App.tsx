@@ -6,12 +6,14 @@ import { MatchupTree } from '../matchupTree';
 
 interface BracketType {
   bracket: MatchupTree | null,
-  setBracket: React.Dispatch<React.SetStateAction<MatchupTree | null>>
+  setBracket: React.Dispatch<React.SetStateAction<MatchupTree | null>>,
+  callbacks: []
 }
 
 export const BracketContext = createContext({
   bracket: new MatchupTree(0, []),
-  setBracket: () => { }
+  setBracket: () => { },
+  callbacks: []
 } as BracketType);
 
 const App = () => {
@@ -19,8 +21,9 @@ const App = () => {
   const [participants, setParticipants] = useState<number | null>(null);
   const [rounds, setRounds] = useState<number[]>([]);
   const [bracket, setBracket] = useState<MatchupTree | null>(null);
+  const [callbacks, setCallbacks] = useState<any>([]);
 
-  const value = { bracket, setBracket };
+  const value = { bracket, setBracket, callbacks };
 
   useEffect(() => {
     if (!isNaN(participants!)) {
