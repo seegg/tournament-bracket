@@ -17,7 +17,7 @@ async function fmt (filePath) {
   };
 
   for await (let line of lines) {
-    thing.things = thing.things.concat(line.split(/[ \t]+/));
+    thing.things = thing.things.concat(line.split(/[ ,\t]+/));
   }
 
   fs.writeFile('things.json', JSON.stringify(thing), 'utf-8', () => {
