@@ -42,7 +42,6 @@ const Matchup = ({ matchupNum }: MatchupProps) => {
     const parentIndex = bracket?.tree[topCellIndex].parentIndex;
     bracket!.tree[parentIndex!].value = win;
     callbacks[parentIndex!]({ ...win });
-    console.log(bracket!.tree);
   }
 
   return (
