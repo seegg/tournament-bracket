@@ -1,4 +1,4 @@
-import React, { useContext, useMemo } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import Cell from './Cell';
 import MiddleDivider from './MiddleDivider';
 import { BracketContext } from './App';
@@ -10,7 +10,10 @@ interface MatchupProps {
 
 const Matchup = ({ round, matchupNum }: MatchupProps) => {
 
-  const { bracket } = useContext(BracketContext);
+  const [topCell, setTopCell] = useState('');
+  const [btmCell, setBtmCell] = useState('');
+
+  const { bracket, callbacks } = useContext(BracketContext);
   let name = [matchupNum + '', ''];
 
   if (bracket?.tree[matchupNum * 2 + 1]) {
@@ -42,4 +45,4 @@ const Matchup = ({ round, matchupNum }: MatchupProps) => {
 
 }
 
-export default React.memo(Matchup);
+export default Matchup;
