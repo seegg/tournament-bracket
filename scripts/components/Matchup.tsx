@@ -24,13 +24,13 @@ const Matchup = ({ matchupNum }: MatchupProps) => {
     if (bracket?.tree[topCellIndex]) {
       setTopCell(bracket.tree[topCellIndex].value);
     }
-  }, [topCell]);
+  }, []);
 
   useEffect(() => {
     if (bracket?.tree[topCellIndex + 1]) {
       setBtmCell(bracket.tree[topCellIndex + 1].value);
     }
-  }, [btmCell]);
+  }, []);
 
   const style = {
     container: {
@@ -41,8 +41,11 @@ const Matchup = ({ matchupNum }: MatchupProps) => {
   };
 
   const handleClick = (cell: 'top' | 'bottom') => {
-    // callbacks[2]('knob');
-    console.log(cell);
+    const w = cell === 'top' ? topCell : btmCell;
+    if (!w || w.skip) return;
+
+    const parentIndex = bracket?.tree[topCellIndex].parentIndex;
+    callbacks[parentIndex!]({ ...w });
   }
 
   return (
