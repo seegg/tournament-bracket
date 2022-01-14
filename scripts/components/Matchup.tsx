@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { Participant } from '../matchupTree';
+import { MatchupTree, Participant } from '../matchupTree';
 import Cell from './Cell';
 import MiddleDivider from './MiddleDivider';
 import { BracketContext } from './App';
@@ -17,8 +17,8 @@ const Matchup = ({ matchupNum }: MatchupProps) => {
 
   const topCellIndex = matchupNum * 2;
 
-  callbacks[topCellIndex] = setTopCell;
-  callbacks[topCellIndex + 1] = setBtmCell;
+  // callbacks[topCellIndex] = setTopCell;
+  // callbacks[topCellIndex + 1] = setBtmCell;
 
   useEffect(() => {
     if (bracket?.tree[topCellIndex + 1]) {
@@ -26,6 +26,24 @@ const Matchup = ({ matchupNum }: MatchupProps) => {
       setBtmCell(bracket.tree[topCellIndex + 1].value);
     }
   }, []);
+
+  const createSetResultFn = (dispatch: React.Dispatch<React.SetStateAction<Participant | null>>, index: number,
+    bracketResult: MatchupTree | null = bracket, callbackFns: any[] = callbacks) => {
+    const setResult = (result: Participant) => {
+      dispatch(result);
+      let currentNode = bracketResult!.tree[index];
+      currentNode.value = result;
+      console.log('created function');
+      if (!bracket?.tree[currentNode.parentIndex!].value) return;
+      if (bracket.tree[currentNode.parentIndex!].value?.id === currentNode.value.id) return;
+      callbackFns[currentNode.parentIndex!](null);
+    }
+
+    return setResult;
+  }
+
+  callbacks[topCellIndex] = createSetResultFn(setTopCell, topCellIndex);
+  callbacks[topCellIndex + 1] = createSetResultFn(setBtmCell, topCellIndex + 1);
 
   const style = {
     container: {
@@ -40,7 +58,7 @@ const Matchup = ({ matchupNum }: MatchupProps) => {
     if (!win || win.skip) return;
 
     const parentIndex = bracket?.tree[topCellIndex].parentIndex;
-    bracket!.tree[parentIndex!].value = win;
+    // bracket!.tree[parentIndex!].value = win;
     callbacks[parentIndex!]({ ...win });
   }
 
