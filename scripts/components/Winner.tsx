@@ -11,12 +11,12 @@ const Winner = () => {
 
   if (bracket?.root) callbacks[bracket.root.index] = setWinner;
 
-  useEffect(() => {
-    if (bracket?.root) {
-      setWinner(bracket.root.value);
-      console.log(bracket.root.index);
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (bracket?.root) {
+  //     setWinner(bracket.root.value);
+  //     console.log(bracket.root.index);
+  //   }
+  // }, []);
 
   const style = {
     container: {

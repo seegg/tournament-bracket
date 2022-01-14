@@ -14,14 +14,14 @@ html {
 }
 
 .cell-container{
-  min-height: 4rem;
+  min-height: 2.5rem;
   display: flex;
   flex: 1 1 auto;
 }
 
 .cell{
-  height: 3rem;
-  width: 15rem;
+  height: 2rem;
+  width: 12rem;
   min-width: 10rem;
   border-radius: 0.5rem;
   border-style: solid;
