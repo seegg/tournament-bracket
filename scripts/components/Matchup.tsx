@@ -36,11 +36,13 @@ const Matchup = ({ matchupNum }: MatchupProps) => {
   };
 
   const handleClick = (cell: 'top' | 'bottom') => {
-    const w = cell === 'top' ? topCell : btmCell;
-    if (!w || w.skip) return;
+    const win = cell === 'top' ? topCell : btmCell;
+    if (!win || win.skip) return;
 
     const parentIndex = bracket?.tree[topCellIndex].parentIndex;
-    callbacks[parentIndex!]({ ...w });
+    bracket!.tree[parentIndex!].value = win;
+    callbacks[parentIndex!]({ ...win });
+    console.log(bracket!.tree);
   }
 
   return (
