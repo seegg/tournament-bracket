@@ -4,8 +4,15 @@ import { BracketContext } from './App'
 
 const Winner = () => {
 
-  const bracket = useContext(BracketContext);
-  console.log('winner', bracket);
+  const { bracket, setBracket } = useContext(BracketContext);
+
+
+  const updateWinner = () => {
+    let newBracket = bracket?.clone();
+    console.log(newBracket === bracket);
+    console.log('new bracket', newBracket);
+    console.log('bracket', bracket);
+  }
 
   const style = {
     container: {
@@ -16,6 +23,7 @@ const Winner = () => {
   };
 
   const handleClick = (): void => {
+    updateWinner();
   }
 
   return (

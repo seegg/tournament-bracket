@@ -89,6 +89,13 @@ export class MatchupTree {
     const parentIdx = totalNodes - Math.floor((totalNodes - idx) / 2)
     return parentIdx < totalNodes ? parentIdx : null;
   }
+
+  clone() {
+    let clone = new MatchupTree(0, [], []);
+    clone.tree = this.tree;
+    clone.root = this.root;
+    return clone;
+  }
 }
 
 function shuffle(array: any[]) {
