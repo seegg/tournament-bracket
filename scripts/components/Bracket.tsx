@@ -12,6 +12,7 @@ const Bracket = ({ rounds }: BracketProps) => {
     return <Round round={idx + 1} numberOfMatchups={matchups} key={'bracket ' + idx + ': ' + Math.random()} />
   });
 
+  //Attach the winner component if the bracket is not empty.
   if (roundMatchups.length > 0) roundMatchups.push(<Winner key={'winner' + Math.random()} />);
   return (
     <div className='bracket'>

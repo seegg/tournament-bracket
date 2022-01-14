@@ -34,17 +34,13 @@ const Matchup = ({ matchupNum }: MatchupProps) => {
       dispatch(result);
       let currentNode = bracketResult!.tree[index];
       currentNode.value = result;
-      console.log('created function');
 
       //don't do anything if the value of the parent node is
       //either null or the same as the current node, otherwise 
       //set it's value to null and propagate up the chain until
       //this condition is meet.
       if (!bracket?.tree[currentNode.parentIndex!].value) return;
-      if (bracket.tree[currentNode.parentIndex!].value?.id === currentNode.value.id) {
-        console.log('same values');
-        return;
-      }
+      if (bracket.tree[currentNode.parentIndex!].value?.id === currentNode.value?.id) return;
       console.log(bracketResult!.tree[currentNode.parentIndex!]);
       callbackFns[currentNode.parentIndex!](null);
     }
