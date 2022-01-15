@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import MiddleDivider from './MiddleDivider';
 import { BracketContext } from './App'
-import { Participant } from '../matchupTree';
+import { Participant } from '../MatchupTree';
 
 const Winner = () => {
 
