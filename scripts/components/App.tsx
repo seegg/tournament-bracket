@@ -18,7 +18,7 @@ export const BracketContext = createContext({
 
 const App = () => {
 
-  const [participants, setParticipants] = useState<number | null>(null);
+  const [participants, setParticipants] = useState<{ count: number, names: string[] } | null>(null);
   const [rounds, setRounds] = useState<number[]>([]);
   const [bracket, setBracket] = useState<MatchupTree | null>(null);
   const [callbacks, setCallbacks] = useState<any>([]);
@@ -26,11 +26,11 @@ const App = () => {
   const bracketContextProviderValue = { bracket, setBracket, callbacks };
 
   useEffect(() => {
-    setBracket(new MatchupTree(participants!, rounds));
+    setBracket(new MatchupTree(participants!.count, rounds));
   }, [rounds]);
 
-  const inputCallback = (participantNo: number, names?: string[]) => {
-    setParticipants(participantNo);
+  const inputCallback = (participantNo: number, names: string[] = []) => {
+    setParticipants({ count: participantNo, names: names });
     setRounds(makeBracket(participantNo));
   }
 
