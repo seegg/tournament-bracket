@@ -64,6 +64,7 @@ const Matchup = ({ matchupNum }: MatchupProps) => {
     const win = cell === 'top' ? topCell : btmCell;
     if (!win || win.skip) return;
     callbacks[bracket?.tree[topCellIndex].parentIndex!]({ ...win });
+    console.log('bracket', bracket);
   }
 
   return (

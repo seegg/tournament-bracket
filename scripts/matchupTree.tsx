@@ -47,8 +47,7 @@ export class MatchupTree {
       tempID++;
     }
 
-    // console.log('byes', byes, this.tree);
-
+    //byes
     for (let j = (matchups[0] - byes) * 2; j < matchups[0] * 2; j += 2) {
       let nodeValue: Participant = { name: names[tempID] || `Participant ${tempID}`, id: tempID, skip: false };
       let byeValue: Participant = { name: '', skip: true };
@@ -73,9 +72,14 @@ export class MatchupTree {
     this.root!.value = value;
   }
 
+  //the reverse of n*2+1 and n*2+2
   getChildrenIndex(idx: number, totalNodes: number): [number | null, number | null] {
-    const left = totalNodes - ((totalNodes - 1 - idx) * 2) + 1;
-    const right = totalNodes - ((totalNodes - 1 - idx) * 2);
+    // const left = totalNodes - ((totalNodes - 1 - idx) * 2) + 1;
+    // const right = totalNodes - ((totalNodes - 1 - idx) * 2);
+
+    const baseIndex = -(totalNodes - 1) + (2 * idx);
+    const left = baseIndex - 2;
+    const right = baseIndex - 1;
     return [left >= 0 ? left : null, right >= 0 ? right : null];
   }
 
