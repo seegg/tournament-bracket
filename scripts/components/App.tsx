@@ -26,17 +26,12 @@ const App = () => {
   const bracketContextProviderValue = { bracket, setBracket, callbacks };
 
   useEffect(() => {
-    if (!isNaN(participants!)) {
-      setRounds(makeBracket(participants!))
-    }
-  }, [participants]);
-
-  useEffect(() => {
     setBracket(new MatchupTree(participants!, rounds));
   }, [rounds]);
 
-  const inputCallback = (participantNo: number) => {
+  const inputCallback = (participantNo: number, names?: string[]) => {
     setParticipants(participantNo);
+    setRounds(makeBracket(participantNo));
   }
 
 
