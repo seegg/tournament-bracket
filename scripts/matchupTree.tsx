@@ -22,8 +22,6 @@ export class MatchupTree {
   constructor(participantNo: number, matchups: number[], names: string[] = thing.things) {
     if (!participantNo || matchups.length <= 0) return;
 
-    console.log('names in tree', names);
-
     const totalNodes = matchups.reduce((sum, value) => sum + value * 2, 1);
     // construct the complete tree with empty nodes.
     for (let i = 0; i < totalNodes; i++) {

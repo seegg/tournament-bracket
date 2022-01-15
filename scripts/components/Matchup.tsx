@@ -31,8 +31,10 @@ const Matchup = ({ matchupNum }: MatchupProps) => {
   const createSetResultFn = (dispatch: React.Dispatch<React.SetStateAction<Participant | null>>, index: number,
     bracketResult: MatchupTree | null = bracket, callbackFns: any[] = callbacks) => {
     const setResult = (result: Participant) => {
-      dispatch(result);
       let currentNode = bracketResult!.tree[index];
+      if (result?.id === currentNode.value?.id) return;
+
+      dispatch(result);
       currentNode.value = result;
 
       //don't do anything if the value of the parent node is
