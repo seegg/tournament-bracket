@@ -12,9 +12,14 @@ const Arrow = ({ position }: ArrowProps) => {
 
   const style = {
     border: {
-      borderRight: arrowBorder,
-      borderTop: position === 'end' ? arrowBorder : '',
-      borderBottom: position === 'end' ? '' : arrowBorder
+      borderRightStyle: 'solid' as 'solid',
+      borderRightWidth: '2px',
+      borderTopStyle: position === 'end' ? 'solid' as 'solid' : 'none' as 'none',
+      borderTopWidth: position === 'end' ? '2px' : '',
+      borderBottomStyle: position === 'end' ? 'none' as 'none' : 'solid' as 'solid',
+      borderBottomWidth: position === 'end' ? '' : '2px',
+      borderBottomRightRadius: position === 'end' ? '' : borderRadius,
+      borderTopRightRadius: position === 'end' ? borderRadius : '',
     }
   };
 
@@ -22,8 +27,8 @@ const Arrow = ({ position }: ArrowProps) => {
   return (
     <div className='arrows-container'>
       {position === 'end' && gapFiller}
-      <div className='arrow-divide' style={position === 'start' ? { ...style.border, borderBottomRightRadius: borderRadius } : {}}></div>
-      <div className='arrow-divide' style={position === 'start' ? {} : { ...style.border, borderTopRightRadius: borderRadius }}></div>
+      <div className='arrow-divide' style={position === 'start' ? style.border : {}}></div>
+      <div className='arrow-divide' style={position === 'start' ? {} : style.border}></div>
       {position === 'start' && gapFiller}
     </div>
   );
