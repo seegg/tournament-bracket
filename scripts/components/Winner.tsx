@@ -8,7 +8,7 @@ const Winner = () => {
   const { bracket, callbacks } = useContext(BracketContext);
   const [winner, setWinner] = useState<Participant | null>(null);
 
-  //add the setState and bracket function to the callback
+  //add the setState and bracket function to the callback.
   if (bracket?.root) callbacks[bracket.root.index] = (result: Participant) => {
     setWinner(result);
     bracket.root!.value = result;

@@ -1,7 +1,7 @@
 import React, { useState, ChangeEvent, KeyboardEvent } from 'react';
 
 interface InputProps {
-  callback: (participantNum: number) => void;
+  callback: (participantNum: number, participantNames?: string[]) => void;
 }
 
 const BracketInput = ({ callback }: InputProps) => {
@@ -26,17 +26,19 @@ const BracketInput = ({ callback }: InputProps) => {
   }
 
   const handleClick = (): void => {
-    if (Number(participantNum) > 1024) {
-      if (confirm(`Are you sure? Number of participants:${participantNum}`)) {
-      } else {
-        return;
-      }
-    }
-    callback(Number(participantNum) || 0);
+    submitParticipants();
   }
 
   const handleKeyPress = (evt: KeyboardEvent) => {
     if (evt.key === 'Enter') {
+      submitParticipants();
+    }
+  }
+
+  //use names or number to create the bracket depending on
+  //whether isNumberInput is true or false.
+  const submitParticipants = () => {
+    if (isNumberInput) {
       if (Number(participantNum) > 1024) {
         if (confirm(`Are you sure? Number of participants:${participantNum}`)) {
         } else {
@@ -44,6 +46,10 @@ const BracketInput = ({ callback }: InputProps) => {
         }
       }
       callback(Number(participantNum) || 0);
+    } else {
+      const nameArray = participantNames.split(/[ ,\n\r]+/);
+      console.log(nameArray);
+      callback(nameArray.length, nameArray);
     }
   }
 
@@ -81,9 +87,10 @@ const BracketInput = ({ callback }: InputProps) => {
     }
   };
 
+  //Input and textarea for constructing the bracket.
   const input = <input style={style.input} type="text" placeholder='Number of participants' name="input" id="pariticipant-input" value={participantNum} onChange={handleNumChange} onKeyPress={handleKeyPress} />;
 
-  const textArea = <textarea name="" id="" cols={30} rows={10} style={style.textArea} value={participantNames} onChange={handleTextChange} placeholder='Names of participants. comma, space or new line seperated'></textarea>;
+  const textArea = <textarea name="" id="" cols={30} rows={10} style={style.textArea} value={participantNames} onChange={handleTextChange} placeholder='Names of participants. comma, space, and new line seperated'></textarea>;
 
   return (
     <div className='bracket-input'>

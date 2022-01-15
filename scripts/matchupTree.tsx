@@ -42,7 +42,7 @@ export class MatchupTree {
 
     let tempID = 1;
     for (let i = 0; i < (matchups[0] - byes) * 2; i++) {
-      let nodeValue: Participant = { name: names[tempID] || `Participant ${tempID}`, id: tempID, skip: false };
+      let nodeValue: Participant = { name: names[tempID - 1] || `Participant ${tempID}`, id: tempID, skip: false };
       this.tree[i] = { ...this.tree[i], value: nodeValue, leftIndex: null, rightIndex: null };
       tempID++;
     }

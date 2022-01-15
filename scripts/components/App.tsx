@@ -26,7 +26,13 @@ const App = () => {
   const bracketContextProviderValue = { bracket, setBracket, callbacks };
 
   useEffect(() => {
-    setBracket(new MatchupTree(participants!.count, rounds));
+    if (participants) {
+      if (participants.names.length > 0) {
+        setBracket(new MatchupTree(participants!.count, rounds, participants.names));
+      } else {
+        setBracket(new MatchupTree(participants!.count, rounds));
+      }
+    }
   }, [rounds]);
 
   const inputCallback = (participantNo: number, names: string[] = []) => {
