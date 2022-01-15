@@ -1,43 +1,49 @@
 import React, { useState, ChangeEvent, KeyboardEvent } from 'react';
 
 interface InputProps {
-  callback: (participantNo: number) => void;
+  callback: (participantNum: number) => void;
 }
 
 const BracketInput = ({ callback }: InputProps) => {
 
-  const [participantNo, setParticipantNo] = useState('');
+  const [participantNum, setparticipantNum] = useState('');
+  const [participantNames, setParticipantNames] = useState('');
   const [isNumberInput, setIsNumberInput] = useState(true);
 
   //matches either a whole number or an empty string.
   const wholeNumberRegex = new RegExp(/(^\d+$)|(^$)/);
 
-  const handleChange = (e: ChangeEvent) => {
+  const handleNumChange = (e: ChangeEvent) => {
     const value = (e.target as HTMLInputElement).value;
     if (wholeNumberRegex.test(value)) {
-      setParticipantNo(value);
+      setparticipantNum(value);
     };
   }
 
+  const handleTextChange = (e: ChangeEvent) => {
+    const value = (e.target as HTMLTextAreaElement).value;
+    setParticipantNames(value);
+  }
+
   const handleClick = (): void => {
-    if (Number(participantNo) > 1024) {
-      if (confirm(`Are you sure? Number of participants:${participantNo}`)) {
+    if (Number(participantNum) > 1024) {
+      if (confirm(`Are you sure? Number of participants:${participantNum}`)) {
       } else {
         return;
       }
     }
-    callback(Number(participantNo) || 0);
+    callback(Number(participantNum) || 0);
   }
 
   const handleKeyPress = (evt: KeyboardEvent) => {
     if (evt.key === 'Enter') {
-      if (Number(participantNo) > 1024) {
-        if (confirm(`Are you sure? Number of participants:${participantNo}`)) {
+      if (Number(participantNum) > 1024) {
+        if (confirm(`Are you sure? Number of participants:${participantNum}`)) {
         } else {
           return;
         }
       }
-      callback(Number(participantNo) || 0);
+      callback(Number(participantNum) || 0);
     }
   }
 
@@ -75,12 +81,14 @@ const BracketInput = ({ callback }: InputProps) => {
     }
   };
 
+  const input = <input style={style.input} type="text" placeholder='Number of participants' name="input" id="pariticipant-input" value={participantNum} onChange={handleNumChange} onKeyPress={handleKeyPress} />;
+
+  const textArea = <textarea name="" id="" cols={30} rows={10} style={style.textArea} value={participantNames} onChange={handleTextChange} placeholder='Names of participants. comma, space or new line seperated'></textarea>;
+
   return (
     <div className='bracket-input'>
       <button style={style.toggleButton} onClick={toggleInput}>{isNumberInput ? <>&#9660;</> : <>&#9650;</>}</button>
-      {isNumberInput ? <input style={style.input} type="text" placeholder='Number of participants' name="input" id="pariticipant-input" value={participantNo} onChange={handleChange} onKeyPress={handleKeyPress} /> :
-        <textarea name="" id="" cols={30} rows={10} style={style.textArea} placeholder='Names of participants. comma, space or new line seperated'></textarea>}
-
+      {isNumberInput ? input : textArea}
       <button style={style.button} onClick={handleClick}>Go</button>
     </div>
   )
