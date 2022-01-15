@@ -23,7 +23,6 @@ const Cell = ({ position, name, callback, skip }: CellProps) => {
       alignSelf: position,
       display: 'flex',
       justifyContent: 'center',
-
     },
     participant: {
       alignSelf: 'center'
@@ -38,7 +37,7 @@ const Cell = ({ position, name, callback, skip }: CellProps) => {
     <div className='cell-container' style={style.cellContainer}>
       {round != 1 && <Arrow position={position} />}
       <div className={`cell cell-${position} ${skip ? 'cell-bye' : ''}`} style={style.cell} onClick={handleClick}>
-        <p style={style.participant}>{name}</p>
+        <p style={style.participant} className='name-text'>{name}</p>
       </div>
     </div>
   );

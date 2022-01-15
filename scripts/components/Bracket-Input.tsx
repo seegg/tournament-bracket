@@ -47,8 +47,9 @@ const BracketInput = ({ callback }: InputProps) => {
       }
       callback(Number(participantNum) || 0);
     } else {
-      const nameArray = participantNames.split(/[ ,\r?\n]+/).filter(name => name);
-      callback(nameArray.length, nameArray);
+      //matches any word, hypenated word or quotes.
+      const nameArray = participantNames.match(/[\w-]+|"[^"]+"/g);
+      callback(nameArray?.length || 0, nameArray || []);
     }
   }
 
@@ -89,7 +90,7 @@ const BracketInput = ({ callback }: InputProps) => {
   //Input and textarea for constructing the bracket.
   const input = <input style={style.input} type="text" placeholder='Number of participants' name="input" id="pariticipant-input" value={participantNum} onChange={handleNumChange} onKeyPress={handleKeyPress} />;
 
-  const textArea = <textarea name="" id="" cols={30} rows={10} style={style.textArea} value={participantNames} onChange={handleTextChange} placeholder='Names of participants, those next to eachother are in the same matchup. comma, space, and new line seperated. '></textarea>;
+  const textArea = <textarea name="" id="" cols={30} rows={10} style={style.textArea} value={participantNames} onChange={handleTextChange} placeholder='Names of participants. Comma, space, and new line seperated. Combine words with double quotes "two words" or hypen cat-dog.'></textarea>;
 
   return (
     <div className='bracket-input'>
