@@ -74,9 +74,6 @@ export class MatchupTree {
 
   //the reverse of n*2+1 and n*2+2
   getChildrenIndex(idx: number, totalNodes: number): [number | null, number | null] {
-    // const left = totalNodes - ((totalNodes - 1 - idx) * 2) + 1;
-    // const right = totalNodes - ((totalNodes - 1 - idx) * 2);
-
     const baseIndex = -(totalNodes - 1) + (2 * idx);
     const left = baseIndex - 2;
     const right = baseIndex - 1;

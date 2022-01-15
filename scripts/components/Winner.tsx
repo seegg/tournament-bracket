@@ -8,7 +8,12 @@ const Winner = () => {
   const { bracket, callbacks } = useContext(BracketContext);
   const [winner, setWinner] = useState<Participant | null>(null);
 
-  if (bracket?.root) callbacks[bracket.root.index] = setWinner;
+  //add the setState and bracket function to the callback
+  if (bracket?.root) callbacks[bracket.root.index] = (result: Participant) => {
+    setWinner(result);
+    bracket.root!.value = result;
+  };
+
   const style = {
     container: {
       display: 'flex',
@@ -18,9 +23,6 @@ const Winner = () => {
   };
 
   const handleClick = (): void => {
-    if (bracket?.root) {
-      console.log('roots');
-    }
   }
 
   return (
@@ -56,7 +58,7 @@ const Node = ({ position, hidden, callback, name }: NodeProps) => {
       borderWidth: '4px',
       display: 'flex',
       justifyContent: 'center',
-
+      borderColor: 'white',
     },
     participant: {
       alignSelf: 'center'

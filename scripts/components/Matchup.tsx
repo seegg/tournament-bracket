@@ -41,7 +41,6 @@ const Matchup = ({ matchupNum }: MatchupProps) => {
       //this condition is meet.
       if (!bracket?.tree[currentNode.parentIndex!].value) return;
       if (bracket.tree[currentNode.parentIndex!].value?.id === currentNode.value?.id) return;
-      console.log(bracketResult!.tree[currentNode.parentIndex!]);
       callbackFns[currentNode.parentIndex!](null);
     }
 
@@ -64,7 +63,6 @@ const Matchup = ({ matchupNum }: MatchupProps) => {
     const win = cell === 'top' ? topCell : btmCell;
     if (!win || win.skip) return;
     callbacks[bracket?.tree[topCellIndex].parentIndex!]({ ...win });
-    console.log('bracket', bracket);
   }
 
   return (

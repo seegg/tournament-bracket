@@ -23,8 +23,6 @@ const App = () => {
   const [bracket, setBracket] = useState<MatchupTree | null>(null);
   const [callbacks, setCallbacks] = useState<any>([]);
 
-  console.log('bracket', bracket);
-
   const bracketContextProviderValue = { bracket, setBracket, callbacks };
 
   useEffect(() => {
