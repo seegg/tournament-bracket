@@ -113,3 +113,10 @@ html {
   width: fit-content;
 }
 
+p.name-text{
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipsis; 
+}

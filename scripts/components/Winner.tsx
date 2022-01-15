@@ -70,7 +70,7 @@ const Node = ({ position, hidden, callback, name }: NodeProps) => {
 
     <div className='cell-container' style={style.cellContainer}>
       <div className='cell' style={style.cell} onClick={callback}>
-        <p style={style.participant}>{name || ''}</p>
+        <p style={style.participant} className='name-text'>{name || ''}</p>
       </div>
     </div>
   );
