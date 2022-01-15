@@ -43,14 +43,22 @@ const BracketInput = ({ callback }: InputProps) => {
   const style = {
     button: {
       marginLeft: '0.5rem',
+      height: '2rem',
+      width: '2rem'
     },
     input: {
       marginLeft: '0.5rem',
+      height: '2rem',
+      fontSize: '1rem',
+      maxWidth: '15rem',
+      width: '100%',
+      flexShrink: '1',
     }
   };
 
   return (
     <div className='bracket-input'>
+      <button style={style.button} onClick={handleClick}>&#x25BC;</button>
       <input style={style.input} type="text" placeholder='Number of participants' name="input" id="pariticipant-input" value={participantNo} onChange={handleChange} onKeyPress={handleKeyPress} />
       <button style={style.button} onClick={handleClick}>Go</button>
     </div>
