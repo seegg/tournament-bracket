@@ -47,7 +47,8 @@ const BracketInput = ({ callback }: InputProps) => {
       }
       callback(Number(participantNum) || 0);
     } else {
-      const nameArray = participantNames.split(/[ ,\n\r]+/);
+      const nameArray = participantNames.split(/[ ,\r?\n]+/).filter(name => name);
+      console.log(nameArray);
       callback(nameArray.length, nameArray);
     }
   }
