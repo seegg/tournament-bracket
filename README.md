@@ -8,4 +8,4 @@ Select a winner by clicking on their name, both matchups needs to be filled befo
 
 Selecting a different winner will reset all results further up the bracket involving this matchup.
 
-The layout is mostly position with flex-box with minimal javascript. Changing the cell and cell-container class in style.css will automatically adjust the size of layout.
+The boxes is position mostly with flex-box and uses minimal javascript. Changing the cell and cell-container class in style.css will automatically adjust the size of layout.
