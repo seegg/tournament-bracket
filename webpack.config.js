@@ -29,7 +29,7 @@ module.exports = {
     minimizer: [new TerserPlugin()],
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.tx', '.tsx', '.json'],
+    extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
   },
   devtool: 'source-map',
 }

@@ -2,7 +2,7 @@ import React, { useState, useEffect, createContext } from 'react';
 import BracketInput from './Bracket-Input';
 import Bracket from './Bracket';
 import { makeBracket } from './BracketHelper'
-import { MatchupTree } from '../matchupTree';
+import { MatchupTree } from '../MatchupTree';
 
 interface BracketType {
   bracket: MatchupTree | null,
