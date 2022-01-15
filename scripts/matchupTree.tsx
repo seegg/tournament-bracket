@@ -22,6 +22,8 @@ export class MatchupTree {
   constructor(participantNo: number, matchups: number[], names: string[] = thing.things) {
     if (!participantNo || matchups.length <= 0) return;
 
+    console.log('names in tree', names);
+
     const totalNodes = matchups.reduce((sum, value) => sum + value * 2, 1);
     // construct the complete tree with empty nodes.
     for (let i = 0; i < totalNodes; i++) {
@@ -40,9 +42,9 @@ export class MatchupTree {
     //set the initial round one matchups.
     let byes = matchups[0] * 2 - participantNo;
 
-    let tempID = 1;
+    let tempID = 0;
     for (let i = 0; i < (matchups[0] - byes) * 2; i++) {
-      let nodeValue: Participant = { name: names[tempID - 1] || `Participant ${tempID}`, id: tempID, skip: false };
+      let nodeValue: Participant = { name: names[tempID] || `Participant ${tempID}`, id: tempID, skip: false };
       this.tree[i] = { ...this.tree[i], value: nodeValue, leftIndex: null, rightIndex: null };
       tempID++;
     }
