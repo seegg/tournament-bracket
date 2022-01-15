@@ -63,6 +63,7 @@ const Matchup = ({ matchupNum }: MatchupProps) => {
 
   const handleClick = (cell: 'top' | 'bottom') => {
     const win = cell === 'top' ? topCell : btmCell;
+    if (!topCell || !btmCell) return;
     if (!win || win.skip) return;
     callbacks[bracket?.tree[topCellIndex].parentIndex!]({ ...win });
   }
