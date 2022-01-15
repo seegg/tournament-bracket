@@ -7,10 +7,11 @@ interface CellProps {
   callback: () => void,
   win?: boolean,
   name?: string,
-  id?: number
+  id?: number,
+  skip: boolean
 }
 
-const Cell = ({ position, name, callback }: CellProps) => {
+const Cell = ({ position, name, callback, skip }: CellProps) => {
 
   const round = useContext(RoundContext);
 
@@ -36,7 +37,7 @@ const Cell = ({ position, name, callback }: CellProps) => {
   return (
     <div className='cell-container' style={style.cellContainer}>
       {round != 1 && <Arrow position={position} />}
-      <div className={`cell cell-${position}`} style={style.cell} onClick={handleClick}>
+      <div className={`cell cell-${position} ${skip ? 'cell-bye' : ''}`} style={style.cell} onClick={handleClick}>
         <p style={style.participant}>{name}</p>
       </div>
     </div>

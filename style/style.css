@@ -1,12 +1,14 @@
 :root{
   --arrow-width: 0.1rem;
-  --arrow-border: solid rgb(240, 160, 40) 0.2rem;
+  --arrow-border: solid hsl(36, 87%, 55%) 0.2rem;
   --cell-radius-sharp: 3px;
+  --bg-colour: hsl(180, 15%, 51%);
+  --bracket-colour: hsl(180, 25%, 25%);
 }
 
 html {
   box-sizing: border-box;
-  background-color: rgb(110, 148, 148);
+  background-color: var(--bg-colour);
   font-family: 'Open Sans', sans-serif;
   font-weight: 600;
 }
@@ -30,20 +32,19 @@ html {
   border-color: rgb(21, 21, 49);
   background-color: beige;
 }
-/* 
-.cell-end{
-  border-bottom-left-radius: var(--cell-radius-sharp);
-  border-bottom-right-radius: var(--cell-radius-sharp);
-}
 
-.cell-start{
-  border-top-right-radius: var(--cell-radius-sharp);
-  border-top-left-radius: var(--cell-radius-sharp);
-} */
 .cell:hover{
   box-shadow: 3px 1px 5px black;
 }
 
+.cell-bye{
+  filter: grayscale(40%);
+  background-color: var(--bg-colour);
+}
+
+.cell-bye:hover{
+  box-shadow: none;
+}
 
 .arrows-container{
   display: flex;
@@ -87,7 +88,7 @@ html {
 
 .bracket{
   display: flex;
-  background-color: darkslategrey;
+  background-color: var(--bracket-colour);
   padding-left: 0.5rem;
   padding-right: 0.5rem;
 

@@ -68,9 +68,9 @@ const Matchup = ({ matchupNum }: MatchupProps) => {
   return (
     <div className='matchup' >
       <div style={style.container}>
-        <Cell position='end' name={topCell?.name || ''} callback={() => { handleClick('top') }} />
+        <Cell position='end' name={topCell?.name || ''} skip={topCell?.skip || false} callback={() => { handleClick('top') }} />
         <MiddleDivider />
-        <Cell position='start' name={btmCell?.name || ''} callback={() => { handleClick('bottom') }} />
+        <Cell position='start' name={btmCell?.name || ''} skip={btmCell?.skip || false} callback={() => { handleClick('bottom') }} />
       </div>
     </div >
   );
