@@ -4,7 +4,9 @@
 
 Specifiy the number of participants or provide a list of names to generate a bracket.
 
-If the number of participants is not a power of 2, some will be automatically advanced to the next round to make it fit into this format.
+If the number of participants is not a power of 2, some will automatically advance to the next round to make it fit into this format.
+
+Hover over a name to highlight all the matchups involving that participant.
 
 Select a winner by clicking on their name, both matchups needs to be filled before a winner can be selected.
 

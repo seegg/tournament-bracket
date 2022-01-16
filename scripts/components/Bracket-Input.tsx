@@ -90,7 +90,7 @@ const BracketInput = ({ callback }: InputProps) => {
   //Input and textarea for constructing the bracket.
   const input = <input style={style.input} type="text" placeholder='Number of participants' name="input" id="pariticipant-input" value={participantNum} onChange={handleNumChange} onKeyPress={handleKeyPress} />;
 
-  const textArea = <textarea name="" id="" cols={30} rows={10} style={style.textArea} value={participantNames} onChange={handleTextChange} placeholder='Names of participants. Comma, space, and new line seperated. Combine words with double quotes "two words" or hypen cat-dog.'></textarea>;
+  const textArea = <textarea name="" id="" cols={30} rows={10} style={style.textArea} value={participantNames} onChange={handleTextChange} placeholder='Names of participants. Comma, space, and new line seperated. Combine words with double quotes, "Potato and soccer" and hypen, cat-dog.'></textarea>;
 
   return (
     <div className='bracket-input' id='b-input'>
