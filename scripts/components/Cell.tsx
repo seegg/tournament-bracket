@@ -37,18 +37,16 @@ const Cell = ({ participant, position, callback, }: CellProps) => {
       if (highlighted.current) {
         highlightArrows(participant?.id, 'arrow-highlight', true);
       }
-    }, 1000);
+    }, 100);
 
   }
 
   const handleMouseEnter = () => {
-    // setHighlighted(true);
     highlighted.current = true;
     highlightArrows(participant?.id, 'arrow-highlight', true);
   }
 
   const handleMouseLeave = () => {
-    // setHighlighted(false);
     highlighted.current = false;
     highlightArrows(participant?.id, 'arrow-highlight', false);
   }
