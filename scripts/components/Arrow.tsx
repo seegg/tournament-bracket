@@ -2,10 +2,10 @@ import React, { useEffect } from 'react';
 
 interface ArrowProps {
   position: 'end' | 'start'
-  getArrow: boolean
+  highlight: boolean
 };
 
-const Arrow = ({ position, getArrow }: ArrowProps) => {
+const Arrow = ({ position, highlight }: ArrowProps) => {
 
   const borderRadius = '0.5rem';
   const gapFiller = <div className='gap-filler' style={{ height: '0.5rem' }}></div>;
@@ -29,7 +29,7 @@ const Arrow = ({ position, getArrow }: ArrowProps) => {
   console.log(document.getElementById(topId));
 
   useEffect(() => {
-    if (getArrow) {
+    if (highlight) {
       document.getElementById(topId)?.classList.add('arrow-highlight');
       document.getElementById(btmId)?.classList.add('arrow-highlight');
     } else {

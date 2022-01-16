@@ -12,6 +12,7 @@ const Matchup = ({ matchupNum }: MatchupProps) => {
 
   const [topCell, setTopCell] = useState<Participant | null>(null);
   const [btmCell, setBtmCell] = useState<Participant | null>(null);
+  const [highlightArrow, setHighlightArrow] = useState(false);
 
   const { bracket, callbacks } = useContext(BracketContext);
 
@@ -83,9 +84,9 @@ const Matchup = ({ matchupNum }: MatchupProps) => {
   return (
     <div className='matchup' >
       <div style={style.container}>
-        <Cell position='end' getArrows={getArrowsCallback} participant={topCell} callback={() => { handleClick('top') }} />
+        <Cell position='end' setHighlight={setHighlightArrow} highlight={highlightArrow} participant={topCell} callback={() => { handleClick('top') }} />
         <MiddleDivider />
-        <Cell position='start' getArrows={getArrowsCallback} participant={btmCell} callback={() => { handleClick('bottom') }} />
+        <Cell position='start' setHighlight={setHighlightArrow} highlight={highlightArrow} participant={btmCell} callback={() => { handleClick('bottom') }} />
       </div>
     </div >
   );
