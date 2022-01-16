@@ -1,14 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 interface ArrowProps {
   position: 'end' | 'start'
+  getArrow: boolean
 };
 
-const Arrow = ({ position }: ArrowProps) => {
+const Arrow = ({ position, getArrow }: ArrowProps) => {
 
-  const arrowBorder = 'solid rgb(240, 160, 40) 2px';
   const borderRadius = '0.5rem';
   const gapFiller = <div className='gap-filler' style={{ height: '0.5rem' }}></div>;
+
+  const topId = 'top-' + Math.random();
+  const btmId = 'btm-' + Math.random();
 
   const style = {
     border: {
@@ -23,15 +26,23 @@ const Arrow = ({ position }: ArrowProps) => {
     }
   };
 
-  const handleClick = (evt: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    (evt.target as HTMLDivElement).classList.toggle('arrow-highlight');
-  }
+  console.log(document.getElementById(topId));
+
+  useEffect(() => {
+    if (getArrow) {
+      document.getElementById(topId)?.classList.add('arrow-highlight');
+      document.getElementById(btmId)?.classList.add('arrow-highlight');
+    } else {
+      document.getElementById(topId)?.classList.remove('arrow-highlight');
+      document.getElementById(btmId)?.classList.remove('arrow-highlight');
+    }
+  });
 
   return (
     <div className='arrows-container'>
       {position === 'end' && gapFiller}
-      <div className='arrow-divide' onClick={handleClick} style={position === 'start' ? style.border : {}} ></div>
-      <div className='arrow-divide' style={position === 'start' ? {} : style.border}></div>
+      <div className='arrow-divide top ' id={topId} style={position === 'start' ? style.border : {}} ></div>
+      <div className='arrow-divide btm ' id={btmId} style={position === 'start' ? {} : style.border}></div>
       {position === 'start' && gapFiller}
     </div>
   );
