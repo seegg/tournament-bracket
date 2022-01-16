@@ -93,7 +93,7 @@ const BracketInput = ({ callback }: InputProps) => {
   const textArea = <textarea name="" id="" cols={30} rows={10} style={style.textArea} value={participantNames} onChange={handleTextChange} placeholder='Names of participants. Comma, space, and new line seperated. Combine words with double quotes "two words" or hypen cat-dog.'></textarea>;
 
   return (
-    <div className='bracket-input'>
+    <div className='bracket-input' id='b-input'>
       <button style={style.toggleButton} onClick={toggleInput}>{isNumberInput ? <>&#9660;</> : <>&#9650;</>}</button>
       {isNumberInput ? input : textArea}
       <button style={style.button} onClick={handleClick}>Go</button>

@@ -88,18 +88,14 @@ html {
 
 .bracket-input{
   display: flex;
+  align-items: flex-start;
+  min-height: 3rem;
   background-color: aquamarine;
-  padding: 5px;
+  padding: 0.5rem;
   padding-left: 0;
   border-top-left-radius: 0.2rem;
   border-top-right-radius: 0.2rem;
 }
-
-/* input{
-  flex-shrink: 1;
-  width: 100%;
-  max-width: 15rem;
-} */
 
 .bracket{
   display: flex;
