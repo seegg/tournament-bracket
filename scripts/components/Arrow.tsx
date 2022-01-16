@@ -1,17 +1,16 @@
 import React, { useEffect } from 'react';
 
 interface ArrowProps {
-  position: 'end' | 'start'
-  highlight: boolean
+  position: 'end' | 'start',
+  id: number | null,
 };
 
-const Arrow = ({ position, highlight }: ArrowProps) => {
+const Arrow = ({ position, id }: ArrowProps) => {
 
   const borderRadius = '0.5rem';
   const gapFiller = <div className='gap-filler' style={{ height: '0.5rem' }}></div>;
 
-  const topId = 'top-' + Math.random();
-  const btmId = 'btm-' + Math.random();
+  const arrowClass = 'arrow-' + id;
 
   const style = {
     border: {
@@ -26,23 +25,14 @@ const Arrow = ({ position, highlight }: ArrowProps) => {
     }
   };
 
-  console.log(document.getElementById(topId));
-
   useEffect(() => {
-    if (highlight) {
-      document.getElementById(topId)?.classList.add('arrow-highlight');
-      document.getElementById(btmId)?.classList.add('arrow-highlight');
-    } else {
-      document.getElementById(topId)?.classList.remove('arrow-highlight');
-      document.getElementById(btmId)?.classList.remove('arrow-highlight');
-    }
   });
 
   return (
     <div className='arrows-container'>
       {position === 'end' && gapFiller}
-      <div className='arrow-divide top ' id={topId} style={position === 'start' ? style.border : {}} ></div>
-      <div className='arrow-divide btm ' id={btmId} style={position === 'start' ? {} : style.border}></div>
+      <div className={`arrow-divide top ${arrowClass}`} style={position === 'start' ? style.border : {}} ></div>
+      <div className={`arrow-divide btm ${arrowClass}`} style={position === 'start' ? {} : style.border}></div>
       {position === 'start' && gapFiller}
     </div>
   );

@@ -12,7 +12,6 @@ const Matchup = ({ matchupNum }: MatchupProps) => {
 
   const [topCell, setTopCell] = useState<Participant | null>(null);
   const [btmCell, setBtmCell] = useState<Participant | null>(null);
-  const [highlightArrow, setHighlightArrow] = useState(false);
 
   const { bracket, callbacks } = useContext(BracketContext);
 
@@ -69,24 +68,12 @@ const Matchup = ({ matchupNum }: MatchupProps) => {
     callbacks[bracket?.tree[topCellIndex].parentIndex!]({ ...win });
   }
 
-  /**
-   * get the arrow and middle divider elements associated with one of the Cells and use it
-   * to do the colour transistion of the arrows for the mouseEnter event.
-   */
-  const getArrowsCallback = () => {
-    console.log('give me all your arrows');
-  }
-
-  const getMidDividerCallback = () => {
-
-  }
-
   return (
     <div className='matchup' >
       <div style={style.container}>
-        <Cell position='end' setHighlight={setHighlightArrow} highlight={highlightArrow} participant={topCell} callback={() => { handleClick('top') }} />
+        <Cell position='end' participant={topCell} callback={() => { handleClick('top') }} />
         <MiddleDivider />
-        <Cell position='start' setHighlight={setHighlightArrow} highlight={highlightArrow} participant={btmCell} callback={() => { handleClick('bottom') }} />
+        <Cell position='start' participant={btmCell} callback={() => { handleClick('bottom') }} />
       </div>
     </div >
   );
