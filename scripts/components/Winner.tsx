@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from 'react';
 import MiddleDivider from './MiddleDivider';
 import { BracketContext } from './App'
 import { Participant } from '../MatchupTree';
+import { highlightArrows } from './highlight';
 
 const Winner = () => {
 
@@ -64,12 +65,20 @@ const Node = ({ position, hidden, callback, participant }: NodeProps) => {
     }
   };
 
+  const handleMouseEnter = () => {
+    highlightArrows(participant?.id, 'arrow-highlight', true);
+  }
+
+  const handleMouseLeave = () => {
+    highlightArrows(participant?.id, 'arrow-highlight', false);
+  }
+
   const className = 'arrow-' + participant?.id;
 
   return (
 
     <div className='cell-container' style={style.cellContainer}>
-      <div className={`cell winner ${className}`} style={style.cell} onClick={callback}>
+      <div className={`cell winner ${className}`} style={style.cell} onClick={callback} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
         <p style={style.participant} className='name-text'>{participant?.name || ''}</p>
       </div>
     </div>
