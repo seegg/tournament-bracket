@@ -1,8 +1,7 @@
 :root{
   --arrow-width: 0.1rem;
-  --arrow-border: solid hsl(36, 87%, 55%) 0.2rem;
-  --arrow-colour: hsl(36, 87%, 55%);
-  --arrow-highlight: hsl(51, 100%, 70%);
+  --arrow-colour: hsl(0, 0%, 70%);
+  --arrow-highlight:hsl(37, 100%, 70%);
   --cell-radius-sharp: 3px;
   --bg-colour: hsl(180, 15%, 51%);
   --bracket-colour: hsl(180, 25%, 25%);
