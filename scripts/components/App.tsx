@@ -1,7 +1,7 @@
 import React, { useState, useEffect, createContext } from 'react';
 import BracketInput from './Bracket-Input';
 import Bracket from './Bracket';
-import { makeBracket } from './BracketHelper'
+import { makeBracket } from './bracketHelper';
 import { MatchupTree } from '../MatchupTree';
 
 interface BracketType {

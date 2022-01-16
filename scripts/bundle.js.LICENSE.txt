@@ -26,6 +26,8 @@ object-assign
 
 /*! ./Winner */
 
+/*! ./bracketHelper */
+
 /*! ./cjs/react-dom.development.js */
 
 /*! ./cjs/react.development.js */
@@ -35,6 +37,8 @@ object-assign
 /*! ./cjs/scheduler.development.js */
 
 /*! ./components/App */
+
+/*! ./highlight */
 
 /*! object-assign */
 
@@ -98,12 +102,20 @@ object-assign
   !*** ./node_modules/scheduler/index.js ***!
   \*****************************************/
 
+/*!*****************************************!*\
+  !*** ./scripts/components/highlight.ts ***!
+  \*****************************************/
+
 /*!*******************************************!*\
   !*** ./node_modules/scheduler/tracing.js ***!
   \*******************************************/
 
 /*!*********************************************!*\
   !*** ./node_modules/object-assign/index.js ***!
+  \*********************************************/
+
+/*!*********************************************!*\
+  !*** ./scripts/components/bracketHelper.ts ***!
   \*********************************************/
 
 /*!**********************************************!*\
