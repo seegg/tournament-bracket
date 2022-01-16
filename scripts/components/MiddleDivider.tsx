@@ -29,12 +29,12 @@ const MiddleDivider = ({ topId, btmId }: MidDividerProps) => {
   return (
     <div className='middle-divide'>
       {round != 1 && <div className='arrow-filler' style={style.arrow}>
-        <div className={`inner-arrow inner-arrow-top ${topClassName}`} ></div>
-        <div className={`inner-arrow inner-arrow-btm ${btmClassName}`} ></div>
+        <div className={`arrow inner-arrow inner-arrow-top ${topClassName}`} ></div>
+        <div className={`arrow inner-arrow inner-arrow-btm ${btmClassName}`} ></div>
       </div>}
       <div style={style.filler}>
-        <div className={`middle-filler-top ${topClassName + ' ' + btmClassName}`}></div>
-        <div className={`middle-filler-bottom ${topClassName + ' ' + btmClassName}`}></div>
+        <div className={`arrow middle-filler middle-filler-top ${topClassName + ' ' + btmClassName}`}></div>
+        <div className={`arrow middle-filler middle-filler-bottom ${topClassName + ' ' + btmClassName}`}></div>
       </div>
     </div>);
 }
