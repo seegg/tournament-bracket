@@ -12,6 +12,7 @@ const Matchup = ({ matchupNum }: MatchupProps) => {
 
   const [topCell, setTopCell] = useState<Participant | null>(null);
   const [btmCell, setBtmCell] = useState<Participant | null>(null);
+  const [arrowDivs, setArrowDivs] = useState<HTMLDivElement[]>([]);
 
   const { bracket, callbacks } = useContext(BracketContext);
 
@@ -68,12 +69,20 @@ const Matchup = ({ matchupNum }: MatchupProps) => {
     callbacks[bracket?.tree[topCellIndex].parentIndex!]({ ...win });
   }
 
+  /**
+   * get the arrow components associated with one of the Cells and use it
+   * to do the colour transistion of the arrows for the mouseEnter event.
+   */
+  const getArrows = () => {
+
+  }
+
   return (
     <div className='matchup' >
       <div style={style.container}>
-        <Cell position='end' name={topCell?.name || ''} skip={topCell?.skip || false} callback={() => { handleClick('top') }} />
+        <Cell position='end' participant={topCell} callback={() => { handleClick('top') }} />
         <MiddleDivider />
-        <Cell position='start' name={btmCell?.name || ''} skip={btmCell?.skip || false} callback={() => { handleClick('bottom') }} />
+        <Cell position='start' participant={btmCell} callback={() => { handleClick('bottom') }} />
       </div>
     </div >
   );
