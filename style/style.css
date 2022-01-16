@@ -5,6 +5,8 @@
   --cell-radius-sharp: 3px;
   --bg-colour: hsl(180, 15%, 51%);
   --bracket-colour: hsl(180, 25%, 25%);
+  --cell-border-colour:hsl(240, 41%, 14%);
+  --cell-hightligh: hsl(240, 85%, 80%);
 }
 
 html {
@@ -30,7 +32,7 @@ html {
   border-radius: 0.2rem;
   border-style: solid;
   border-width: 2px;
-  border-color: rgb(21, 21, 49);
+  border-color: var(--cell-border-colour);
   background-color: beige;
   cursor: default;
 }
@@ -109,6 +111,10 @@ html {
 
 .arrow-highlight{
   border-color: var(--arrow-highlight);
+}
+
+.cell-highlight{
+  border-color: var(--cell-hightligh);
 }
 
 .matchup{

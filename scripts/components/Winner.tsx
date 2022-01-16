@@ -66,11 +66,11 @@ const Node = ({ position, hidden, callback, participant }: NodeProps) => {
   };
 
   const handleMouseEnter = () => {
-    highlightArrows(participant?.id, 'arrow-highlight', true);
+    highlightArrows(participant?.id, 'arrow-highlight', 'cell-hightlight', true);
   }
 
   const handleMouseLeave = () => {
-    highlightArrows(participant?.id, 'arrow-highlight', false);
+    highlightArrows(participant?.id, 'arrow-highlight', 'cell-highlight', false);
   }
 
   const className = 'arrow-' + participant?.id;

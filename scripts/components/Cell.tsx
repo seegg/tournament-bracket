@@ -38,7 +38,7 @@ const Cell = ({ participant, position, callback, }: CellProps) => {
     //highlight the new cell.
     setTimeout(() => {
       if (highlighted.current) {
-        highlightArrows(participant?.id, 'arrow-highlight', true);
+        highlightArrows(participant?.id, 'arrow-highlight', 'cell-highlight', true);
       }
     }, 100);
 
@@ -46,16 +46,16 @@ const Cell = ({ participant, position, callback, }: CellProps) => {
 
   const handleMouseEnter = () => {
     highlighted.current = true;
-    highlightArrows(participant?.id, 'arrow-highlight', true);
+    highlightArrows(participant?.id, 'arrow-highlight', 'cell-highlight', true);
   }
 
   const handleMouseLeave = () => {
     highlighted.current = false;
-    highlightArrows(participant?.id, 'arrow-highlight', false);
+    highlightArrows(participant?.id, 'arrow-highlight', 'cell-highlight', false);
   }
 
   //class name use to highlight the border on mouse enter events.
-  const hlClassName = (!participant?.id && participant?.id !== 0) ? '' : 'arrow-' + participant.id;
+  const hlClassName = (!participant?.id && participant?.id !== 0) ? '' : 'cell-' + participant.id;
 
   return (
     <div className='cell-container' style={style.cellContainer}>
