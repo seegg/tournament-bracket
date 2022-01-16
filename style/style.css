@@ -54,6 +54,11 @@ html {
   transition: border-color 0.5s;
 }
 
+.winner{
+  border-color: white;
+  transition: border-color 0.5s;
+}
+
 .arrows-container{
   display: flex;
   flex-direction: column;

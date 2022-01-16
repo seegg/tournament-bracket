@@ -29,7 +29,7 @@ const Winner = () => {
     <div className='round'>
       <div className='matchup'>
         <div style={style.container}>
-          <Node position='end' hidden='visible' callback={handleClick} name={winner?.name || ''} />
+          <Node position='end' hidden='visible' callback={handleClick} participant={winner} />
           <MiddleDivider topId={winner?.id === undefined ? null : winner.id} btmId={winner?.id === undefined ? null : winner.id} />
           <Node position='start' hidden='hidden' />
         </div>
@@ -40,13 +40,13 @@ const Winner = () => {
 }
 
 interface NodeProps {
-  name?: string | null | undefined,
   position: 'start' | 'end',
   hidden: 'hidden' | 'visible',
+  participant?: Participant | null,
   callback?: () => void,
 }
 
-const Node = ({ position, hidden, callback, name }: NodeProps) => {
+const Node = ({ position, hidden, callback, participant }: NodeProps) => {
   const style = {
     cellContainer: {
       justifyContent: position,
@@ -58,19 +58,19 @@ const Node = ({ position, hidden, callback, name }: NodeProps) => {
       borderWidth: '4px',
       display: 'flex',
       justifyContent: 'center',
-      borderColor: 'white',
     },
     participant: {
       alignSelf: 'center'
     }
   };
 
+  const className = 'arrow-' + participant?.id;
 
   return (
 
     <div className='cell-container' style={style.cellContainer}>
-      <div className='cell' style={style.cell} onClick={callback}>
-        <p style={style.participant} className='name-text'>{name || ''}</p>
+      <div className={`cell winner ${className}`} style={style.cell} onClick={callback}>
+        <p style={style.participant} className='name-text'>{participant?.name || ''}</p>
       </div>
     </div>
   );
