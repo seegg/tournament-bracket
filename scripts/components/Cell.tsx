@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useRef } from 'react';
 import Arrow from './Arrow';
 import { RoundContext } from './Round';
 import { Participant } from '../MatchupTree'
@@ -11,6 +11,7 @@ interface CellProps {
 
 const Cell = ({ participant, position, callback, }: CellProps) => {
 
+  const highlighted = useRef(false);
 
   const round = useContext(RoundContext);
 
@@ -29,25 +30,36 @@ const Cell = ({ participant, position, callback, }: CellProps) => {
   };
 
   const handleClick = () => {
+    if (!participant?.id && participant?.id !== 0) return;
     callback();
+
+    setTimeout(() => {
+      if (highlighted.current) {
+        highlightArrows(participant?.id, 'arrow-highlight', true);
+      }
+    }, 1000);
+
   }
 
   const handleMouseEnter = () => {
-    if (!participant?.id && participant?.id !== 0) return;
-    highlightArrows('arrow-' + participant.id, 'arrow-highlight', true);
+    // setHighlighted(true);
+    highlighted.current = true;
+    highlightArrows(participant?.id, 'arrow-highlight', true);
   }
 
   const handleMouseLeave = () => {
-    if (!participant?.id && participant?.id !== 0) return;
-    highlightArrows('arrow-' + participant.id, 'arrow-highlight', false);
+    // setHighlighted(false);
+    highlighted.current = false;
+    highlightArrows(participant?.id, 'arrow-highlight', false);
   }
 
   /**
    * Add or remove classes from arrow and divider elements corresponding to the current id
    * to trigger to border colour transistion.
    */
-  const highlightArrows = (className: string, highlightClass: string, isHighlight: boolean) => {
-    let eles = document.getElementsByClassName(className);
+  const highlightArrows = (id: number | null | undefined, highlightClass: string, isHighlight: boolean) => {
+    if (!id && id !== 0) return;
+    let eles = document.getElementsByClassName('arrow-' + id);
     for (let i = 0; i < eles.length; i++) {
       if (isHighlight) {
         eles[i].classList.add(highlightClass);

@@ -12,7 +12,6 @@ const Matchup = ({ matchupNum }: MatchupProps) => {
 
   const [topCell, setTopCell] = useState<Participant | null>(null);
   const [btmCell, setBtmCell] = useState<Participant | null>(null);
-
   const { bracket, callbacks } = useContext(BracketContext);
 
   const topCellIndex = matchupNum * 2;
@@ -67,6 +66,7 @@ const Matchup = ({ matchupNum }: MatchupProps) => {
     if (!win || win.skip) return;
     callbacks[bracket?.tree[topCellIndex].parentIndex!]({ ...win });
   }
+
 
   return (
     <div className='matchup' >
