@@ -54,10 +54,13 @@ const Cell = ({ participant, position, callback, }: CellProps) => {
     highlightArrows(participant?.id, 'arrow-highlight', false);
   }
 
+  //class name use to highlight the border on mouse enter events.
+  const hlClassName = (!participant?.id && participant?.id !== 0) ? '' : 'arrow-' + participant.id;
+
   return (
     <div className='cell-container' style={style.cellContainer}>
       {round != 1 && <Arrow position={position} id={participant?.id === undefined ? null : participant?.id} />}
-      <div className={`border-transition cell cell-${position} ${participant?.skip ? 'cell-bye' : ''}`} style={style.cell} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} onClick={handleClick}>
+      <div className={`border-transition cell cell-${position} ${participant?.skip ? 'cell-bye' : ''} ${hlClassName}`} style={style.cell} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} onClick={handleClick}>
         <p style={style.participant} className='name-text'>{participant?.name || ''}</p>
       </div>
     </div>
