@@ -1,8 +1,17 @@
 import React, { useContext } from 'react';
 import { RoundContext } from './Round';
 
-const MiddleDivider = () => {
+interface MidDividerProps {
+  topId: number | null,
+  btmId: number | null,
+}
+
+const MiddleDivider = ({ topId, btmId }: MidDividerProps) => {
   const round = useContext(RoundContext)
+
+  const topClassName = topId ? 'arrow-' + topId : '';
+  const btmClassName = btmId ? 'arrow-' + btmId : '';
+
   const style = {
     filler: {
       display: 'flex',
@@ -20,12 +29,12 @@ const MiddleDivider = () => {
   return (
     <div className='middle-divide'>
       {round != 1 && <div className='arrow-filler' style={style.arrow}>
-        <div className='inner-arrow inner-arrow-top' ></div>
-        <div className='inner-arrow inner-arrow-btm' ></div>
+        <div className={`inner-arrow inner-arrow-top ${topClassName}`} ></div>
+        <div className={`inner-arrow inner-arrow-btm ${btmClassName}`} ></div>
       </div>}
       <div style={style.filler}>
-        <div className='middle-filler-top'></div>
-        <div className='middle-filler-bottom'></div>
+        <div className={`middle-filler-top ${topClassName + ' ' + btmClassName}`}></div>
+        <div className={`middle-filler-bottom ${topClassName + ' ' + btmClassName}`}></div>
       </div>
     </div>);
 }

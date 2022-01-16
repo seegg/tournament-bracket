@@ -72,7 +72,7 @@ const Matchup = ({ matchupNum }: MatchupProps) => {
     <div className='matchup' >
       <div style={style.container}>
         <Cell position='end' participant={topCell} callback={() => { handleClick('top') }} />
-        <MiddleDivider />
+        <MiddleDivider topId={topCell?.id === undefined ? null : topCell?.id} btmId={btmCell?.id === undefined ? null : btmCell.id} />
         <Cell position='start' participant={btmCell} callback={() => { handleClick('bottom') }} />
       </div>
     </div >
