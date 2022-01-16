@@ -9,8 +9,8 @@ interface MidDividerProps {
 const MiddleDivider = ({ topId, btmId }: MidDividerProps) => {
   const round = useContext(RoundContext)
 
-  const topClassName = topId ? 'arrow-' + topId : '';
-  const btmClassName = btmId ? 'arrow-' + btmId : '';
+  const topClassName = topId !== null ? 'arrow-' + topId : '';
+  const btmClassName = btmId !== null ? 'arrow-' + btmId : '';
 
   const style = {
     filler: {
