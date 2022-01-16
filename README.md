@@ -6,10 +6,8 @@ Specifiy the number of participants or provide a list of names to generate a bra
 
 If the number of participants is not a power of 2, some will automatically advance to the next round to make it fit into this format.
 
-Hover over a name to highlight all the matchups involving that participant.
+Hover over a name to highlight all the matchups as well as the paths involving that participant.
 
 Select a winner by clicking on their name, both matchups needs to be filled before a winner can be selected.
 
-Selecting a different winner will reset all results further up the bracket involving the affected matchup.
-
-The boxes is position mostly with flex-box and uses minimal javascript. Changing the cell and cell-container class in style.css will automatically adjust the size of layout.
+Selecting a different winner will reset all results further up the bracket involving the affected matchup
