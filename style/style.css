@@ -66,7 +66,19 @@ html {
   width: 1.1rem;
   align-self: flex-end;
   flex: 1;
-  border-left:solid rgb(240, 160, 40) 2px ;
+  border-color: var(--arrow-colour);
+  border-width: 2px;
+  border-left-style: solid;
+}
+
+.inner-arrow-top{
+  border-bottom-style: solid;
+  border-bottom-left-radius: 0.5rem;
+}
+
+.inner-arrow-btm{
+  border-top-style: solid;
+  border-top-left-radius: 0.5rem;
 }
 
 .middle-divide{

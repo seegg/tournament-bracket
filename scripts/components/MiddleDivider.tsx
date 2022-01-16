@@ -3,7 +3,6 @@ import { RoundContext } from './Round';
 
 const MiddleDivider = () => {
   const round = useContext(RoundContext)
-  const borderRadius = '0.5rem';
   const style = {
     filler: {
       display: 'flex',
@@ -21,8 +20,8 @@ const MiddleDivider = () => {
   return (
     <div className='middle-divide'>
       {round != 1 && <div className='arrow-filler' style={style.arrow}>
-        <div className='inner-arrow' style={{ borderBottom: 'solid rgb(240, 160, 40) 2px', borderBottomLeftRadius: borderRadius }}></div>
-        <div className='inner-arrow' style={{ borderTop: 'solid rgb(240, 160, 40) 2px', borderTopLeftRadius: borderRadius }}></div>
+        <div className='inner-arrow inner-arrow-top' ></div>
+        <div className='inner-arrow inner-arrow-btm' ></div>
       </div>}
       <div style={style.filler}>
         <div className='middle-filler-top'></div>
