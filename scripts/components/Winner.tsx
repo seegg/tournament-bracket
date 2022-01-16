@@ -30,7 +30,7 @@ const Winner = () => {
       <div className='matchup'>
         <div style={style.container}>
           <Node position='end' hidden='visible' callback={handleClick} name={winner?.name || ''} />
-          <MiddleDivider />
+          <MiddleDivider topId={winner?.id === undefined ? null : winner.id} btmId={winner?.id === undefined ? null : winner.id} />
           <Node position='start' hidden='hidden' />
         </div>
       </div >

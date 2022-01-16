@@ -33,6 +33,8 @@ const Cell = ({ participant, position, callback, }: CellProps) => {
     if (!participant?.id && participant?.id !== 0) return;
     callback();
 
+    //wait a certain amount of time, if a matchup is decided then
+    //highlight the new cell.
     setTimeout(() => {
       if (highlighted.current) {
         highlightArrows(participant?.id, 'arrow-highlight', true);
