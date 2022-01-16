@@ -2,6 +2,7 @@
   --arrow-width: 0.1rem;
   --arrow-border: solid hsl(36, 87%, 55%) 0.2rem;
   --arrow-colour: hsl(36, 87%, 55%);
+  --arrow-highlight: hsl(36, 57%, 85%);
   --cell-radius-sharp: 3px;
   --bg-colour: hsl(180, 15%, 51%);
   --bracket-colour: hsl(180, 25%, 25%);
@@ -58,6 +59,7 @@ html {
   width: 1rem;
   flex: 1;
   border-color: var(--arrow-colour);
+  transition: border-color 0.5s;
 }
 
 .middle-divide{
@@ -73,6 +75,10 @@ html {
 .middle-filler-bottom{
   flex: 1 1 auto;
   border-top: var(--arrow-border);
+}
+
+.arrow-highlight{
+  border-color: var(--arrow-highlight);
 }
 
 .matchup{

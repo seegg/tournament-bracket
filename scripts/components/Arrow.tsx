@@ -23,11 +23,14 @@ const Arrow = ({ position }: ArrowProps) => {
     }
   };
 
+  const handleClick = (evt: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    (evt.target as HTMLDivElement).classList.toggle('arrow-highlight');
+  }
 
   return (
     <div className='arrows-container'>
       {position === 'end' && gapFiller}
-      <div className='arrow-divide' style={position === 'start' ? style.border : {}}></div>
+      <div className='arrow-divide' onClick={handleClick} style={position === 'start' ? style.border : {}} ></div>
       <div className='arrow-divide' style={position === 'start' ? {} : style.border}></div>
       {position === 'start' && gapFiller}
     </div>
