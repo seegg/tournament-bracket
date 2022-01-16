@@ -48,14 +48,16 @@ html {
   box-shadow: none;
 }
 
+.border-transition{
+  transition: border-color 0.5s;
+}
+
 .arrow{
   border-color: var(--arrow-colour);
-  transition: border-color 0.5s;
 }
 
 .winner{
   border-color: white;
-  transition: border-color 0.5s;
 }
 
 .arrows-container{

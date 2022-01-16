@@ -78,7 +78,7 @@ const Node = ({ position, hidden, callback, participant }: NodeProps) => {
   return (
 
     <div className='cell-container' style={style.cellContainer}>
-      <div className={`cell winner ${className}`} style={style.cell} onClick={callback} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+      <div className={`border-transition cell winner ${className}`} style={style.cell} onClick={callback} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
         <p style={style.participant} className='name-text'>{participant?.name || ''}</p>
       </div>
     </div>

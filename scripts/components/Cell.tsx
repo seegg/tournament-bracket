@@ -57,7 +57,7 @@ const Cell = ({ participant, position, callback, }: CellProps) => {
   return (
     <div className='cell-container' style={style.cellContainer}>
       {round != 1 && <Arrow position={position} id={participant?.id === undefined ? null : participant?.id} />}
-      <div className={`cell cell-${position} ${participant?.skip ? 'cell-bye' : ''}`} style={style.cell} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} onClick={handleClick}>
+      <div className={`border-transition cell cell-${position} ${participant?.skip ? 'cell-bye' : ''}`} style={style.cell} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} onClick={handleClick}>
         <p style={style.participant} className='name-text'>{participant?.name || ''}</p>
       </div>
     </div>

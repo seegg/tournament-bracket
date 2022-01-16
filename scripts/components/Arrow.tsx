@@ -31,8 +31,8 @@ const Arrow = ({ position, id }: ArrowProps) => {
   return (
     <div className='arrows-container'>
       {position === 'end' && gapFiller}
-      <div className={`arrow arrow-divide top ${arrowClass}`} style={position === 'start' ? style.border : {}} ></div>
-      <div className={`arrow arrow-divide btm ${arrowClass}`} style={position === 'start' ? {} : style.border}></div>
+      <div className={`border-transition arrow arrow-divide top ${arrowClass}`} style={position === 'start' ? style.border : {}} ></div>
+      <div className={`border-transition arrow arrow-divide btm ${arrowClass}`} style={position === 'start' ? {} : style.border}></div>
       {position === 'start' && gapFiller}
     </div>
   );
