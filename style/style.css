@@ -149,6 +149,7 @@ html {
   border-top-left-radius: 0.2rem;
   border-top-right-radius: 0.2rem;
   transition: height 0.5s;
+  box-shadow: 3px 3px 5px black;
 }
 
 .bracket{
@@ -156,7 +157,7 @@ html {
   background-color: var(--bracket-colour);
   padding-left: 0.5rem;
   padding-right: 0.5rem;
-
+  box-shadow: 3px 3px 5px black;
 }
 
 .round{
