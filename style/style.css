@@ -159,3 +159,13 @@ p.name-text{
   overflow: hidden;
   text-overflow: ellipsis; 
 }
+
+.input-item{
+  border: none;
+  border-radius: 3px;
+  box-shadow: 1px 1px 3px black;
+}
+
+.input-item:focus{
+  box-shadow: 3px 1px 5px black;
+}
