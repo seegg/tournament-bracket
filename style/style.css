@@ -1,13 +1,24 @@
 :root{
+
+  /* arrow */
   --arrow-width: 0.1rem;
-  --arrow-colour: hsl(0, 0%, 70%);
-  --arrow-highlight:hsl(37, 91%, 50%);
-  --cell-radius-sharp: 3px;
+  --arrow-colour: hsl(209, 91%, 22%);
+  --arrow-highlight:hsl(83, 51%, 92%);
+
   --bg-colour: hsl(180, 15%, 51%);
-  --bracket-colour: hsl(180, 25%, 25%);
+  --bracket-colour: hsl(146, 64%, 61%);
+
+
+  /* Cell */
+  --cell-radius-sharp: 3px;
   --cell-border-colour:hsl(240, 10%, 40%);
   --cell-hightligh: hsl(240, 50%, 50%);
+  --cell-bg-colour: hsl(60, 56%, 91%);
+
+
+  /* input */
   --input-transition-duration:(0.25s);
+  --input-bg-colour: hsl(168, 45%, 40%);
 }
 
 html {
@@ -30,11 +41,11 @@ html {
   height: 2rem;
   width: 12rem;
   min-width: 10rem;
-  /* border-radius: 0.3rem; */
+  border-radius: 2px;
   border-style: solid;
   border-width: 2px;
   border-color: var(--cell-border-colour);
-  background-color: beige;
+  background-color: var(--cell-bg-colour);
   cursor: default;
 }
 
@@ -116,8 +127,9 @@ html {
 
 .cell-highlight{
   border-width: 2px;
-  outline: white solid 1px;
-  /* border-color: var(--cell-hightligh); */
+  outline-style: solid;
+  outline-width: 1px;
+  outline-color: var(--arrow-highlight);
 }
 
 .matchup{
@@ -129,7 +141,7 @@ html {
   display: flex;
   align-items: flex-start;
   min-height: 3rem;
-  background-color: aquamarine;
+  background-color: var(--input-bg-colour);
   padding: 0.5rem;
   padding-left: 0;
   border-top-left-radius: 0.2rem;
