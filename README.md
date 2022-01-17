@@ -13,6 +13,6 @@ Select a winner by clicking on their name, both matchups needs to be filled befo
 Selecting a different winner will reset all results further up the bracket involving the affected matchup
 
 The bracket itself is stored as a binary tree and made available throughout the app using a context provider.
-The context provider acts as a sort of scuffed global state manager and is only use to access the reference for the bracket. Updates are done outside of the provider to avoid triggering a re-render of every context consumer which is very noticeable on large brackets.
+The provider acts as a sort of scuffed global state manager and is only use to access the references for the bracket. Updates are done outside of the provider to avoid triggering a re-render of every consumer of that provider which is very noticeable on large brackets.
 
 The layout is done mostly through flex-box in css, the size and shape depends on the cell and cell-container classes.
