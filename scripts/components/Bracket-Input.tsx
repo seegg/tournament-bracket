@@ -59,7 +59,7 @@ const BracketInput = ({ callback }: InputProps) => {
       callback(Number(participantNum) || 0);
     } else {
       //matches any word, hypenated word or quotes.
-      const nameArray = participantNames.match(/[\w-]+|"[^"]+"/g);
+      const nameArray = participantNames.match(/[\w-]+|"[^"]+"/g)?.map(word => word.replace(/"/g, ''));
       callback(nameArray?.length || 0, nameArray || []);
     }
   }
