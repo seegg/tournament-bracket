@@ -117,7 +117,7 @@ html {
 .cell-highlight{
   border-width: 2px;
   outline: white solid 1px;
-  border-color: var(--cell-hightligh);
+  /* border-color: var(--cell-hightligh); */
 }
 
 .matchup{
