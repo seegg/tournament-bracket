@@ -12,7 +12,7 @@ interface CellProps {
   participant: Participant | null,
 }
 
-const Cell = ({ participant, position, callback, }: CellProps) => {
+const Cell = ({ participant, position, callback, editCallback }: CellProps) => {
 
   const [isInEditMode, setIsInEditMode] = useState(false);
 
@@ -81,11 +81,18 @@ const Cell = ({ participant, position, callback, }: CellProps) => {
       const value = (evt.target as HTMLInputElement).value.trim();
       if (!value) {
         alert('Name can\'t be an empty string.');
+        (evt.target as HTMLInputElement).value = participant!.name;
         return;
       }
+      editCallback(position, value);
+      setIsInEditMode(false);
+    } else if (evt.key === 'Escape') {
+      setIsInEditMode(false);
+      (evt.target as HTMLInputElement).value = participant!.name;
     }
   };
 
+  //if input loose focus, exit edit mode and set value back to the original.
   const handleBlur = (evt: React.FocusEvent<HTMLInputElement, Element>) => {
     setIsInEditMode(false);
     (evt.target as HTMLInputElement).value = participant!.name;
