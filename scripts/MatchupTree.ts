@@ -1,10 +1,6 @@
-export interface Participant {
-  name: string,
-  id?: number,
-  skip: boolean
-}
+import { Participant } from './types/types';
 
-export interface Node {
+interface Node {
   value: Participant | null;
   index: number,
   parentIndex: number | null;

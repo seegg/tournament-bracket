@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
-import MatchupTree, { Participant } from '../MatchupTree';
+import MatchupTree from '../MatchupTree';
+import { Participant } from '../types/types';
 import Cell from './Cell';
 import MiddleDivider from './MiddleDivider';
 import { BracketContext } from './App';

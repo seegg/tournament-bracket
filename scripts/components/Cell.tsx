@@ -1,7 +1,7 @@
 import React, { useContext, useRef, useState, useEffect } from 'react';
 import Arrow from './Arrow';
 import { RoundContext } from './Round';
-import { Participant } from '../MatchupTree';
+import { Participant } from '../types/types';
 import { highlightArrows } from './highlight';
 import { CellPosition } from '../types/types';
 
