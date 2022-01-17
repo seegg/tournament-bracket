@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent, KeyboardEvent } from 'react';
+import React, { useState, ChangeEvent, KeyboardEvent, useEffect } from 'react';
 
 interface InputProps {
   callback: (participantNum: number, participantNames?: string[]) => void;
@@ -35,6 +35,17 @@ const BracketInput = ({ callback }: InputProps) => {
     }
   }
 
+  useEffect(() => {
+    const btnTriangle = document.getElementById('btn-triangle');
+    const textInput = document.getElementById('text-input');
+    if (!isNumberInput) {
+      btnTriangle?.classList.add('rotate-180');
+      textInput?.classList.add('text-input-expand');
+    } else {
+      btnTriangle?.classList.remove('rotate-180')
+    }
+  }, [isNumberInput])
+
   //use names or number to create the bracket depending on
   //whether isNumberInput is true or false.
   const submitParticipants = () => {
@@ -63,20 +74,6 @@ const BracketInput = ({ callback }: InputProps) => {
       height: '2rem',
       width: '2rem'
     },
-    input: {
-      marginLeft: '0.5rem',
-      height: '2rem',
-      fontSize: '1rem',
-      maxWidth: '15rem',
-      width: '100%',
-      flexShrink: '1',
-    },
-    textArea: {
-      marginLeft: '0.5rem',
-      fontSize: '1rem',
-      maxWidth: '15rem',
-      width: '100%'
-    },
     toggleButton: {
       display: 'flex',
       justifyContent: 'center',
@@ -88,13 +85,13 @@ const BracketInput = ({ callback }: InputProps) => {
   };
 
   //Input and textarea for constructing the bracket.
-  const input = <input className='number-input input-item' style={style.input} type="text" placeholder='Number of participants' name="input" id="pariticipant-input" value={participantNum} onChange={handleNumChange} onKeyPress={handleKeyPress} />;
+  const input = <input className='number-input input-item' type="text" placeholder='Number of participants' name="input" id="number-input" value={participantNum} onChange={handleNumChange} onKeyPress={handleKeyPress} />;
 
-  const textArea = <textarea className='text-input input-item' name="" id="" cols={30} rows={10} style={style.textArea} value={participantNames} onChange={handleTextChange} placeholder='Names of participants. Comma, space, and new line seperated. Combine words with double quotes, "Potato and soccer" and hypen, cat-dog.'></textarea>;
+  const textArea = <textarea className='text-input input-item' name="" id="text-input" value={participantNames} onChange={handleTextChange} placeholder='Names of participants. Comma, space, and new line seperated. Combine words with double quotes, "Potato and soccer" and hypen, cat-dog.'></textarea>;
 
   return (
     <div className='bracket-input' id='b-input'>
-      <button style={style.toggleButton} onClick={toggleInput}>{isNumberInput ? <>&#9660;</> : <>&#9650;</>}</button>
+      <button style={style.toggleButton} onClick={toggleInput}><span id='btn-triangle'>&#9660;</span></button>
       {isNumberInput ? input : textArea}
       <button style={style.button} onClick={handleClick}>Go</button>
     </div>
