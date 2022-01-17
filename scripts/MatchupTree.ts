@@ -15,7 +15,7 @@ export interface Node {
 
 //binary tree for the matchup results, store as an array in reverse order.
 //The tree is filled bottom up.
-export class MatchupTree {
+export default class MatchupTree {
   tree: Node[] = [];
   root: Node | null = null;
   constructor(participantNo: number, matchups: number[], names: string[]) {
