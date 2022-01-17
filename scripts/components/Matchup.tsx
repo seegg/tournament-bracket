@@ -3,12 +3,11 @@ import MatchupTree, { Participant } from '../MatchupTree';
 import Cell from './Cell';
 import MiddleDivider from './MiddleDivider';
 import { BracketContext } from './App';
+import { CellPosition } from '../types/types';
 
 interface MatchupProps {
   matchupNum: number
 }
-
-type CellPosition = 'end' | 'start';
 
 const Matchup = ({ matchupNum }: MatchupProps) => {
 
@@ -77,9 +76,9 @@ const Matchup = ({ matchupNum }: MatchupProps) => {
   return (
     <div className='matchup' >
       <div style={style.container}>
-        <Cell position='end' participant={topCell} callback={handleClick} />
+        <Cell position='end' participant={topCell} callback={handleClick} editCallback={editCallback} />
         <MiddleDivider topId={topCell?.id === undefined ? null : topCell?.id} btmId={btmCell?.id === undefined ? null : btmCell.id} />
-        <Cell position='start' participant={btmCell} callback={handleClick} />
+        <Cell position='start' participant={btmCell} callback={handleClick} editCallback={editCallback} />
       </div>
     </div >
   );

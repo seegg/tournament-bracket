@@ -3,10 +3,12 @@ import Arrow from './Arrow';
 import { RoundContext } from './Round';
 import { Participant } from '../MatchupTree';
 import { highlightArrows } from './highlight';
+import { CellPosition } from '../types/types';
 
 interface CellProps {
-  position: 'end' | 'start',
-  callback: (pos: 'end' | 'start') => void,
+  position: CellPosition,
+  callback: (pos: CellPosition) => void,
+  editCallback: (pos: CellPosition, value: string) => void,
   participant: Participant | null,
 }
 
@@ -84,8 +86,9 @@ const Cell = ({ participant, position, callback, }: CellProps) => {
     }
   };
 
-  const cb = () => {
-    console.log('not ended')
+  const handleBlur = (evt: React.FocusEvent<HTMLInputElement, Element>) => {
+    setIsInEditMode(false);
+    (evt.target as HTMLInputElement).value = participant!.name;
   };
 
   //class name use to highlight the border on mouse enter events.
@@ -95,7 +98,7 @@ const Cell = ({ participant, position, callback, }: CellProps) => {
     <div className='cell-container' style={style.cellContainer}>
       {round != 1 && <Arrow position={position} id={participant?.id === undefined ? null : participant?.id} />}
       <div className={`border-transition cell cell-${position} ${participant?.skip ? 'cell-bye' : ''} ${hlClassName}`} style={style.cell} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} onClick={handleClick} onContextMenu={handleContextMenu}>
-        {isInEditMode && round === 1 ? <input className='cell-input' type="text" name="cell-edit" id={inputID} defaultValue={participant?.name || ''} onKeyPress={handleKeyPress} /> : <p style={style.participant} className='name-text'>{participant?.name || ''}</p>}
+        {isInEditMode && round === 1 ? <input className='cell-input' type="text" name="cell-edit" id={inputID} defaultValue={participant?.name || ''} onKeyPress={handleKeyPress} onBlur={handleBlur} /> : <p style={style.participant} className='name-text'>{participant?.name || ''}</p>}
       </div>
     </div>
   );
