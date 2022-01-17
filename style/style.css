@@ -7,7 +7,7 @@
   --bracket-colour: hsl(180, 25%, 25%);
   --cell-border-colour:hsl(240, 10%, 40%);
   --cell-hightligh: hsl(240, 50%, 50%);
-  --input-transition-duration:(0.5s);
+  --input-transition-duration:(0.25s);
 }
 
 html {
@@ -176,15 +176,22 @@ p.name-text{
 .number-input{
   height: 2rem;
   flex-shrink: 1;
+  transition: height 0.25s ease-in;
+}
+
+.number-input-expand{
+  height: 25rem;
 }
 
 .text-input{
   height: 2rem;
-  transition: height 0.5s;
+  resize: none;
+  transition: height 0.25s ease-in;
 }
 
 .text-input-expand{
   height: 25rem;
+  max-height: 25rem;
 }
 
 .input-item:focus{
@@ -194,7 +201,7 @@ p.name-text{
 }
 
 #btn-triangle{
-  transition: transform 0.5s;
+  transition: transform 0.25s;
 }
 
 .rotate-180{

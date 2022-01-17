@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent, KeyboardEvent, useEffect } from 'react';
+import React, { useState, ChangeEvent, KeyboardEvent, useEffect, useRef } from 'react';
 
 interface InputProps {
   callback: (participantNum: number, participantNames?: string[]) => void;
@@ -9,6 +9,8 @@ const BracketInput = ({ callback }: InputProps) => {
   const [participantNum, setparticipantNum] = useState('');
   const [participantNames, setParticipantNames] = useState('');
   const [isNumberInput, setIsNumberInput] = useState(true);
+
+  const lastInputIsNum = useRef(true);
 
   //matches either a whole number or an empty string.
   const wholeNumberRegex = new RegExp(/(^\d+$)|(^$)/);
@@ -36,13 +38,19 @@ const BracketInput = ({ callback }: InputProps) => {
   }
 
   useEffect(() => {
+    //Use lstInputIsNum ref to decide whether to add or remove class
+    //on number input to animate height transition.
     const btnTriangle = document.getElementById('btn-triangle');
     const textInput = document.getElementById('text-input');
+    const numInput = document.getElementById('number-input');
     if (!isNumberInput) {
       btnTriangle?.classList.add('rotate-180');
       textInput?.classList.add('text-input-expand');
+      lastInputIsNum.current = false;
     } else {
       btnTriangle?.classList.remove('rotate-180')
+      numInput?.classList.remove('number-input-expand');
+      lastInputIsNum.current = true;
     }
   }, [isNumberInput])
 
@@ -85,7 +93,7 @@ const BracketInput = ({ callback }: InputProps) => {
   };
 
   //Input and textarea for constructing the bracket.
-  const input = <input className='number-input input-item' type="text" placeholder='Number of participants' name="input" id="number-input" value={participantNum} onChange={handleNumChange} onKeyPress={handleKeyPress} />;
+  const input = <input className={`number-input input-item ${lastInputIsNum.current ? '' : 'number-input-expand'}`} type="text" placeholder='Number of participants' name="input" id="number-input" value={participantNum} onChange={handleNumChange} onKeyPress={handleKeyPress} />;
 
   const textArea = <textarea className='text-input input-item' name="" id="text-input" value={participantNames} onChange={handleTextChange} placeholder='Names of participants. Comma, space, and new line seperated. Combine words and add non alphanumeric characters with double quotes and hypen, "Potatos and soccer=Ball&lsquo;s" cat-dog.'></textarea>;
 
