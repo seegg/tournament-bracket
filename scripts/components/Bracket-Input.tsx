@@ -1,13 +1,13 @@
 import React, { useState, ChangeEvent, KeyboardEvent, useEffect, useRef } from 'react';
 
 interface InputProps {
-  callback: (participantNum: number, participantNames?: string[]) => void;
+  callback: (participantNum: number, participantText?: string[]) => void;
 }
 
 const BracketInput = ({ callback }: InputProps) => {
 
   const [participantNum, setparticipantNum] = useState('');
-  const [participantNames, setParticipantNames] = useState('');
+  const [participantText, setParticipantText] = useState('');
   const [isNumberInput, setIsNumberInput] = useState(true);
 
   const lastInputIsNum = useRef(true);
@@ -24,7 +24,7 @@ const BracketInput = ({ callback }: InputProps) => {
 
   const handleTextChange = (e: ChangeEvent) => {
     const value = (e.target as HTMLTextAreaElement).value;
-    setParticipantNames(value);
+    setParticipantText(value);
   }
 
   const handleClick = (): void => {
@@ -67,7 +67,7 @@ const BracketInput = ({ callback }: InputProps) => {
       callback(Number(participantNum) || 0);
     } else {
       //matches any word, hypenated word or quotes.
-      const nameArray = participantNames.match(/[\w-]+|"[^"]+"/g)?.map(word => word.replace(/"/g, ''));
+      const nameArray = participantText.match(/[\w-]+|"[^"]+"/g)?.map(word => word.replace(/"/g, ''));
       callback(nameArray?.length || 0, nameArray || []);
     }
   }
@@ -95,7 +95,7 @@ const BracketInput = ({ callback }: InputProps) => {
   //Input and textarea for constructing the bracket.
   const input = <input className={`number-input input-item ${lastInputIsNum.current ? '' : 'number-input-expand'}`} type="text" placeholder='Number of participants' name="input" id="number-input" value={participantNum} onChange={handleNumChange} onKeyPress={handleKeyPress} />;
 
-  const textArea = <textarea className='text-input input-item' name="" id="text-input" value={participantNames} onChange={handleTextChange} placeholder='Names of participants. Comma, space, and new line seperated. Combine words and add non alphanumeric characters with double quotes and hypen, "Potatos and soccer=Ball&lsquo;s" cat-dog.'></textarea>;
+  const textArea = <textarea className='text-input input-item' name="" id="text-input" value={participantText} onChange={handleTextChange} placeholder='Names of participants. Comma, space, and new line seperated. Combine words and add non alphanumeric characters with double quotes and hypen, "Potatos and soccer=Ball&lsquo;s" cat-dog.'></textarea>;
 
   return (
     <div className='bracket-input' id='b-input'>
