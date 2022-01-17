@@ -19,7 +19,7 @@ export interface Node {
 export class MatchupTree {
   tree: Node[] = [];
   root: Node | null = null;
-  constructor(participantNo: number, matchups: number[], names: string[] = thing.things) {
+  constructor(participantNo: number, matchups: number[], names: string[]) {
     if (!participantNo || matchups.length <= 0) return;
 
     const totalNodes = matchups.reduce((sum, value) => sum + value * 2, 1);
@@ -93,7 +93,7 @@ export class MatchupTree {
   }
 }
 
-function shuffle(array: any[]) {
+export function shuffle(array: any[]) {
   let currentIndex = array.length, randomIndex;
 
   // While there remain elements to shuffle...
@@ -110,5 +110,3 @@ function shuffle(array: any[]) {
 
   return array;
 }
-
-shuffle(thing.things);

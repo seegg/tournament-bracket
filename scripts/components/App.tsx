@@ -3,6 +3,8 @@ import BracketInput from './Bracket-Input';
 import Bracket from './Bracket';
 import { makeBracket } from './bracketHelper';
 import { MatchupTree } from '../MatchupTree';
+import thing from '../../things.json';
+import shuffle from '../shuffle';
 
 interface BracketType {
   bracket: MatchupTree | null,
@@ -11,7 +13,7 @@ interface BracketType {
 }
 
 export const BracketContext = createContext({
-  bracket: new MatchupTree(0, []),
+  bracket: new MatchupTree(0, [], []),
   setBracket: () => { },
   callbacks: []
 } as BracketType);
@@ -30,7 +32,7 @@ const App = () => {
       if (participants.names.length > 0) {
         setBracket(new MatchupTree(participants!.count, rounds, participants.names));
       } else {
-        setBracket(new MatchupTree(participants!.count, rounds));
+        setBracket(new MatchupTree(participants!.count, rounds, shuffle(thing.things)));
       }
     }
   }, [rounds]);

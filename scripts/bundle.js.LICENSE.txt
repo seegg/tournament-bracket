@@ -4,9 +4,11 @@ object-assign
 @license MIT
 */
 
+/*! ../../things.json */
+
 /*! ../MatchupTree */
 
-/*! ../things.json */
+/*! ../shuffle */
 
 /*! ./App */
 
@@ -57,6 +59,10 @@ object-assign
 /*!***************************!*\
   !*** ./scripts/index.tsx ***!
   \***************************/
+
+/*!****************************!*\
+  !*** ./scripts/shuffle.ts ***!
+  \****************************/
 
 /*!********************************!*\
   !*** ./scripts/MatchupTree.ts ***!
