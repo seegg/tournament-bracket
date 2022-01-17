@@ -7,7 +7,7 @@ interface ArrowProps {
 
 const Arrow = ({ position, id }: ArrowProps) => {
 
-  const borderRadius = '0.5rem';
+  const borderRadius = '0.2rem';
   const gapFiller = <div className='gap-filler' style={{ height: '0.5rem' }}></div>;
 
   const arrowClass = 'arrow-' + id;
