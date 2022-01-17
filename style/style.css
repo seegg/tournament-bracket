@@ -64,6 +64,12 @@ html {
   box-shadow: none;
 }
 
+input.cell-input{
+    width: 12rem;
+    height: 2rem;
+    border-radius: 3px;
+}
+
 .border-transition{
   transition: border-color 0.5s, outline 0.5s;
 }
