@@ -8,6 +8,8 @@ interface MatchupProps {
   matchupNum: number
 }
 
+type CellPosition = 'end' | 'start';
+
 const Matchup = ({ matchupNum }: MatchupProps) => {
 
   const [topCell, setTopCell] = useState<Participant | null>(null);
@@ -60,20 +62,24 @@ const Matchup = ({ matchupNum }: MatchupProps) => {
     }
   };
 
-  const handleClick = (cell: 'top' | 'bottom') => {
-    const win = cell === 'top' ? topCell : btmCell;
+  const handleClick = (cell: CellPosition) => {
+    const win = cell === 'end' ? topCell : btmCell;
     if (!topCell || !btmCell) return;
     if (!win || win.skip) return;
     callbacks[bracket?.tree[topCellIndex].parentIndex!]({ ...win });
+  };
+
+  const editCallback = (cell: CellPosition, value: string) => {
+
   };
 
 
   return (
     <div className='matchup' >
       <div style={style.container}>
-        <Cell position='end' participant={topCell} callback={() => { handleClick('top') }} />
+        <Cell position='end' participant={topCell} callback={handleClick} />
         <MiddleDivider topId={topCell?.id === undefined ? null : topCell?.id} btmId={btmCell?.id === undefined ? null : btmCell.id} />
-        <Cell position='start' participant={btmCell} callback={() => { handleClick('bottom') }} />
+        <Cell position='start' participant={btmCell} callback={handleClick} />
       </div>
     </div >
   );

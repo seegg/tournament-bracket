@@ -6,7 +6,7 @@ import { highlightArrows } from './highlight';
 
 interface CellProps {
   position: 'end' | 'start',
-  callback: () => void,
+  callback: (pos: 'end' | 'start') => void,
   participant: Participant | null,
 }
 
@@ -45,7 +45,7 @@ const Cell = ({ participant, position, callback, }: CellProps) => {
   const handleClick = () => {
     if (!participant?.id && participant?.id !== 0) return;
     if (isInEditMode) return;
-    callback();
+    callback(position);
 
     //wait a certain amount of time, if a matchup is decided then
     //highlight the new cell.
@@ -67,15 +67,25 @@ const Cell = ({ participant, position, callback, }: CellProps) => {
     highlightArrows(participant?.id, 'arrow-highlight', 'cell-highlight', false);
   };
 
+  //allow editing of participant names on context menu but only if its the first round.
   const handleContextMenu = (evt: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     evt.preventDefault();
+    if (round != 1) return;
     setIsInEditMode(true);
   };
 
   const handleKeyPress = (evt: React.KeyboardEvent<HTMLInputElement>) => {
     if (evt.key === 'Enter') {
-      console.log('enter');
+      const value = (evt.target as HTMLInputElement).value.trim();
+      if (!value) {
+        alert('Name can\'t be an empty string.');
+        return;
+      }
     }
+  };
+
+  const cb = () => {
+    console.log('not ended')
   };
 
   //class name use to highlight the border on mouse enter events.
@@ -85,7 +95,7 @@ const Cell = ({ participant, position, callback, }: CellProps) => {
     <div className='cell-container' style={style.cellContainer}>
       {round != 1 && <Arrow position={position} id={participant?.id === undefined ? null : participant?.id} />}
       <div className={`border-transition cell cell-${position} ${participant?.skip ? 'cell-bye' : ''} ${hlClassName}`} style={style.cell} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} onClick={handleClick} onContextMenu={handleContextMenu}>
-        {isInEditMode ? <input className='cell-input' type="text" name="cell-edit" id={inputID} defaultValue={participant?.name || ''} onKeyPress={handleKeyPress} /> : <p style={style.participant} className='name-text'>{participant?.name || ''}</p>}
+        {isInEditMode && round === 1 ? <input className='cell-input' type="text" name="cell-edit" id={inputID} defaultValue={participant?.name || ''} onKeyPress={handleKeyPress} /> : <p style={style.participant} className='name-text'>{participant?.name || ''}</p>}
       </div>
     </div>
   );
