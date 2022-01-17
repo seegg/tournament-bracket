@@ -66,7 +66,7 @@ const Node = ({ position, hidden, callback, participant }: NodeProps) => {
   };
 
   const handleMouseEnter = () => {
-    highlightArrows(participant?.id, 'arrow-highlight', 'cell-hightlight', true);
+    highlightArrows(participant?.id, 'arrow-highlight', 'cell-highlight', true);
   }
 
   const handleMouseLeave = () => {
