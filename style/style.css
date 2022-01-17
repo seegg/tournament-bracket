@@ -52,7 +52,7 @@ html {
 }
 
 .border-transition{
-  transition: border-color 0.5s, outline 0.25s;
+  transition: border-color 0.5s, outline 0.5s;
 }
 
 .arrow{
