@@ -6,7 +6,7 @@
   --arrow-highlight:hsl(83, 51%, 92%);
 
   --bg-colour: hsl(180, 15%, 51%);
-  --bracket-colour: hsl(146, 64%, 61%);
+  --bracket-colour: hsl(168, 45%, 40%);
 
 
   /* Cell */
@@ -14,11 +14,13 @@
   --cell-border-colour:hsl(240, 10%, 40%);
   --cell-hightligh: hsl(240, 50%, 50%);
   --cell-bg-colour: hsl(60, 56%, 91%);
+  --cell-bye-colour: var(--bracket-colour);
+  --cell-winner-bg-colour: var(--arrow-colour);
 
 
   /* input */
   --input-transition-duration:(0.25s);
-  --input-bg-colour: hsl(168, 45%, 40%);
+  --input-bg-colour: hsl(146, 64%, 61%);
 }
 
 html {
@@ -55,7 +57,7 @@ html {
 
 .cell-bye{
   filter: grayscale(40%);
-  background-color: var(--bg-colour);
+  background-color: var(--cell-bye-colour);
 }
 
 .cell-bye:hover{
@@ -71,7 +73,7 @@ html {
 }
 
 .winner{
-  border-color: white;
+  border-color: var(--cell-winner-bg-colour);
 }
 
 .arrows-container{

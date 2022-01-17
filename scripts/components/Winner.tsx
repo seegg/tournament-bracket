@@ -56,7 +56,7 @@ const Node = ({ position, hidden, callback, participant }: NodeProps) => {
     },
     cell: {
       alignSelf: position,
-      borderWidth: '4px',
+      borderWidth: '2px',
       display: 'flex',
       justifyContent: 'center',
     },
