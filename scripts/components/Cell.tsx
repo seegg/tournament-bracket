@@ -72,8 +72,10 @@ const Cell = ({ participant, position, callback, }: CellProps) => {
     setIsInEditMode(true);
   };
 
-  const handleKeyPress = () => {
-
+  const handleKeyPress = (evt: React.KeyboardEvent<HTMLInputElement>) => {
+    if (evt.key === 'Enter') {
+      console.log('enter');
+    }
   };
 
   //class name use to highlight the border on mouse enter events.
@@ -83,7 +85,7 @@ const Cell = ({ participant, position, callback, }: CellProps) => {
     <div className='cell-container' style={style.cellContainer}>
       {round != 1 && <Arrow position={position} id={participant?.id === undefined ? null : participant?.id} />}
       <div className={`border-transition cell cell-${position} ${participant?.skip ? 'cell-bye' : ''} ${hlClassName}`} style={style.cell} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} onClick={handleClick} onContextMenu={handleContextMenu}>
-        {isInEditMode ? <input className='cell-input' type="text" name="cell-edit" id={inputID} defaultValue={participant?.name || ''} /> : <p style={style.participant} className='name-text'>{participant?.name || ''}</p>}
+        {isInEditMode ? <input className='cell-input' type="text" name="cell-edit" id={inputID} defaultValue={participant?.name || ''} onKeyPress={handleKeyPress} /> : <p style={style.participant} className='name-text'>{participant?.name || ''}</p>}
       </div>
     </div>
   );

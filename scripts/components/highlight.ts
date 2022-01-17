@@ -21,4 +21,4 @@ export const highlightArrows = (id: number | null | undefined, arrowClass: strin
       cells[j].classList.remove(cellClass);
     }
   }
-}
+};

@@ -24,7 +24,7 @@ const Winner = () => {
   };
 
   const handleClick = (): void => {
-  }
+  };
 
   return (
     <div className='round'>
@@ -67,11 +67,11 @@ const Node = ({ position, hidden, callback, participant }: NodeProps) => {
 
   const handleMouseEnter = () => {
     highlightArrows(participant?.id, 'arrow-highlight', 'cell-highlight', true);
-  }
+  };
 
   const handleMouseLeave = () => {
     highlightArrows(participant?.id, 'arrow-highlight', 'cell-highlight', false);
-  }
+  };
 
   const className = 'arrow-' + participant?.id;
 
@@ -83,6 +83,6 @@ const Node = ({ position, hidden, callback, participant }: NodeProps) => {
       </div>
     </div>
   );
-}
+};
 
 export default Winner;

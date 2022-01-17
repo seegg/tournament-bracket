@@ -2,7 +2,7 @@ const getNumberOfMathcupsInRound = (participantNo: number): number => {
   if (participantNo < 1) return 0;
   if (participantNo === 1) return 1;
   return Math.pow(2, Math.ceil(logBase(participantNo)) - 1);
-}
+};
 
 const makeBracket = (initialNumber: number): number[] => {
   let rounds: number[] = [];
@@ -13,7 +13,7 @@ const makeBracket = (initialNumber: number): number[] => {
     rounds.push(remaining);
   }
   return rounds;
-}
+};
 
 
 /**
@@ -21,6 +21,6 @@ const makeBracket = (initialNumber: number): number[] => {
  */
 const logBase = (x: number, base = 2) => {
   return Math.log(x) / Math.log(base);
-}
+};
 
 export { getNumberOfMathcupsInRound, makeBracket };

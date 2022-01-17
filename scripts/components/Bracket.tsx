@@ -19,6 +19,6 @@ const Bracket = ({ rounds }: BracketProps) => {
       {roundMatchups}
     </div>
   );
-}
+};
 
 export default Bracket;

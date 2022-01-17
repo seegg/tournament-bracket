@@ -46,7 +46,7 @@ const Matchup = ({ matchupNum }: MatchupProps) => {
     }
 
     return setResult;
-  }
+  };
 
   //store the setResult functions to the callback array.
   callbacks[topCellIndex] = createSetResultFn(setTopCell, topCellIndex);
@@ -65,7 +65,7 @@ const Matchup = ({ matchupNum }: MatchupProps) => {
     if (!topCell || !btmCell) return;
     if (!win || win.skip) return;
     callbacks[bracket?.tree[topCellIndex].parentIndex!]({ ...win });
-  }
+  };
 
 
   return (
@@ -78,6 +78,6 @@ const Matchup = ({ matchupNum }: MatchupProps) => {
     </div >
   );
 
-}
+};
 
 export default Matchup;

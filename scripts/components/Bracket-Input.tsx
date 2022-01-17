@@ -20,22 +20,22 @@ const BracketInput = ({ callback }: InputProps) => {
     if (wholeNumberRegex.test(value)) {
       setparticipantNum(value);
     };
-  }
+  };
 
   const handleTextChange = (e: ChangeEvent) => {
     const value = (e.target as HTMLTextAreaElement).value;
     setParticipantText(value);
-  }
+  };
 
   const handleClick = (): void => {
     submitParticipants();
-  }
+  };
 
   const handleKeyPress = (evt: KeyboardEvent) => {
     if (evt.key === 'Enter') {
       submitParticipants();
     }
-  }
+  };
 
   useEffect(() => {
     //Use lstInputIsNum ref to decide whether to add or remove class
@@ -52,7 +52,7 @@ const BracketInput = ({ callback }: InputProps) => {
       numInput?.classList.remove('number-input-expand');
       lastInputIsNum.current = true;
     }
-  }, [isNumberInput])
+  }, [isNumberInput]);
 
   //use names or number to create the bracket depending on
   //whether isNumberInput is true or false.
@@ -70,11 +70,11 @@ const BracketInput = ({ callback }: InputProps) => {
       const nameArray = participantText.match(/[\w-]+|"[^"]+"/g)?.map(word => word.replace(/"/g, ''));
       callback(nameArray?.length || 0, nameArray || []);
     }
-  }
+  };
 
   const toggleInput = () => {
     setIsNumberInput(!isNumberInput);
-  }
+  };
 
   const style = {
     button: {
@@ -105,6 +105,6 @@ const BracketInput = ({ callback }: InputProps) => {
     </div>
   )
 
-}
+};
 
 export default BracketInput;

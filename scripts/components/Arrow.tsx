@@ -36,6 +36,6 @@ const Arrow = ({ position, id }: ArrowProps) => {
       {position === 'start' && gapFiller}
     </div>
   );
-}
+};
 
 export default Arrow;

@@ -35,6 +35,6 @@ const Round = ({ round, numberOfMatchups = 0 }: RoundProps) => {
       </div>
     </RoundContext.Provider>
   );
-}
+};
 
 export default Round;

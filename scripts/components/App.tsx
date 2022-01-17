@@ -40,7 +40,7 @@ const App = () => {
   const inputCallback = (participantNo: number, names: string[] = []) => {
     setParticipants({ count: participantNo, names: names });
     setRounds(makeBracket(participantNo));
-  }
+  };
 
 
   return (
@@ -51,6 +51,6 @@ const App = () => {
       </BracketContext.Provider>
     </div >
   );
-}
+};
 
 export default App;

@@ -37,6 +37,6 @@ const MiddleDivider = ({ topId, btmId }: MidDividerProps) => {
         <div className={`border-transition arrow middle-filler middle-filler-bottom ${topClassName + ' ' + btmClassName}`}></div>
       </div>
     </div>);
-}
+};
 
 export default MiddleDivider;
