@@ -84,13 +84,22 @@ const Cell = ({ participant, position, callback, editCallback }: CellProps) => {
         (evt.target as HTMLInputElement).value = participant!.name;
         return;
       }
-      editCallback(position, value);
       setIsInEditMode(false);
+      if (value === participant?.name) return;
+      editCallback(position, value);
     } else if (evt.key === 'Escape') {
       setIsInEditMode(false);
       (evt.target as HTMLInputElement).value = participant!.name;
     }
   };
+
+  //because react doens't seem to fire the onKeyPress event for the Escape key for some reason.
+  const handleKeyDown = (evt: React.KeyboardEvent<HTMLInputElement>) => {
+    if (evt.key === 'Escape') {
+      setIsInEditMode(false);
+      (evt.target as HTMLInputElement).value = participant!.name;
+    }
+  }
 
   //if input loose focus, exit edit mode and set value back to the original.
   const handleBlur = (evt: React.FocusEvent<HTMLInputElement, Element>) => {
@@ -105,7 +114,10 @@ const Cell = ({ participant, position, callback, editCallback }: CellProps) => {
     <div className='cell-container' style={style.cellContainer}>
       {round != 1 && <Arrow position={position} id={participant?.id === undefined ? null : participant?.id} />}
       <div className={`border-transition cell cell-${position} ${participant?.skip ? 'cell-bye' : ''} ${hlClassName}`} style={style.cell} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} onClick={handleClick} onContextMenu={handleContextMenu}>
-        {isInEditMode && round === 1 ? <input className='cell-input' type="text" name="cell-edit" id={inputID} defaultValue={participant?.name || ''} onKeyPress={handleKeyPress} onBlur={handleBlur} /> : <p style={style.participant} className='name-text'>{participant?.name || ''}</p>}
+        {isInEditMode && round === 1 ?
+          <input className='cell-input' type="text" name="cell-edit" id={inputID} defaultValue={participant?.name || ''} onKeyPress={handleKeyPress} onBlur={handleBlur} onKeyDown={handleKeyDown} />
+          :
+          <p style={style.participant} className='name-text'>{participant?.name || ''}</p>}
       </div>
     </div>
   );
