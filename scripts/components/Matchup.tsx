@@ -33,7 +33,7 @@ const Matchup = ({ matchupNum }: MatchupProps) => {
     bracketResult: MatchupTree | null = bracket, callbackFns: any[] = callbacks) => {
     const setResult = (result: Participant) => {
       let currentNode = bracketResult!.tree[index];
-      if (result?.id === currentNode.value?.id && result.name === currentNode.value?.name) return;
+      if (result?.id === currentNode?.value?.id && result?.name === currentNode?.value?.name) return;
 
       dispatch(result);
       currentNode.value = result;
