@@ -47,15 +47,16 @@ const Cell = ({ participant, position, callback, editCallback }: CellProps) => {
   const handleClick = () => {
     if (!participant?.id && participant?.id !== 0) return;
     if (isInEditMode) return;
-    callback(position);
 
-    //wait a certain amount of time, if a matchup is decided then
-    //highlight the new cell.
-    setTimeout(() => {
+    new Promise((res) => {
+      res(callback(position));
+    }).then(_ => {
       if (highlighted.current) {
         highlightArrows(participant?.id, 'arrow-highlight', 'cell-highlight', true);
       }
-    }, 100);
+    }).catch(err => {
+      console.log(err);
+    });
 
   };
 
