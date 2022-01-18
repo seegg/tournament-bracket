@@ -33,7 +33,7 @@ const Matchup = ({ matchupNum }: MatchupProps) => {
     bracketResult: MatchupTree | null = bracket, callbackFns: any[] = callbacks) => {
     const setResult = (result: Participant) => {
       let currentNode = bracketResult!.tree[index];
-      if (result?.id === currentNode.value?.id) return;
+      if (result?.id === currentNode.value?.id && result.name === currentNode.value?.name) return;
 
       dispatch(result);
       currentNode.value = result;
@@ -43,7 +43,8 @@ const Matchup = ({ matchupNum }: MatchupProps) => {
       //set it's value to null and propagate up the chain until
       //this condition is meet.
       if (!bracket?.tree[currentNode.parentIndex!].value) return;
-      if (bracket.tree[currentNode.parentIndex!].value?.id === currentNode.value?.id) return;
+      if (bracket.tree[currentNode.parentIndex!].value?.id === currentNode.value?.id &&
+        bracket.tree[currentNode.parentIndex!].value?.name === currentNode.value?.name) return;
       callbackFns[currentNode.parentIndex!](null);
     }
 
@@ -78,7 +79,12 @@ const Matchup = ({ matchupNum }: MatchupProps) => {
     } else {
       setBtmCell(newCell);
     }
-    callbacks[bracket?.tree[topCellIndex].parentIndex!](null);
+
+    if (btmCell?.skip) {
+      callbacks[bracket?.tree[topCellIndex].parentIndex!](newCell);
+    } else {
+      callbacks[bracket?.tree[topCellIndex].parentIndex!](null);
+    }
   };
 
 
