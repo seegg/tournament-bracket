@@ -91,7 +91,7 @@ const BracketInput = ({ callback }: InputProps) => {
   };
 
   //Input and textarea for constructing the bracket.
-  const input = <input className={`number-input input-item ${lastInputIsNum.current ? '' : 'number-input-expand'}`} type="text" placeholder='Number of participants' name="input" id="number-input" value={participantNum} onChange={handleNumChange} onKeyPress={handleKeyPress} />;
+  const input = <textarea className={`number-input input-item ${lastInputIsNum.current ? '' : 'number-input-expand'}`} placeholder='Number of participants' name="input" id="number-input" value={participantNum} onChange={handleNumChange} onKeyPress={handleKeyPress} />;
 
   const textArea = <textarea className='text-input input-item' name="" id="text-input" value={participantText} onChange={handleTextChange} placeholder='Names of participants. Comma, space, and new line seperated. Combine words and add non alphanumeric characters with double quotes and hypen, "Potatos and soccer=Ball&lsquo;s" cat-dog.'></textarea>;
 

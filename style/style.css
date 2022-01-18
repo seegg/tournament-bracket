@@ -186,6 +186,8 @@ p.name-text{
 }
 
 .input-item{
+  padding-top: 0.35rem;
+  padding-left: 0.5rem;
   border: none;
   border-radius: 3px;
   box-shadow: 1px 1px 3px 1px black;
@@ -199,6 +201,7 @@ p.name-text{
   height: 2rem;
   flex-shrink: 1;
   transition: height 0.25s ease-in;
+  resize: none;
 }
 
 .number-input-expand{
