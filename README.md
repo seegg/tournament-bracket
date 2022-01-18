@@ -6,6 +6,8 @@ Specifiy the number of participants or provide a list of names to generate a bra
 
 If the number of participants is not a power of 2, a number of them will be chosen from the end of the list and directly advance to the next round to make it fit into this format.
 
+Edit the names of participants with right-click(context menu), only possible on first round. Changing the name will also reset all results further up the bracket involving the affected matchup.
+
 Hover over a name to highlight all the matchups as well as the paths involving that participant.
 
 Select a winner by clicking on their name, both matchups needs to be filled before a winner can be selected.
