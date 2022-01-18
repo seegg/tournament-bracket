@@ -188,7 +188,7 @@ p.name-text{
 .input-item{
   border: none;
   border-radius: 3px;
-  box-shadow: 1px 1px 3px black;
+  box-shadow: 1px 1px 3px 1px black;
   margin-left: 0.5rem;
   font-size: 1rem;
   max-width: 15rem;
@@ -217,9 +217,16 @@ p.name-text{
 }
 
 .input-item:focus{
-  box-shadow: 3px 1px 5px black;
+  box-shadow: 3px 1px 5px 2px black;
   border: none;
   outline: none;
+}
+
+.input-btn{
+  margin-left: 0.5rem;
+  height: 2rem;
+  width: 2rem;
+  box-shadow: 1px 1px 1px 0.5px black;
 }
 
 #btn-triangle{

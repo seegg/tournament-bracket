@@ -80,15 +80,13 @@ const BracketInput = ({ callback }: InputProps) => {
     button: {
       marginLeft: '0.5rem',
       height: '2rem',
-      width: '2rem'
+      width: '2rem',
+      boxShadow: '1px 1px 2px black'
     },
     toggleButton: {
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
-      marginLeft: '0.5rem',
-      height: '2rem',
-      width: '2rem'
     }
   };
 
@@ -99,9 +97,9 @@ const BracketInput = ({ callback }: InputProps) => {
 
   return (
     <div className='bracket-input' id='b-input'>
-      <button style={style.toggleButton} onClick={toggleInput}><span id='btn-triangle'>&#9660;</span></button>
+      <button className='input-btn' style={style.toggleButton} onClick={toggleInput}><span id='btn-triangle'>&#9660;</span></button>
       {isNumberInput ? input : textArea}
-      <button style={style.button} onClick={handleClick}>Go</button>
+      <button className='input-btn' onClick={handleClick}>Go</button>
     </div>
   )
 
