@@ -180,9 +180,9 @@ input.cell-input{
 p.name-text{
   padding-left: 0.5rem;
   padding-right: 0.5rem;
-  white-space: normal;
+  white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis; 
+  text-overflow: ellipsis;
 }
 
 .input-item{
