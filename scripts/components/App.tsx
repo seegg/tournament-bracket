@@ -3,7 +3,7 @@ import BracketInput from './Bracket-Input';
 import Bracket from './Bracket';
 import { makeBracket } from './bracketHelper';
 import MatchupTree from '../MatchupTree';
-import thing from '../../things.json';
+import thing from '../things.json';
 import shuffle from '../shuffle';
 
 interface BracketType {
