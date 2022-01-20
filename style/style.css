@@ -7,6 +7,7 @@
 
   --bg-colour: hsl(180, 15%, 51%);
   --bracket-colour: hsl(168, 45%, 40%);
+  --inner-arrow-radius: 0px;
 
 
   /* Cell */
@@ -107,12 +108,12 @@ input.cell-input{
 
 .inner-arrow-top{
   border-bottom-style: solid;
-  border-bottom-left-radius: 0.5rem;
+  border-bottom-left-radius: var(--inner-arrow-radius);
 }
 
 .inner-arrow-btm{
   border-top-style: solid;
-  border-top-left-radius: 0.5rem;
+  border-top-left-radius: var(--inner-arrow-radius);
 }
 
 .middle-divide{
