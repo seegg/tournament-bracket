@@ -7,9 +7,10 @@ import { Participant } from '../types/types';
    */
 export const createSetResultFn = (dispatch: React.Dispatch<React.SetStateAction<Participant | null>>, index: number,
   bracketResult: MatchupTree | null, callbackFns: any[]) => {
-  const setResult = (result: Participant) => {
+  const setResult = (result: Participant | null, bye: boolean = false) => {
     let currentNode = bracketResult!.tree[index];
     if (result?.id === currentNode?.value?.id && result?.name === currentNode?.value?.name) return;
+    if (result) result.bye = bye;
 
     dispatch(result);
     currentNode.value = result;

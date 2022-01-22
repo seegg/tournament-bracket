@@ -72,7 +72,7 @@ const Cell = ({ participant, position, callback, editCallback }: CellProps) => {
   const handleContextMenu = (evt: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     evt.preventDefault();
     if (round != 1) {
-      // removeMatchResult();
+      removeMatchResult();
     } else {
       setIsInEditMode(true);
     }
@@ -111,6 +111,7 @@ const Cell = ({ participant, position, callback, editCallback }: CellProps) => {
 
   /**
    * remove the result for the previous matchup, i.e. set the value of the current cell to null.
+   * Doesn't work if this is the only result possible.
    */
   const removeMatchResult = () => {
     if (participant?.bye) return;

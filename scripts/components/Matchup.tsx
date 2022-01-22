@@ -1,5 +1,4 @@
 import React, { useContext, useState, useEffect } from 'react';
-import MatchupTree from '../MatchupTree';
 import { Participant } from '../types/types';
 import Cell from './Cell';
 import MiddleDivider from './MiddleDivider';
@@ -19,16 +18,16 @@ const Matchup = ({ matchupNum }: MatchupProps) => {
 
   const topCellIndex = matchupNum * 2;
 
+  // store the setResult functions to the callback array.
+  callbacks[topCellIndex] = createSetResultFn(setTopCell, topCellIndex, bracket, callbacks);
+  callbacks[topCellIndex + 1] = createSetResultFn(setBtmCell, topCellIndex + 1, bracket, callbacks);
+
   useEffect(() => {
-    if (bracket?.tree[topCellIndex + 1]) {
+    if (bracket?.tree[topCellIndex + 1] && !btmCell && !topCell) {
       setTopCell(bracket.tree[topCellIndex].value);
       setBtmCell(bracket.tree[topCellIndex + 1].value);
     }
-  }, []);
-
-  //store the setResult functions to the callback array.
-  callbacks[topCellIndex] = createSetResultFn(setTopCell, topCellIndex, bracket, callbacks);
-  callbacks[topCellIndex + 1] = createSetResultFn(setBtmCell, topCellIndex + 1, bracket, callbacks);
+  }, [btmCell]);
 
   const style = {
     container: {
@@ -42,7 +41,8 @@ const Matchup = ({ matchupNum }: MatchupProps) => {
     const win = cell === 'end' ? topCell : btmCell;
     if (!topCell || !btmCell) return;
     if (!win || win.skip) return;
-    callbacks[bracket?.tree[topCellIndex].parentIndex!]({ ...win });
+    console.log(btmCell.skip);
+    callbacks[bracket?.tree[topCellIndex].parentIndex!]({ ...win, bye: btmCell?.skip });
   };
 
   //Only used in round to change participant names.
@@ -50,14 +50,18 @@ const Matchup = ({ matchupNum }: MatchupProps) => {
     const editedCell = cell === 'end' ? topCell : btmCell;
     const newCell = value === null ? null : { ...editedCell, name: value } as Participant;
 
+    if (newCell && btmCell?.skip) newCell.bye = true;
+
     if (cell === 'end') {
+      bracket?.setNodeValue(topCellIndex, newCell);
       setTopCell(newCell);
     } else {
+      bracket?.setNodeValue(topCellIndex + 1, newCell);
       setBtmCell(newCell);
     }
 
     if (btmCell?.skip) {
-      callbacks[bracket?.tree[topCellIndex].parentIndex!](newCell);
+      callbacks[bracket?.tree[topCellIndex].parentIndex!](newCell, true);
     } else {
       callbacks[bracket?.tree[topCellIndex].parentIndex!](null);
     }
