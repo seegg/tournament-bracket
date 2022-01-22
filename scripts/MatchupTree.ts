@@ -44,7 +44,7 @@ export default class MatchupTree {
 
     //byes
     for (let j = (matchups[0] - byes) * 2; j < matchups[0] * 2; j += 2) {
-      let nodeValue: Participant = { name: names[tempID] || `Participant ${tempID}`, id: tempID, skip: false };
+      let nodeValue: Participant = { name: names[tempID] || `Participant ${tempID}`, id: tempID, skip: false, bye: true };
       let byeValue: Participant = { name: '', skip: true };
       this.tree[j] = { ...this.tree[j], value: nodeValue, leftIndex: null, rightIndex: null };
       this.tree[j + 1] = { ...this.tree[j + 1], value: byeValue, leftIndex: null, rightIndex: null };
