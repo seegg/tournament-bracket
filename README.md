@@ -10,7 +10,7 @@ Edit the names of participants with right-click(context menu), only possible on 
 
 Hover over a name to highlight all the matchups as well as the paths involving that participant.
 
-Select a winner by clicking on their name, both matchups needs to be filled before a winner can be selected.
+Select a winner by clicking the '>' icon to the right, both matchups needs to be filled before a winner can be selected.
 
 Selecting a different winner will reset all results further up the bracket involving the affected matchup
 
