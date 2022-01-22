@@ -1,6 +1,6 @@
 # [tournament-bracket](https://seegg.github.io/tournament-bracket)
 
-#### A simple matchup bracket generator made using reactjs.
+#### A matchup bracket generator made using reactjs.
 
 Specifiy the number of participants or provide a list of names to generate a bracket.
 
