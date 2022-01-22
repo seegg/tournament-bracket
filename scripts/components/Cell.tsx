@@ -114,11 +114,16 @@ const Cell = ({ participant, position, callback, editCallback }: CellProps) => {
   return (
     <div className='cell-container' style={style.cellContainer}>
       {round != 1 && <Arrow position={position} id={participant?.id === undefined ? null : participant?.id} />}
-      <div className={`border-transition cell cell-${position} ${participant?.skip ? 'cell-bye' : ''} ${hlClassName}`} style={style.cell} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} onClick={handleClick} onContextMenu={handleContextMenu}>
-        {isInEditMode && round === 1 ?
-          <input className='cell-input' type="text" name="cell-edit" id={inputID} defaultValue={participant?.name || ''} onKeyPress={handleKeyPress} onBlur={handleBlur} onKeyDown={handleKeyDown} />
-          :
-          <p style={style.participant} className='name-text'>{participant?.name || ''}</p>}
+      <div className={`border-transition cell cell-${position} ${participant?.skip ? 'cell-bye' : ''} ${hlClassName}`} style={style.cell} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} onContextMenu={handleContextMenu}>
+        {/* The edit and name display */}
+        {
+          isInEditMode && round === 1 ?
+            <input className='cell-input' type="text" name="cell-edit" id={inputID} defaultValue={participant?.name || ''} onKeyPress={handleKeyPress} onBlur={handleBlur} onKeyDown={handleKeyDown} />
+            :
+            <p style={style.participant} className='name-text'>{participant?.name || ''}</p>
+        }
+        {/* Select the winner for the matchup */}
+        {!isInEditMode && !participant?.skip && <div className='select-btn' onClick={handleClick}>&gt;</div>}
       </div>
     </div>
   );

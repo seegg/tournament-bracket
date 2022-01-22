@@ -50,6 +50,7 @@ html {
   border-color: var(--cell-border-colour);
   background-color: var(--cell-bg-colour);
   cursor: default;
+  position: relative;
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -250,4 +251,27 @@ p.name-text{
 
 .rotate-180{
   transform: rotate(180deg);
+}
+
+.select-btn{
+  position: absolute;
+  display: none;
+  justify-content: center;
+  right: 0px;
+  top: 50%;
+  height: 1rem;
+  width: 1rem;
+  transform: translateY(-50%);
+  align-items: center;
+  text-align: center;
+  margin-right: 0.2rem;
+  font-size: 1rem;
+}
+
+.select-btn:hover{
+  font-size: 1.5rem;
+}
+
+.cell:hover .select-btn{
+  display: flex;
 }
