@@ -12,6 +12,7 @@ const Arrow = ({ position, id }: ArrowProps) => {
 
   const arrowClass = 'arrow-' + id;
 
+  //decide whether border is display depending if it points to top or bottom
   const style = {
     border: {
       borderRightStyle: 'solid' as 'solid',
@@ -24,9 +25,6 @@ const Arrow = ({ position, id }: ArrowProps) => {
       borderTopRightRadius: position === 'end' ? borderRadius : '',
     }
   };
-
-  useEffect(() => {
-  });
 
   return (
     <div className='arrows-container'>

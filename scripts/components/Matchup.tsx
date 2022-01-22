@@ -71,9 +71,9 @@ const Matchup = ({ matchupNum }: MatchupProps) => {
   };
 
   //Only used in round to change participant names.
-  const editCallback = (cell: CellPosition, value: string) => {
+  const editCallback = (cell: CellPosition, value: string | null) => {
     const editedCell = cell === 'end' ? topCell : btmCell;
-    const newCell = { ...editedCell, name: value } as Participant;
+    const newCell = value === null ? null : { ...editedCell, name: value } as Participant;
     if (cell === 'end') {
       setTopCell(newCell);
     } else {

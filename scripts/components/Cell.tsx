@@ -8,18 +8,15 @@ import { CellPosition } from '../types/types';
 interface CellProps {
   position: CellPosition,
   callback: (pos: CellPosition) => void,
-  editCallback: (pos: CellPosition, value: string) => void,
+  editCallback: (pos: CellPosition, value: string | null) => void,
   participant: Participant | null,
 }
 
 const Cell = ({ participant, position, callback, editCallback }: CellProps) => {
 
   const [isInEditMode, setIsInEditMode] = useState(false);
-
   const highlighted = useRef(false);
-
   const round = useContext(RoundContext);
-
   const inputID = 'input-' + position + '-' + round + '-' + Math.random();
 
   //set focus to input element if its in edit mode.
@@ -71,10 +68,14 @@ const Cell = ({ participant, position, callback, editCallback }: CellProps) => {
   };
 
   //allow editing of participant names on context menu but only if its the first round.
+  //
   const handleContextMenu = (evt: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     evt.preventDefault();
-    if (round != 1) return;
-    setIsInEditMode(true);
+    if (round != 1) {
+
+    } else {
+      setIsInEditMode(true);
+    }
   };
 
   const handleKeyPress = (evt: React.KeyboardEvent<HTMLInputElement>) => {
@@ -108,6 +109,13 @@ const Cell = ({ participant, position, callback, editCallback }: CellProps) => {
     (evt.target as HTMLInputElement).value = participant!.name;
   };
 
+  /**
+   * remove the result for the previous matchup, i.e. set the value of the current cell to null.
+   */
+  const removeCellResult = () => {
+    editCallback(position, null);
+  };
+
   //class name use to highlight the border on mouse enter events.
   const hlClassName = (!participant?.id && participant?.id !== 0) ? '' : 'cell-' + participant.id;
 
@@ -123,7 +131,7 @@ const Cell = ({ participant, position, callback, editCallback }: CellProps) => {
             <p style={style.participant} className='name-text'>{participant?.name || ''}</p>
         }
         {/* Select the winner for the matchup */}
-        {!isInEditMode && !participant?.skip && <div className='select-btn' onClick={handleClick}>&gt;</div>}
+        {!isInEditMode && participant?.name && <div className='select-btn' onClick={handleClick}>&gt;</div>}
       </div>
     </div>
   );
