@@ -14,6 +14,8 @@ Select a winner by clicking the '>' icon to the right, both matchups needs to be
 
 Selecting a different winner will reset all results further up the bracket involving the affected matchup
 
+Delete results with right-click(context-menu) only possible for round 2 and up.
+
 The bracket itself is stored as a binary tree and made available throughout the app using a context provider.
 The provider acts as a sort of scuffed global state manager and is only use for accessing the bracket references. Updates are done outside of the provider to avoid triggering a re-render of every consumer which is very noticeable on large brackets.
 

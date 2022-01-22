@@ -41,7 +41,6 @@ const Matchup = ({ matchupNum }: MatchupProps) => {
     const win = cell === 'end' ? topCell : btmCell;
     if (!topCell || !btmCell) return;
     if (!win || win.skip) return;
-    console.log(btmCell.skip);
     callbacks[bracket?.tree[topCellIndex].parentIndex!]({ ...win, bye: btmCell?.skip });
   };
 
