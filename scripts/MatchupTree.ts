@@ -59,7 +59,7 @@ export default class MatchupTree {
     return this.tree[idx];
   }
 
-  setNode(idx: number, value: Participant) {
+  setNodeValue(idx: number, value: Participant | null) {
     this.tree[idx].value = value;
   }
 
