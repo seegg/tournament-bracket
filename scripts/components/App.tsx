@@ -46,9 +46,12 @@ const App = () => {
   return (
     <div className='appContainer'>
       <BracketInput callback={inputCallback} />
-      <BracketContext.Provider value={bracketContextProviderValue}>
-        <Bracket rounds={rounds} />
-      </BracketContext.Provider>
+      <div className='bracket-container'>
+        <BracketContext.Provider value={bracketContextProviderValue}>
+          <Bracket rounds={rounds} />
+        </BracketContext.Provider>
+        {rounds.length > 0 && <div className='scroll-filler'></div>}
+      </div>
     </div >
   );
 };

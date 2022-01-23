@@ -1,5 +1,4 @@
 :root{
-
   /* arrow */
   --arrow-width: 0.1rem;
   --arrow-colour: hsl(209, 91%, 22%);
@@ -21,8 +20,12 @@
 
   /* input */
   --input-transition-duration:(0.25s);
-  --input-bg-colour: hsl(146, 64%, 61%);
+  --input-bg-colour: rgba(92, 219, 147,0.5);
   --input-outline-colour:hsl(0, 95%, 63%);
+
+  /* body */
+  --body-bg-gradient: linear-gradient(315deg, #000000 0%, #7f8c8d 74%);
+  --body-bg-colour: background-color #000000;
 }
 
 html {
@@ -33,6 +36,17 @@ html {
 }
 *, *:before, *:after {
   box-sizing: inherit;
+}
+
+body{
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  overflow: hidden;
+  background-color: var(--body-bg-colour);
+  background-image: var(--body-bg-gradient);
+
+
 }
 
 .cell-container{
@@ -156,6 +170,7 @@ input.cell-input{
   display: flex;
   align-items: flex-start;
   min-height: 3rem;
+  max-width: calc(100vw - 1rem);
   background-color: var(--input-bg-colour);
   padding: 0.5rem;
   padding-left: 0;
@@ -167,10 +182,9 @@ input.cell-input{
 
 .bracket{
   display: flex;
-  background-color: var(--bracket-colour);
+  background: none;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
-  box-shadow: 3px 3px 5px black;
 }
 
 .round{
@@ -291,4 +305,16 @@ p.name-text{
 
 .cell-ctrl-del:hover{
   color: var(--input-outline-colour);
+}
+
+.bracket-container{
+
+  max-width: 100vw;
+  max-height: 100vh;
+  background-color: rgba(56, 148, 130, 0.2);
+  overflow: auto;
+}
+
+.scroll-filler{
+  height: 5rem;
 }
