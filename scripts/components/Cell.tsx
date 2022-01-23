@@ -4,6 +4,7 @@ import { RoundContext } from './Round';
 import { Participant } from '../types/types';
 import { highlightArrows } from './highlight';
 import { CellPosition } from '../types/types';
+import CellSelect from './Cell-select';
 
 interface CellProps {
   position: CellPosition,
@@ -71,11 +72,9 @@ const Cell = ({ participant, position, callback, editCallback }: CellProps) => {
   //
   const handleContextMenu = (evt: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     evt.preventDefault();
-    if (round != 1) {
-      removeMatchResult();
-    } else {
-      setIsInEditMode(true);
-    }
+    if (round != 1) return;
+    setIsInEditMode(true);
+
   };
 
   const handleKeyPress = (evt: React.KeyboardEvent<HTMLInputElement>) => {
@@ -125,6 +124,7 @@ const Cell = ({ participant, position, callback, editCallback }: CellProps) => {
     <div className='cell-container' style={style.cellContainer}>
       {round != 1 && <Arrow position={position} id={participant?.id === undefined ? null : participant?.id} />}
       <div className={`border-transition cell cell-${position} ${participant?.skip ? 'cell-bye' : ''} ${hlClassName}`} style={style.cell} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} onContextMenu={handleContextMenu}>
+        {round != 1 && participant?.name && !participant?.bye && <CellSelect classNames={'cell-ctrl-del'} onClickCallback={removeMatchResult} textIcon='✗' />}
         {/* The edit and name display */}
         {
           isInEditMode && round === 1 ?
@@ -133,7 +133,7 @@ const Cell = ({ participant, position, callback, editCallback }: CellProps) => {
             <p style={style.participant} className='name-text'>{participant?.name || ''}</p>
         }
         {/* Select the winner for the matchup */}
-        {!isInEditMode && participant?.name && <div className='select-btn' onClick={handleClick}>&gt;</div>}
+        {!isInEditMode && participant?.name && <CellSelect classNames={'cell-ctrl-select'} onClickCallback={handleClick} textIcon='✔' />}
       </div>
     </div>
   );
