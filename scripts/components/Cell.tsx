@@ -42,7 +42,7 @@ const Cell = ({ participant, position, callback, editCallback }: CellProps) => {
     }
   };
 
-  const handleClick = () => {
+  const selectWinner = () => {
     if (!participant?.id && participant?.id !== 0) return;
     if (isInEditMode) return;
 
@@ -112,7 +112,7 @@ const Cell = ({ participant, position, callback, editCallback }: CellProps) => {
    * remove the result for the previous matchup, i.e. set the value of the current cell to null.
    * Doesn't work if this is the only result possible.
    */
-  const removeMatchResult = () => {
+  const removeResult = () => {
     if (participant?.bye) return;
     editCallback(position, null);
   };
@@ -124,7 +124,7 @@ const Cell = ({ participant, position, callback, editCallback }: CellProps) => {
     <div className='cell-container' style={style.cellContainer}>
       {round != 1 && <Arrow position={position} id={participant?.id === undefined ? null : participant?.id} />}
       <div className={`border-transition cell cell-${position} ${participant?.skip ? 'cell-bye' : ''} ${hlClassName}`} style={style.cell} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} onContextMenu={handleContextMenu}>
-        {round != 1 && participant?.name && !participant?.bye && <CellSelect classNames={'cell-ctrl-del'} onClickCallback={removeMatchResult} textIcon='✗' />}
+        {round != 1 && participant?.name && !participant?.bye && <CellSelect classNames={'cell-ctrl-del'} onClickCallback={removeResult} textIcon='✗' />}
         {/* The edit and name display */}
         {
           isInEditMode && round === 1 ?
@@ -133,7 +133,7 @@ const Cell = ({ participant, position, callback, editCallback }: CellProps) => {
             <p style={style.participant} className='name-text'>{participant?.name || ''}</p>
         }
         {/* Select the winner for the matchup */}
-        {!isInEditMode && participant?.name && <CellSelect classNames={'cell-ctrl-select'} onClickCallback={handleClick} textIcon='✔' />}
+        {!isInEditMode && participant?.name && <CellSelect classNames={'cell-ctrl-select'} onClickCallback={selectWinner} textIcon='✔' />}
       </div>
     </div>
   );
