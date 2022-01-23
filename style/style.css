@@ -324,6 +324,10 @@ p.name-text{
 }
 
 .footer{
+  position: fixed;
+  bottom: 0;
+  right: 50%;
+  transform: translateX(50%);
   height: 2.5rem;
   background: none;
   display: flex;
