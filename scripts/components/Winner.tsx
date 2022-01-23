@@ -3,6 +3,7 @@ import MiddleDivider from './MiddleDivider';
 import { BracketContext } from './App'
 import { Participant } from '../types/types';
 import { highlightArrows } from './highlight';
+import CellSelect from './Cell-select';
 
 const Winner = () => {
 
@@ -26,13 +27,20 @@ const Winner = () => {
   const handleClick = (): void => {
   };
 
+  const resetWinner = (): void => {
+    if (winner?.name) {
+      bracket!.root!.value = null;
+      setWinner(null);
+    }
+  };
+
   return (
     <div className='round'>
       <div className='matchup'>
         <div style={style.container}>
-          <Node position='end' hidden='visible' callback={handleClick} participant={winner} />
+          <Node position='end' hidden='visible' callback={resetWinner} participant={winner} />
           <MiddleDivider topId={winner?.id === undefined ? null : winner.id} btmId={winner?.id === undefined ? null : winner.id} />
-          <Node position='start' hidden='hidden' />
+          <Node position='start' hidden='hidden' callback={() => { }} />
         </div>
       </div >
     </div>
@@ -44,7 +52,7 @@ interface NodeProps {
   position: 'start' | 'end',
   hidden: 'hidden' | 'visible',
   participant?: Participant | null,
-  callback?: () => void,
+  callback: () => void,
 }
 
 const Node = ({ position, hidden, callback, participant }: NodeProps) => {
@@ -78,7 +86,8 @@ const Node = ({ position, hidden, callback, participant }: NodeProps) => {
   return (
 
     <div className='cell-container' style={style.cellContainer}>
-      <div className={`border-transition cell winner ${className}`} style={style.cell} onClick={callback} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+      <div className={`border-transition cell winner ${className}`} style={style.cell} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+        {participant?.name && <CellSelect classNames={'cell-ctrl-del'} onClickCallback={callback} textIcon='✗' />}
         <p style={style.participant} className='name-text'>{participant?.name || ''}</p>
       </div>
     </div>
