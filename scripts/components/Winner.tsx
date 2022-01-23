@@ -35,7 +35,7 @@ const Winner = () => {
   };
 
   return (
-    <div className='round'>
+    <div className='round winner-round'>
       <div className='matchup'>
         <div style={style.container}>
           <Node position='end' hidden='visible' callback={resetWinner} participant={winner} />

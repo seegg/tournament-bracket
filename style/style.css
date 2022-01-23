@@ -103,6 +103,10 @@ input.cell-input{
   border-color: var(--cell-winner-bg-colour);
 }
 
+.winner-round{
+  padding-right: 2rem;
+}
+
 .arrows-container{
   display: flex;
   flex-direction: column;
@@ -308,9 +312,8 @@ p.name-text{
 }
 
 .bracket-container{
-
-  max-width: 100vw;
-  max-height: 100vh;
+  max-width: calc(100vw - 1rem);
+  max-height: 90vh;
   background-color: rgba(56, 148, 130, 0.2);
   overflow: auto;
 }
