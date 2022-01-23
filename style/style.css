@@ -314,7 +314,7 @@ p.name-text{
 
 .bracket-container{
   max-width: calc(100vw - 1rem);
-  max-height: 90vh;
+  max-height: calc(100vh - 6rem);
   background-color: rgba(56, 148, 130, 0.1);
   overflow: auto;
 }
