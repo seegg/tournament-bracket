@@ -197,6 +197,7 @@ input.cell-input{
 }
 
 .appContainer{
+  background: none;
   padding: 0.5rem;
   min-width: 100%;
   width: fit-content;
@@ -314,10 +315,18 @@ p.name-text{
 .bracket-container{
   max-width: calc(100vw - 1rem);
   max-height: 90vh;
-  background-color: rgba(56, 148, 130, 0.2);
+  background-color: rgba(56, 148, 130, 0.1);
   overflow: auto;
 }
 
 .scroll-filler{
   height: 5rem;
+}
+
+.footer{
+  height: 2.5rem;
+  background: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

@@ -5,6 +5,7 @@ import { makeBracket } from './bracketHelper';
 import MatchupTree from '../MatchupTree';
 import thing from '../things.json';
 import shuffle from '../shuffle';
+import Footer from './Footer';
 
 interface BracketType {
   bracket: MatchupTree | null,
@@ -50,8 +51,8 @@ const App = () => {
         <BracketContext.Provider value={bracketContextProviderValue}>
           <Bracket rounds={rounds} />
         </BracketContext.Provider>
-        {rounds.length > 0 && <div className='scroll-filler'></div>}
       </div>
+      <Footer />
     </div >
   );
 };
